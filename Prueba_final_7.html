@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FOCO — Espacio Creativo · Logroño</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --pink: #FF3FA4;
+  --pink-light: #FF85C8;
+  --pink-pale: #FFE8F4;
+  --black: #111111;
+  --white: #FFFFFF;
+  --grey: #EBEBEB;
+  --grey-mid: #8A8A8A;
+  --blue: #6B8FA8;
+  --lime: #7FFF00;
+  --kraft: #C8A87A;
+  --kraft-light: #F0E4D0;
+  /* legacy aliases */
+  --rosa: #FF3FA4;
+  --negro: #111111;
+  --verde: #5B8C5A;
+  --azul: #87CEEB;
+  --crema: #faf8f5;
+}
+html { scroll-behavior: smooth; }
+body { font-family:'Space Grotesk',sans-serif; background:var(--white); color:var(--black); overflow-x:hidden; }
+
+/* NAV */
+nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); border-bottom:1.5px solid var(--black); }
+.nav-logo { font-family:'Space Mono',monospace; font-size:1.6rem; font-weight:700; letter-spacing:.25em; color:var(--black); text-decoration:none; }
+.nav-logo span { color:var(--pink); }
+.nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
+.nav-links a { font-size:.82rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--black); text-decoration:none; transition:color .2s; }
+.nav-links a:hover { color:var(--pink); }
+.nav-pill { background:var(--pink); color:var(--white)!important; padding:.45rem 1.2rem; border-radius:2rem; font-size:.8rem!important; }
+.nav-pill:hover { background:var(--black)!important; color:var(--white)!important; }
+
+/* HERO */
+#hero { min-height:65vh; padding-top:5rem; display:grid; grid-template-columns:1fr 1fr; border-bottom:1.5px solid var(--black); }
+.hero-left { display:flex; flex-direction:column; justify-content:center; padding:5rem 4rem 4rem; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:.6rem; font-size:.78rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--grey-mid); margin-bottom:2rem; }
+.hero-eyebrow::before { content:''; width:2rem; height:1.5px; background:var(--pink); display:block; }
+.hero-left h1 { font-family:'Space Mono',monospace; font-size:clamp(2.8rem,5vw,4.5rem); font-weight:700; line-height:1.05; letter-spacing:-.02em; margin-bottom:2rem; }
+.hero-left h1 .hl { display:inline-block; background:var(--pink); color:var(--white); padding:0 .3em; transform:rotate(-1deg); }
+.hero-left p { font-size:1.1rem; line-height:1.75; color:var(--grey-mid); max-width:400px; margin-bottom:3rem; }
+.hero-right { background:transparent; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:2rem; position:relative; }
+.hero-collage-img { width:100%; height:auto; max-height:90%; object-fit:contain; display:block; }
+.hero-placeholder { font-family:'Space Mono',monospace; font-size:13px; color:var(--grey-mid); text-transform:uppercase; letter-spacing:2px; }
+.hero-right::before { content:'🎨'; font-size:120px; opacity:.08; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+.hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-black { background:var(--black); color:var(--white); padding:.9rem 2rem; border-radius:3rem; font-size:.88rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; border:none; cursor:pointer; text-decoration:none; transition:background .2s,transform .15s; display:inline-block; }
+.btn-black:hover { background:var(--pink); transform:translateY(-3px); }
+.btn-ghost { background:transparent; color:var(--black); padding:.9rem 2rem; border-radius:3rem; font-size:.88rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; border:1.5px solid var(--black); cursor:pointer; text-decoration:none; transition:all .2s; display:inline-block; }
+.btn-ghost:hover { background:var(--black); color:var(--white); transform:translateY(-3px); }
+
+/* MARQUEE KRAFT */
+.marquee { background:var(--kraft); padding:14px 0; overflow:hidden; white-space:nowrap; border-top:2px solid #8a6d4a; border-bottom:2px solid #8a6d4a; }
+.marquee-track { display:inline-flex; animation:marquee 20s linear infinite; }
+.marquee-track span { font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:600; letter-spacing:.05em; color:var(--white); text-transform:uppercase; padding:0 1.2rem; display:inline-flex; align-items:center; gap:1.2rem; }
+.marquee-track .star { font-size:.9rem; opacity:.6; }
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* SECTION LABEL */
+.section-label { font-family:'Space Mono',monospace; font-size:42px; font-weight:700; text-transform:uppercase; letter-spacing:3px; line-height:1.1; margin-bottom:8px; }
+.section-subtitle { font-family:'Space Grotesk',sans-serif; font-size:15px; color:#555; max-width:900px; line-height:1.65; margin-bottom:28px; }
+
+/* CLUB CREATIVO */
+.club { padding:40px 50px 50px; position:relative; overflow:hidden; background:#87CEEB; }
+.club::before { content:''; position:absolute; top:80px; left:10%; width:350px; height:200px; background:radial-gradient(ellipse,rgba(255,255,255,.7) 0%,transparent 70%); filter:blur(18px); pointer-events:none; }
+.club::after { content:''; position:absolute; top:200px; right:5%; width:280px; height:160px; background:radial-gradient(ellipse,rgba(255,255,255,.6) 0%,transparent 70%); filter:blur(18px); pointer-events:none; }
+.cloud1 { position:absolute; top:40px; left:45%; width:400px; height:180px; background:radial-gradient(ellipse,rgba(255,255,255,.65) 0%,transparent 70%); filter:blur(18px); pointer-events:none; }
+.cloud2 { position:absolute; bottom:120px; left:20%; width:320px; height:150px; background:radial-gradient(ellipse,rgba(255,255,255,.5) 0%,transparent 70%); filter:blur(18px); pointer-events:none; }
+.club .section-label { color:#fff; }
+
+/* PRICING CARDS */
+.pricing-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; margin:0 auto 28px; position:relative; z-index:2; max-width:1060px; }
+.price-card { background:rgba(255,255,255,.55); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1.5px solid rgba(255,255,255,.8); border-radius:28px; padding:22px 18px; transition:transform .3s, box-shadow .3s; display:flex; flex-direction:column; position:relative; }
+.price-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(135,206,235,.3); }
+.price-card.premium { border:2px solid var(--rosa); }
+.price-card-name { font-family:'Space Mono',monospace; font-size:11px; color:#5a7a8a; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px; }
+.price-card-price { font-family:'Bebas Neue',cursive; font-size:44px; color:var(--negro); line-height:1; }
+.price-card-detail { font-family:'Space Grotesk',sans-serif; font-size:12px; color:#888; margin-bottom:14px; }
+.price-card-features { list-style:none; margin-bottom:auto; padding-bottom:16px; }
+.price-card-features li { font-size:12px; color:#555; padding:3px 0; display:flex; align-items:flex-start; gap:6px; }
+.price-card-features li::before { content:'✓'; color:var(--verde); font-weight:700; flex-shrink:0; }
+.price-card-btn { display:block; text-align:center; font-family:'Space Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1.5px; padding:11px; border-radius:50px; text-decoration:none; color:var(--negro); background:rgba(255,255,255,.6); border:1.5px solid #ccc; transition:all .25s; cursor:pointer; }
+.price-card-btn:hover { background:var(--negro); color:#fff; border-color:var(--negro); }
+.price-card-btn.rosa { background:var(--rosa); color:#fff; border-color:var(--rosa); }
+.price-card-btn.rosa:hover { background:#d45a78; }
+.badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--rosa); color:#fff; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; padding:6px 18px; border-radius:50px; white-space:nowrap; }
+
+/* MATERIALS — OPTION I (text with thick divider) */
+.mat-i { display:flex; gap:48px; align-items:stretch; position:relative; z-index:2; max-width:1060px; margin:0 auto; }
+.mat-i-block { flex:1; padding:12px 0; }
+.mat-i-block:first-child { padding-right:0; }
+.mat-i-block:last-child { padding-left:0; }
+.mat-i-title { font-family:'Space Mono',monospace; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:6px; color:#1B3A5C; }
+.mat-i-text { font-size:13px; color:rgba(0,0,0,.45); line-height:1.7; }
+
+/* CURSOS */
+.cursos { padding:100px 60px; background:#fff; border-top:2px solid var(--negro); }
+.cursos-grid { display:grid; grid-template-columns:2fr 1fr; gap:60px; }
+.curso-content-title { font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; margin-bottom:16px; }
+.curso-content-desc { font-size:16px; color:#555; line-height:1.7; margin-bottom:32px; }
+.curso-info { background:var(--crema); border:2px solid var(--negro); padding:28px; border-radius:8px; }
+.curso-info-title { font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:2px; margin-bottom:16px; }
+.curso-info-list { list-style:none; }
+.curso-info-list li { font-size:14px; color:#555; padding:5px 0; }
+.curso-info-list li::before { content:'✦ '; color:var(--rosa); font-weight:700; }
+.curso-tabs { display:flex; flex-direction:column; gap:4px; }
+.curso-tab { border:2px solid var(--negro); padding:20px 24px; background:#fff; cursor:pointer; text-align:left; transition:all .2s; border-radius:4px; }
+.curso-tab:hover, .curso-tab.active { background:var(--negro); color:#fff; }
+.curso-tab-name { font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600; }
+.curso-tab-price { font-family:'Space Mono',monospace; font-size:12px; font-weight:700; color:var(--rosa); margin-top:4px; }
+.curso-tab.active .curso-tab-price, .curso-tab:hover .curso-tab-price { color:var(--rosa); }
+.curso-reserve-btn { display:inline-block; margin-top:24px; padding:14px 32px; background:var(--rosa); color:#fff; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:1.5px; border:none; border-radius:50px; cursor:pointer; text-decoration:none; transition:background .2s; }
+.curso-reserve-btn:hover { background:#d45a78; }
+
+/* TALLERES — CORCHO REALISTA */
+.talleres-outer { position:relative; border-top:2px solid var(--negro); }
+/* Wooden frame around the cork */
+.cork-frame { padding:10px; background:linear-gradient(160deg, #d4b87a 0%, #c4a862 8%, #b89850 20%, #cdb472 35%, #b89850 50%, #c4a862 65%, #d4b87a 80%, #b89850 92%, #c4a862 100%); box-shadow:inset 0 2px 4px rgba(255,255,255,.25), inset 0 -2px 4px rgba(0,0,0,.2), 0 4px 20px rgba(0,0,0,.15); position:relative; }
+.cork-frame::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(95deg, transparent 0px, transparent 2px, rgba(0,0,0,.02) 2px, rgba(0,0,0,.02) 3px); pointer-events:none; }
+.cork-frame::after { content:''; position:absolute; inset:3px; border:1px solid rgba(0,0,0,.08); pointer-events:none; }
+
+.talleres { padding:40px 40px; position:relative; overflow:hidden; }
+/* Cork base color — kraft tone */
+.talleres { background:#C8A882; }
+/* Cork texture layer 1 — fine grain (high frequency, more visible) */
+.cork-tex1 { position:absolute; inset:0; pointer-events:none; z-index:0; background-color:#C8A882; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.8' numOctaves='6' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .78 0 0 0 0 .66 0 0 0 0 .51 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23a)'/%3E%3C/svg%3E"); background-size:300px 300px; mix-blend-mode:overlay; opacity:.9; }
+/* Cork texture layer 2 — medium grain variation */
+.cork-tex2 { position:absolute; inset:0; pointer-events:none; z-index:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='5' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .72 0 0 0 0 .58 0 0 0 0 .4 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23b)'/%3E%3C/svg%3E"); background-size:250px 250px; mix-blend-mode:soft-light; opacity:.85; }
+/* Cork texture layer 3 — dark speckles / pores (more pronounced) */
+.cork-tex3 { position:absolute; inset:0; pointer-events:none; z-index:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='turbulence' baseFrequency='3.5' numOctaves='3' seed='15' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 10 -5'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23c)' opacity='.18'/%3E%3C/svg%3E"); background-size:200px 200px; mix-blend-mode:multiply; }
+/* Cork texture layer 4 — extra fine grain for density */
+.cork-tex4 { position:absolute; inset:0; pointer-events:none; z-index:0; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='2' seed='22' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .48 0 0 0 0 .3 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23d)'/%3E%3C/svg%3E"); background-size:150px 150px; mix-blend-mode:overlay; opacity:.4; }
+/* Cork texture layer 5 — warm highlights and shadows */
+.cork-tex5 { position:absolute; inset:0; pointer-events:none; z-index:0; background: radial-gradient(ellipse at 25% 20%, rgba(220,190,140,.15) 0%, transparent 45%), radial-gradient(ellipse at 75% 75%, rgba(0,0,0,.08) 0%, transparent 45%), radial-gradient(ellipse at 60% 10%, rgba(210,180,130,.1) 0%, transparent 35%), radial-gradient(ellipse at 10% 80%, rgba(180,140,80,.06) 0%, transparent 30%); }
+
+.talleres .section-label { color:rgba(255,255,255,.95); position:relative; z-index:2; text-shadow:0 2px 8px rgba(0,0,0,.35); }
+.talleres .section-subtitle { color:rgba(255,255,255,.65); position:relative; z-index:2; text-shadow:0 1px 4px rgba(0,0,0,.25); }
+
+/* Stars */
+.chalk-star { position:absolute; pointer-events:none; z-index:1; }
+.chalk-star svg { width:100%; height:100%; }
+.chalk-star.s1 { top:80px; right:90px; width:36px; height:36px; transform:rotate(-12deg); opacity:.1; }
+.chalk-star.s2 { top:110px; right:140px; width:24px; height:24px; transform:rotate(20deg); opacity:.08; }
+.chalk-star.s3 { top:70px; right:180px; width:18px; height:18px; transform:rotate(-5deg); opacity:.06; }
+.chalk-star.s4 { bottom:140px; left:60px; width:30px; height:30px; transform:rotate(15deg); opacity:.09; }
+.chalk-star.s5 { bottom:100px; left:110px; width:20px; height:20px; transform:rotate(-22deg); opacity:.07; }
+.chalk-star.s6 { top:50%; right:50px; width:22px; height:22px; transform:rotate(8deg); opacity:.06; }
+.chalk-star.s7 { bottom:180px; right:220px; width:28px; height:28px; transform:rotate(-18deg); opacity:.08; }
+.chalk-deco-line1 { position:absolute; bottom:90px; left:55%; width:140px; height:2px; background:rgba(255,255,255,.05); transform:rotate(-2deg); pointer-events:none; }
+.chalk-deco-line2 { position:absolute; top:55%; left:35px; width:3px; height:100px; background:rgba(255,255,255,.03); transform:rotate(4deg); pointer-events:none; }
+
+/* CALENDARIO POST-IT ROSA SOBRE CORCHO */
+.calendar-frame { max-width:750px; margin:0 auto; position:relative; z-index:2; transform:rotate(0.6deg); }
+
+/* Chincheta — pin realista */
+.pushpin { position:absolute; top:-12px; left:50%; transform:translateX(-50%); z-index:10; width:28px; height:28px; }
+/* Pin head */
+.pushpin::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:24px; height:24px; border-radius:50%; background:radial-gradient(circle at 38% 32%, #e8e8e8 0%, #c0c0c0 30%, #999 60%, #777 100%); box-shadow:0 2px 6px rgba(0,0,0,.5), inset 0 1px 2px rgba(255,255,255,.5); }
+/* Pin highlight */
+.pushpin::after { content:''; position:absolute; top:4px; left:50%; transform:translateX(-50%); width:8px; height:8px; border-radius:50%; background:radial-gradient(circle at 40% 35%, rgba(255,255,255,.8), transparent 70%); }
+/* Pin needle shadow on paper */
+.pushpin-shadow { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:4px; height:12px; background:linear-gradient(to bottom, rgba(0,0,0,.15), transparent); border-radius:0 0 2px 2px; z-index:9; pointer-events:none; }
+
+/* Post-it paper rosa claro */
+.calendar { background:#FFD4DC; border:none; border-radius:1px; overflow:hidden; position:relative; box-shadow:3px 5px 16px rgba(0,0,0,.3), 1px 1px 4px rgba(0,0,0,.12); }
+/* Paper texture */
+.calendar::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:1; }
+/* Corner curl */
+.calendar::after { content:''; position:absolute; bottom:0; right:0; width:60px; height:60px; background:linear-gradient(135deg, transparent 55%, rgba(0,0,0,.05) 100%); pointer-events:none; z-index:1; }
+
+.cal-header { background:transparent; border-bottom:none; padding:14px 24px 6px; display:flex; justify-content:space-between; align-items:center; position:relative; z-index:2; }
+.cal-header-title { font-family:'Bebas Neue',cursive; font-size:52px; color:#4a2030; line-height:1; letter-spacing:2px; }
+.cal-header-right { display:flex; gap:8px; align-items:center; }
+.cal-header-desc { font-family:'Space Mono',monospace; font-size:11px; color:rgba(74,32,48,.3); text-transform:uppercase; letter-spacing:2px; max-width:200px; text-align:right; line-height:1.5; }
+.cal-nav-btn { width:36px; height:36px; border:2px solid rgba(74,32,48,.18); background:transparent; color:rgba(74,32,48,.45); cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:all .2s; }
+.cal-nav-btn:hover { background:rgba(74,32,48,.08); color:#4a2030; border-color:rgba(74,32,48,.35); }
+.cal-nav-wrap { display:flex; gap:8px; }
+.cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); border-bottom:2px solid rgba(74,32,48,.1); border-top:2px solid rgba(74,32,48,.1); margin:0 16px; position:relative; z-index:2; }
+.cal-day-name { font-family:'Space Mono',monospace; font-size:9px; color:rgba(74,32,48,.35); text-transform:uppercase; text-align:center; padding:8px 0; letter-spacing:2px; font-weight:700; }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:0 16px 12px; position:relative; z-index:2; }
+.cal-cell { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid rgba(74,32,48,.05); border-right:1px solid rgba(74,32,48,.04); position:relative; transition:all .2s; padding:4px 2px; }
+.cal-cell:nth-child(7n) { border-right:none; }
+.cal-cell .cal-num { font-family:'Bebas Neue',cursive; font-size:28px; color:rgba(74,32,48,.3); line-height:1; transition:color .2s; }
+.cal-cell.empty { background:transparent; }
+.cal-cell.empty .cal-num { color:transparent; }
+.cal-cell.today { background:rgba(74,32,48,.08); border-radius:8px; }
+.cal-cell.today .cal-num { color:#4a2030; }
+.cal-cell.has-event { cursor:pointer; }
+.cal-cell.has-event .cal-num { color:rgba(74,32,48,.55); }
+.cal-cell.has-event:hover { background:rgba(232,107,138,.18); border-radius:8px; transform:scale(1.04); z-index:2; }
+.cal-cell.has-event:hover .cal-num { color:#4a2030; }
+.cal-event-label { font-family:'Space Mono',monospace; font-size:9px; font-weight:700; color:var(--rosa); text-align:center; line-height:1.2; margin-top:2px; letter-spacing:.5px; }
+
+/* MODAL */
+.modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.6); z-index:2000; display:none; align-items:center; justify-content:center; }
+.modal-overlay.open { display:flex; }
+.modal { background:#fff; border:3px solid var(--negro); padding:48px; max-width:520px; width:90%; border-radius:8px; position:relative; }
+.modal-close { position:absolute; top:16px; right:20px; font-size:24px; cursor:pointer; background:none; border:none; color:#999; transition:color .2s; }
+.modal-close:hover { color:var(--negro); }
+.modal-title { font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; margin-bottom:8px; }
+.modal-sub { font-family:'Space Mono',monospace; font-size:12px; color:#999; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px; }
+.modal-desc { font-size:15px; color:#555; line-height:1.7; margin-bottom:24px; }
+.modal-price { font-family:'Bebas Neue',cursive; font-size:40px; color:var(--rosa); margin-bottom:24px; }
+.modal-btn { display:inline-block; padding:14px 32px; background:var(--rosa); color:#fff; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:1.5px; border:none; border-radius:50px; cursor:pointer; text-decoration:none; transition:background .2s; }
+.modal-btn:hover { background:#d45a78; }
+
+/* GRUPOS */
+#eventos { display:grid; grid-template-columns:1fr 1fr; gap:0; }
+.ev-info { display:flex; flex-direction:column; align-items:flex-start; background:var(--white); padding:80px 60px; }
+.ev-price { background:var(--grey, #f3f3f3); padding:80px 60px; }
+.seccion-tag { font-family:'Space Mono',monospace; font-size:14px; text-transform:uppercase; letter-spacing:2px; color:var(--pink); margin-bottom:16px; display:block; }
+.seccion-title { font-family:'Bebas Neue',cursive; font-size:60px; color:var(--black); line-height:1.05; margin-bottom:16px; }
+.seccion-title .accent { color:var(--pink); }
+.seccion-body { font-family:'Space Grotesk',sans-serif; font-size:17px; color:#555; line-height:1.7; margin-bottom:32px; max-width:480px; }
+.ev-tipos { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:32px; }
+.ev-chip { font-family:'Space Grotesk',sans-serif; font-size:14px; color:var(--black); background:rgba(0,0,0,.04); border:1.5px solid rgba(0,0,0,.1); padding:10px 18px; border-radius:50px; transition:all .2s; cursor:default; }
+.ev-chip:hover { border-color:var(--pink); color:var(--pink); }
+.ev-price .seccion-tag { color:var(--grey-mid); }
+.ep-row { display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid rgba(0,0,0,.08); }
+.ep-label { font-family:'Space Grotesk',sans-serif; font-size:15px; color:var(--black); font-weight:600; }
+.ep-sub { font-family:'Space Grotesk',sans-serif; font-size:13px; color:var(--grey-mid); margin-top:4px; }
+.ep-val { font-family:'Bebas Neue',cursive; font-size:28px; color:var(--pink); text-align:right; white-space:nowrap; }
+.grupos-section { padding:0; border-top:2px solid var(--black); overflow:hidden; }
+
+/* CONTACTO — Rosa pálido con nubes */
+.contact-section{background:linear-gradient(160deg,#FFE8F4 0%,#FFF0F8 40%,#FFF6FB 100%);padding:70px 60px;text-align:center;position:relative;overflow:hidden;border-top:2px solid var(--black)}
+.contact-section::before{content:'';position:absolute;top:40px;left:10%;width:320px;height:200px;background:radial-gradient(ellipse,rgba(255,255,255,.7) 0%,transparent 70%);filter:blur(18px);pointer-events:none}
+.contact-section::after{content:'';position:absolute;bottom:30px;right:8%;width:280px;height:160px;background:radial-gradient(ellipse,rgba(255,255,255,.6) 0%,transparent 70%);filter:blur(18px);pointer-events:none}
+.contact-cloud{position:absolute;top:20%;left:55%;width:350px;height:150px;background:radial-gradient(ellipse,rgba(255,255,255,.5) 0%,transparent 65%);filter:blur(20px);pointer-events:none}
+.contact-inner{position:relative;z-index:2}
+.contact-photo{width:120px;height:120px;border-radius:50%;border:3px solid var(--pink);display:flex;align-items:center;justify-content:center;font-size:48px;margin:0 auto 20px;background:rgba(255,255,255,.8)}
+.contact-name{font-size:24px;font-weight:700;margin-bottom:4px}
+.contact-role{font-family:'Space Mono',monospace;font-size:11px;color:var(--pink);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.contact-bio{font-size:15px;color:#8a5a6a;line-height:1.7;max-width:450px;margin:0 auto 28px}
+.contact-bio em{color:var(--pink);font-style:italic}
+.contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.contact-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--black);text-decoration:none;padding:10px 20px;border:1.5px solid rgba(0,0,0,.1);border-radius:50px;transition:all .2s;background:rgba(255,255,255,.4)}
+.contact-link:hover{border-color:var(--pink);color:var(--pink);background:rgba(255,255,255,.7)}
+
+/* FOOTER */
+.footer { background:var(--negro); border-top:4px solid var(--rosa); padding:40px 60px; display:flex; justify-content:space-between; align-items:center; }
+.footer-logo { font-family:'Bebas Neue',cursive; font-size:32px; color:#fff; }
+.footer-logo span { color:var(--rosa); }
+.footer-center { font-family:'Space Mono',monospace; font-size:11px; color:#666; }
+.footer-right { font-family:'Space Mono',monospace; font-size:11px; color:#666; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px) } to { opacity:1; transform:translateY(0) } }
+.fade-up { opacity:0; transform:translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:1024px) {
+  #hero { grid-template-columns:1fr; }
+  .hero-right { min-height:300px; }
+  .pricing-grid { grid-template-columns:repeat(2,1fr); }
+  .cursos-grid { grid-template-columns:1fr; }
+  #eventos { grid-template-columns:1fr; }
+  .ev-price { padding-top:60px; }
+  .contacto-grid { grid-template-columns:1fr; }
+  .section-label { font-size:32px; }
+  .seccion-title { font-size:40px; }
+}
+@media(max-width:640px) {
+  nav.nav { padding:.8rem 1rem; }
+  .nav-links { gap:.8rem; }
+  .nav-links a { font-size:.65rem; letter-spacing:.04em; }
+  .nav-pill { padding:.35rem .8rem; }
+  .hero-left { padding:3rem 1.5rem 2rem; }
+  .hero-left h1 { font-size:2.2rem; }
+  .club, .cursos, .talleres, .grupos-section, .contacto { padding:40px 16px; }
+  .pricing-grid { grid-template-columns:1fr; }
+  .materials-grid { grid-template-columns:1fr; }
+  .section-label { font-size:24px; }
+  .footer { flex-direction:column; gap:16px; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">f<span>★</span>co</a>
+  <div class="nav-links">
+    <a href="#club">Club Creativo</a>
+    <a href="#cursos">Cursos</a>
+    <a href="#talleres">Talleres</a>
+    <a href="#grupos">Grupos</a>
+    <a href="#contacto" class="nav-pill">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Espacio Creativo · Logroño</span>
+    <h1>aquí se<br><span class="hl">crea.</span></h1>
+    <p>Un lugar para venir a crear, desconectar y compartir tiempo con otras personas creativas.</p>
+    <div class="hero-btns">
+      <a href="#club" class="btn-black">Explorar</a>
+      <a href="#contacto" class="btn-ghost">Contacto</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <span class="hero-placeholder">[ foto del espacio ]</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Club Creativo <i class="star">★</i> Cursos Semanales <i class="star">★</i> Talleres Especiales <i class="star">★</i> Grupos Privados <i class="star">★</i> Club Creativo <i class="star">★</i> Cursos Semanales <i class="star">★</i> Talleres Especiales <i class="star">★</i> Grupos Privados <i class="star">★</i> </span>
+    <span>Club Creativo <i class="star">★</i> Cursos Semanales <i class="star">★</i> Talleres Especiales <i class="star">★</i> Grupos Privados <i class="star">★</i> Club Creativo <i class="star">★</i> Cursos Semanales <i class="star">★</i> Talleres Especiales <i class="star">★</i> Grupos Privados <i class="star">★</i> </span>
+  </div>
+</div>
+
+<!-- CLUB CREATIVO -->
+<section class="club" id="club">
+  <div class="cloud1"></div>
+  <div class="cloud2"></div>
+  <h2 class="section-label fade-up">Club Creativo</h2>
+  <p class="section-subtitle fade-up">Franjas de creación libre donde vienes a trabajar en tus proyectos, probar técnicas nuevas o disfrutar creando en compañía. El espacio, las herramientas y los materiales están a tu disposición. Sin guía, sin presión, a tu ritmo.<br><br>Puedes venir con tu proyecto, usar materiales del espacio, venir sola o con amigas. No necesitas saber nada.</p>
+
+  <div class="pricing-grid fade-up">
+    <!-- Card 1 -->
+    <div class="price-card">
+      <div class="price-card-name">Sesión Suelta</div>
+      <div class="price-card-price">18€</div>
+      <div class="price-card-detail">por sesión de 2h</div>
+      <ul class="price-card-features">
+        <li>2 horas en el espacio</li>
+        <li>Materiales básicos incluidos</li>
+        <li>Sin permanencia</li>
+      </ul>
+      <a href="#" class="price-card-btn" onclick="alert('Redirigiendo a Calendly para reservar...')">Reservar</a>
+    </div>
+    <!-- Card 2 -->
+    <div class="price-card">
+      <div class="price-card-name">Bono 2 Sesiones</div>
+      <div class="price-card-price">34€</div>
+      <div class="price-card-detail">17€/sesión · válido 1 mes</div>
+      <ul class="price-card-features">
+        <li>2 sesiones de 2h</li>
+        <li>Materiales básicos incluidos</li>
+        <li>Válido 1 mes</li>
+      </ul>
+      <a href="#" class="price-card-btn" onclick="alert('Redirigiendo a Calendly para reservar...')">Reservar</a>
+    </div>
+    <!-- Card 3 -->
+    <div class="price-card">
+      <div class="price-card-name">Bono Mensual</div>
+      <div class="price-card-price">59€</div>
+      <div class="price-card-detail">14,75€/sesión · válido 2 meses</div>
+      <ul class="price-card-features">
+        <li>4 sesiones de 2h</li>
+        <li>Materiales básicos incluidos</li>
+        <li>Válido 2 meses</li>
+      </ul>
+      <a href="#" class="price-card-btn" onclick="alert('Redirigiendo a Calendly para reservar...')">Reservar</a>
+    </div>
+    <!-- Card 4 — Premium -->
+    <div class="price-card premium">
+      <div class="badge">Limitado · Máx. 20 Socias</div>
+      <div class="price-card-name">Membresía Club</div>
+      <div class="price-card-price">69€</div>
+      <div class="price-card-detail">al mes · acceso ilimitado</div>
+      <ul class="price-card-features">
+        <li>Acceso ilimitado entre semana</li>
+        <li>Materiales básicos incluidos</li>
+        <li>Trae a un amigo 1 vez/mes gratis</li>
+        <li>10% descuento en talleres especiales</li>
+        <li>Prioridad en talleres</li>
+      </ul>
+      <a href="#" class="price-card-btn rosa" onclick="alert('Redirigiendo a Stripe para hacerte socia...')">Quiero ser socia</a>
+    </div>
+  </div>
+
+  <!-- Materials -->
+  <div class="mat-i fade-up">
+    <div class="mat-i-block">
+      <div class="mat-i-title">✓ Básicos incluidos</div>
+      <div class="mat-i-text">Pinturas acrílicas · Pinceles · Papel · Pegamentos · Tijeras · Herramientas básicas</div>
+    </div>
+    <div class="mat-i-block">
+      <div class="mat-i-title">+ Premium (suplemento)</div>
+      <div class="mat-i-text">Arcilla · Charms · Resina · Cuentas · Telas especiales · Kits bordado</div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS -->
+<section class="cursos" id="cursos">
+  <h2 class="section-label fade-up">Cursos</h2>
+  <p class="section-subtitle fade-up">Cursos creativos semanales en grupo reducido. Un espacio para aprender, crear y desconectar cada semana con las mismas personas. No hace falta experiencia previa, solo ganas de crear.</p>
+
+  <div class="cursos-grid fade-up">
+    <div class="curso-content" id="cursoContent">
+      <h3 class="curso-content-title" id="cursoTitle">Talleres Adultos</h3>
+      <p class="curso-content-desc" id="cursoDesc">Un espacio semanal para explorar distintas técnicas creativas — pintura, collage, ilustración, arcilla — en grupo reducido y con buen ambiente. No hace falta experiencia previa, solo ganas de crear.</p>
+      <div class="curso-info">
+        <div class="curso-info-title">Cómo funcionan los cursos</div>
+        <ul class="curso-info-list">
+          <li>1 día a la semana, mismo día y hora</li>
+          <li>4 clases al mes incluidas</li>
+          <li>Grupo fijo de máximo 10 personas</li>
+          <li>Materiales incluidos en el precio</li>
+          <li>No hace falta experiencia :)</li>
+        </ul>
+      </div>
+      <a href="#" class="curso-reserve-btn" id="cursoReserveBtn" onclick="alert('Redirigiendo a Calendly para elegir tu grupo...')">Reservar curso →</a>
+    </div>
+    <div class="curso-tabs">
+      <button class="curso-tab active" data-curso="adultos">
+        <div class="curso-tab-name">Talleres Adultos</div>
+        <div class="curso-tab-price">60€ / mes</div>
+      </button>
+      <button class="curso-tab" data-curso="ninos">
+        <div class="curso-tab-name">Talleres Niños</div>
+        <div class="curso-tab-price">50€ / mes</div>
+      </button>
+      <button class="curso-tab" data-curso="costura">
+        <div class="curso-tab-name">Curso de Costura</div>
+        <div class="curso-tab-price">55€ / mes</div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- TALLERES -->
+<div class="talleres-outer" id="talleres">
+<div class="cork-frame">
+<section class="talleres">
+  <!-- Cork texture layers -->
+  <div class="cork-tex1"></div>
+  <div class="cork-tex2"></div>
+  <div class="cork-tex3"></div>
+  <div class="cork-tex4"></div>
+  <div class="cork-tex5"></div>
+  <!-- Hand-drawn stars -->
+  <div class="chalk-star s1"><svg viewBox="0 0 40 40" fill="none"><path d="M20 2 L23 14 Q24 15 26 15 L38 16 L28 24 Q27 25 27 27 L30 38 L21 30 Q20 29 19 30 L10 38 L13 27 Q13 25 12 24 L2 16 L14 15 Q16 15 17 14 Z" stroke="rgba(255,255,255,.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="chalk-star s2"><svg viewBox="0 0 40 40" fill="none"><path d="M20 4 L22 15 Q23 17 25 17 L36 18 L27 25 Q25 26 26 28 L28 36 L21 29 Q20 28 18 29 L12 36 L14 28 Q14 26 13 25 L4 18 L15 17 Q17 17 18 15 Z" stroke="rgba(232,107,138,.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="chalk-star s3"><svg viewBox="0 0 40 40" fill="none"><path d="M20 5 L23 16 Q23 17 25 17 L35 18 L27 24 Q26 25 26 27 L29 35 L22 29 Q20 28 19 29 L11 35 L14 27 Q14 25 13 24 L5 18 L15 17 Q17 17 17 16 Z" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="chalk-star s4"><svg viewBox="0 0 40 40" fill="none"><path d="M20 3 L24 15 Q24 16 26 16 L37 17 L28 24 Q26 25 27 27 L29 37 L21 30 Q20 29 18 30 L11 37 L13 27 Q13 25 12 24 L3 17 L14 16 Q16 16 16 15 Z" stroke="rgba(255,255,255,.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="chalk-star s5"><svg viewBox="0 0 40 40" fill="none"><path d="M20 5 L22 16 Q23 17 25 17 L34 18 L26 24 Q25 25 26 27 L28 34 L21 28 Q20 27 18 28 L12 34 L14 27 Q14 25 13 24 L6 18 L15 17 Q17 17 18 16 Z" stroke="rgba(232,107,138,.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="chalk-star s6"><svg viewBox="0 0 40 40" fill="none"><path d="M20 4 L23 15 Q23 17 25 17 L35 18 L27 24 Q25 26 26 28 L28 36 L21 29 Q20 28 18 29 L12 36 L14 28 Q14 26 13 25 L5 18 L15 17 Q17 16 17 15 Z" stroke="rgba(255,255,255,.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="chalk-star s7"><svg viewBox="0 0 40 40" fill="none"><path d="M20 3 L23 14 Q24 16 26 16 L37 17 L28 23 Q27 25 27 27 L30 37 L21 30 Q20 29 19 30 L10 37 L13 27 Q13 25 12 23 L3 17 L14 16 Q16 16 17 14 Z" stroke="rgba(255,255,255,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+  <div class="chalk-deco-line1"></div>
+  <div class="chalk-deco-line2"></div>
+
+  <h2 class="section-label fade-up">Talleres</h2>
+  <p class="section-subtitle fade-up">Sesiones únicas con artistas invitados, monográficos y experiencias creativas de fin de semana. Pincha en el día para ver el taller.</p>
+
+  <div class="calendar-frame fade-up">
+    <div class="pushpin"></div>
+    <div class="pushpin-shadow"></div>
+    <div class="calendar">
+      <div class="cal-header">
+        <div>
+          <div class="cal-header-title" id="calTitle">Marzo 2026</div>
+        </div>
+        <div class="cal-header-right">
+          <div class="cal-header-desc">tallerets monográfics d'un dia per crear</div>
+          <div class="cal-nav-wrap">
+            <button class="cal-nav-btn" id="calPrev">←</button>
+            <button class="cal-nav-btn" id="calNext">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="cal-days-header">
+        <div class="cal-day-name">Lunes</div>
+        <div class="cal-day-name">Martes</div>
+        <div class="cal-day-name">Miérc.</div>
+        <div class="cal-day-name">Jueves</div>
+        <div class="cal-day-name">Viernes</div>
+        <div class="cal-day-name">Sábado</div>
+        <div class="cal-day-name">Doming.</div>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+
+<!-- 04 EVENTOS Y GRUPOS -->
+<section class="grupos-section" id="grupos">
+  <div id="eventos" class="fade-up">
+    <div class="ev-info">
+      <span class="seccion-tag">Grupos</span>
+      <h2 class="seccion-title">Hazlo especial.<br>Hazlo en <span class="accent">foco.</span></h2>
+      <p class="seccion-body">Diseñamos la experiencia creativa perfecta para tu grupo. Privado, personalizado y con todo incluido. Mínimo 6 personas.</p>
+      <div class="ev-tipos">
+        <div class="ev-chip">💍 Despedidas de soltera</div>
+        <div class="ev-chip">🎂 Cumpleaños adultos</div>
+        <div class="ev-chip">🎈 Fiestas infantiles creativas</div>
+        <div class="ev-chip">👩‍👩‍👧 Grupos de amigas</div>
+        <div class="ev-chip">🏢 Team building empresarial</div>
+        <div class="ev-chip">🎁 Experiencia regalo</div>
+      </div>
+      <a href="mailto:hola@foco-logrono.com" class="btn-black">Pedir presupuesto</a>
+    </div>
+    <div class="ev-price">
+      <div style="padding-bottom:1.5rem;border-bottom:1.5px solid rgba(0,0,0,.1)">
+        <span class="seccion-tag">Precios orientativos</span>
+        <h3 style="font-family:'Space Mono',monospace;font-size:1.2rem;margin-top:.5rem;color:var(--negro)">Todo incluido para tu grupo</h3>
+      </div>
+      <div class="ep-row">
+        <div><div class="ep-label">Eventos privados adultos</div><div class="ep-sub">2-3h · materiales y guía incluidos</div></div>
+        <div class="ep-val">25–35€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/persona</span></div>
+      </div>
+      <div class="ep-row">
+        <div><div class="ep-label">Cumpleaños infantiles</div><div class="ep-sub">1.5h · kit de creación para cada niño</div></div>
+        <div class="ep-val">16–28€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/niño</span></div>
+      </div>
+      <div class="ep-row">
+        <div><div class="ep-label">Team building empresas</div><div class="ep-sub">2-4h · adaptado al grupo · factura disponible</div></div>
+        <div class="ep-val">A medida</div>
+      </div>
+      <div class="ep-row">
+        <div><div class="ep-label">Grupo mínimo</div><div class="ep-sub">Para reserva privada del espacio</div></div>
+        <div class="ep-val">5 pers. O 150€</div>
+      </div>
+      <a href="mailto:hola@foco-logrono.com" class="btn-pink" style="margin-top:1rem">Contactar para grupos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact-section" id="contacto">
+  <div class="contact-cloud"></div>
+  <div class="contact-inner">
+    <div class="contact-photo">🎨</div>
+    <div class="contact-name">La de FOCO</div>
+    <div class="contact-role">Fundadora & Creativa</div>
+    <p class="contact-bio">Un día descubrí que <em>mi hobby era tener hobbies</em>. Así que monté un espacio donde todo el mundo pueda venir a probar, crear y pasárselo bien.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="https://instagram.com/espacio_foco" target="_blank">📸 @espacio_foco</a>
+      <a class="contact-link" href="https://wa.me/34600000000" target="_blank">💬 WhatsApp</a>
+      <a class="contact-link" href="mailto:hola@foco-logrono.com">✉️ hola@foco-logrono.com</a>
+      <a class="contact-link" href="https://maps.google.com" target="_blank">📍 Logroño, La Rioja</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">f<span>★</span>co</div>
+  <div class="footer-center">Espacio Creativo · Logroño · © 2026</div>
+  <div class="footer-right">Hecho con ✦ y mucha pintura</div>
+</footer>
+
+<!-- MODAL (reused) -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h3 class="modal-title" id="modalTitle"></h3>
+    <div class="modal-sub" id="modalSub"></div>
+    <p class="modal-desc" id="modalDesc"></p>
+    <div class="modal-price" id="modalPrice"></div>
+    <a href="#" class="modal-btn" id="modalBtn">Reservar plaza →</a>
+  </div>
+</div>
+
+<script>
+// ===== CURSOS TABS =====
+const cursosData = {
+  adultos: {
+    title: 'Talleres Adultos',
+    desc: 'Un espacio semanal para explorar distintas técnicas creativas — pintura, collage, ilustración, arcilla — en grupo reducido y con buen ambiente. No hace falta experiencia previa, solo ganas de crear.'
+  },
+  ninos: {
+    title: 'Talleres Niños',
+    desc: 'Un taller semanal pensado para que los peques experimenten con materiales, colores y texturas en un ambiente libre y seguro. Aprenden creando, jugando y siendo ellos mismos.'
+  },
+  costura: {
+    title: 'Curso de Costura',
+    desc: 'Aprende a coser desde cero o perfecciona tu técnica. Desde pespunte básico hasta proyectos propios. Un curso práctico, con ritmo propio y un grupo de máximo 10 personas.'
+  }
+};
+
+document.querySelectorAll('.curso-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.curso-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const key = tab.dataset.curso;
+    document.getElementById('cursoTitle').textContent = cursosData[key].title;
+    document.getElementById('cursoDesc').textContent = cursosData[key].desc;
+  });
+});
+
+// ===== CALENDAR =====
+const events = {
+  '2026-3-7': { name: 'Taller Cerámica', short: 'Taller Cerámica', sub: 'Artista invitada', desc: 'Sesión especial de cerámica con artista invitada. Aprende a modelar piezas únicas con técnicas tradicionales y modernas.', price: '35€' },
+  '2026-3-14': { name: 'Joyería Resina', short: 'Joyería Resina', sub: 'Monográfico', desc: 'Crea tus propios colgantes y anillos de resina con flores secas, pigmentos y brillos. Todo el material incluido.', price: '28€' },
+  '2026-3-21': { name: 'Bordado Creativo', short: 'Bordado Creativo', sub: 'Monográfico', desc: 'Iníciate en el bordado moderno con diseños contemporáneos. Punto atrás, nudo francés, relleno... todo lo que necesitas para empezar.', price: '25€' },
+  '2026-3-22': { name: 'Pintura Textil', short: 'Pintura Textil', sub: 'Fin de semana', desc: 'Personaliza tu propia tote bag o camiseta con pintura textil. Una sesión divertida y creativa para llevar tu arte puesto.', price: '32€' },
+  '2026-3-28': { name: 'Arcilla Charms', short: 'Arcilla Charms', sub: 'Especial', desc: 'Modela charms de arcilla polimérica: frutas, animales, dulces... Piezas pequeñas con mucho detalle. Ideal para principiantes.', price: '22€' }
+};
+
+let currentMonth = 2; // March (0-indexed)
+let currentYear = 2026;
+
+function renderCalendar(month, year) {
+  const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  document.getElementById('calTitle').textContent = `${months[month]} ${year}`;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const offset = firstDay === 0 ? 6 : firstDay - 1; // Monday start
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const today = new Date();
+
+  for (let i = 0; i < offset; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell empty';
+    cell.innerHTML = '<span class="cal-num"></span>';
+    grid.appendChild(cell);
+  }
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell';
+    const key = `${year}-${month+1}-${d}`;
+    const isToday = today.getDate() === d && today.getMonth() === month && today.getFullYear() === year;
+    if (isToday) cell.classList.add('today');
+
+    cell.innerHTML = `<span class="cal-num">${d}</span>`;
+
+    if (events[key]) {
+      cell.classList.add('has-event');
+      const label = document.createElement('div');
+      label.className = 'cal-event-label';
+      label.textContent = events[key].short.split(' ').slice(0, 2).join(' ');
+      cell.appendChild(label);
+      cell.addEventListener('click', () => openModal(events[key]));
+    }
+    grid.appendChild(cell);
+  }
+}
+
+document.getElementById('calPrev').addEventListener('click', () => {
+  currentMonth--;
+  if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+  renderCalendar(currentMonth, currentYear);
+});
+document.getElementById('calNext').addEventListener('click', () => {
+  currentMonth++;
+  if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+  renderCalendar(currentMonth, currentYear);
+});
+
+renderCalendar(currentMonth, currentYear);
+
+// ===== MODAL =====
+function openModal(event) {
+  document.getElementById('modalTitle').textContent = event.name;
+  document.getElementById('modalSub').textContent = event.sub;
+  document.getElementById('modalDesc').textContent = event.desc;
+  document.getElementById('modalPrice').textContent = event.price;
+  document.getElementById('modalBtn').onclick = (e) => { e.preventDefault(); alert('Redirigiendo a Calendly para reservar tu plaza...'); };
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+document.getElementById('modalClose').addEventListener('click', () => {
+  document.getElementById('modalOverlay').classList.remove('open');
+});
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if (e.target === e.currentTarget) document.getElementById('modalOverlay').classList.remove('open');
+});
+
+// ===== SCROLL ANIMATIONS =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
