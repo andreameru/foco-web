@@ -104,6 +104,26 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 /* CURSOS */
 .cursos { padding:100px 60px; background:#fff; border-top:2px solid var(--negro); }
+.cursos-lista { max-width:700px; display:flex; flex-direction:column; gap:8px; }
+.curso-item { border:1.5px solid var(--black); border-radius:12px; overflow:hidden; background:#fff; }
+.curso-row { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; cursor:pointer; transition:background .15s; }
+.curso-row:hover { background:var(--grey); }
+.curso-row-left { display:flex; align-items:center; gap:12px; }
+.curso-emoji { width:38px; height:38px; border-radius:8px; background:var(--kraft-light); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+.curso-nombre { font-size:15px; font-weight:600; color:var(--black); }
+.curso-precio { font-size:13px; color:var(--grey-mid); margin-top:2px; }
+.curso-row-right { display:flex; align-items:center; gap:10px; }
+.curso-badge { font-size:11px; padding:3px 10px; border-radius:99px; background:var(--pink-pale); color:var(--pink); font-family:'Space Mono',monospace; }
+.curso-chevron { font-size:18px; color:var(--grey-mid); transition:transform .2s; display:inline-block; }
+.curso-chevron.open { transform:rotate(180deg); }
+.curso-detalle { display:none; padding:0 1.25rem 1.25rem; border-top:1.5px solid var(--grey); }
+.curso-detalle.open { display:block; }
+.curso-detalle-desc { font-size:14px; color:#555; line-height:1.7; margin:1rem 0; }
+.curso-detalle-lista { list-style:none; display:flex; flex-direction:column; gap:6px; margin-bottom:1rem; }
+.curso-detalle-lista li { font-size:13px; color:#555; padding-left:16px; position:relative; }
+.curso-detalle-lista li::before { content:'✦'; position:absolute; left:0; color:var(--pink); font-size:10px; top:2px; }
+.curso-reservar-btn { display:inline-block; font-size:13px; padding:8px 20px; border-radius:50px; border:1.5px solid var(--black); background:transparent; color:var(--black); cursor:pointer; text-decoration:none; transition:all .2s; }
+.curso-reservar-btn:hover { background:var(--black); color:#fff; }
 .cursos-grid { display:grid; grid-template-columns:2fr 1fr; gap:60px; }
 .curso-content-title { font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; margin-bottom:16px; }
 .curso-content-desc { font-size:16px; color:#555; line-height:1.7; margin-bottom:32px; }
@@ -194,6 +214,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cal-cell.empty .cal-num { color:transparent; }
 .cal-cell.today { background:rgba(74,32,48,.08); border-radius:8px; }
 .cal-cell.today .cal-num { color:#4a2030; }
+.cal-cell.past { opacity:0.35; }
+.cal-cell.past .cal-num { color:rgba(74,32,48,.4); }
 .cal-cell.has-event { cursor:pointer; }
 .cal-cell.has-event .cal-num { color:rgba(74,32,48,.55); }
 .cal-cell.has-event:hover { background:rgba(232,107,138,.18); border-radius:8px; transform:scale(1.04); z-index:2; }
@@ -260,6 +282,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 /* RESPONSIVE */
 @media(max-width:1024px) {
+  .nav-hamburger { display:none; }
   #hero { grid-template-columns:1fr; }
   .hero-right { min-height:300px; }
   .pricing-grid { grid-template-columns:repeat(2,1fr); }
@@ -271,17 +294,27 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .seccion-title { font-size:40px; }
 }
 @media(max-width:640px) {
-  nav.nav { padding:.8rem 1rem; }
-  .nav-links { gap:.8rem; }
-  .nav-links a { font-size:.65rem; letter-spacing:.04em; }
-  .nav-pill { padding:.35rem .8rem; }
+  nav.nav { padding:.8rem 1rem; position:relative; flex-wrap:wrap; }
+  .nav-hamburger { display:flex; flex-direction:column; justify-content:space-between; width:28px; height:20px; background:none; border:none; cursor:pointer; padding:0; z-index:300; }
+  .nav-hamburger span { display:block; width:100%; height:2.5px; background:var(--black); border-radius:2px; transition:all .3s; }
+  .nav-links { display:none; flex-direction:column; width:100%; gap:0; padding:.5rem 0; border-top:1px solid var(--grey); }
+  .nav-links.open { display:flex; }
+  .nav-links a { font-size:.9rem; padding:.9rem 0; border-bottom:1px solid var(--grey); letter-spacing:.04em; }
+  .nav-pill { background:var(--pink); color:var(--white)!important; padding:.7rem 1.2rem!important; border-radius:2rem; margin-top:.5rem; text-align:center; border:none!important; }
   .hero-left { padding:3rem 1.5rem 2rem; }
   .hero-left h1 { font-size:2.2rem; }
   .club, .cursos, .talleres, .grupos-section, .contacto { padding:40px 16px; }
-  .pricing-grid { grid-template-columns:1fr; }
+  .pricing-grid { grid-template-columns:1fr; gap:16px; }
+  .price-card { padding:16px 14px; }
+  .price-card-price { font-size:32px; }
   .materials-grid { grid-template-columns:1fr; }
   .section-label { font-size:24px; }
   .footer { flex-direction:column; gap:16px; text-align:center; }
+  .calendar-frame { transform:none; overflow-x:auto; }
+  .calendar { min-width:320px; }
+  .cal-header-title { font-size:36px; }
+  .cal-cell .cal-num { font-size:20px; }
+  .cal-header-desc { display:none; }
 }
 </style>
 </head>
@@ -290,12 +323,15 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 <!-- NAV -->
 <nav class="nav">
   <a href="#" class="nav-logo">f<span>★</span>co</a>
-  <div class="nav-links">
-    <a href="#club">Club Creativo</a>
-    <a href="#cursos">Cursos</a>
-    <a href="#talleres">Talleres</a>
-    <a href="#grupos">Grupos</a>
-    <a href="#contacto" class="nav-pill">Contacto</a>
+  <button class="nav-hamburger" id="navToggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="#club" onclick="cerrarMenu()">Club Creativo</a>
+    <a href="#cursos" onclick="cerrarMenu()">Cursos</a>
+    <a href="#talleres" onclick="cerrarMenu()">Talleres</a>
+    <a href="#grupos" onclick="cerrarMenu()">Grupos</a>
+    <a href="#contacto" class="nav-pill" onclick="cerrarMenu()">Contacto</a>
   </div>
 </nav>
 
@@ -399,39 +435,88 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 <!-- CURSOS -->
 <section class="cursos" id="cursos">
-  <h2 class="section-label fade-up">Cursos</h2>
-  <p class="section-subtitle fade-up">Cursos creativos semanales en grupo reducido. Un espacio para aprender, crear y desconectar cada semana con las mismas personas. No hace falta experiencia previa, solo ganas de crear.</p>
+  <h2 class="section-label fade-up">Cursos semanales</h2>
+  <p class="section-subtitle fade-up">Aprende, crea y desconecta cada semana en grupo reducido. Sin experiencia previa, solo ganas de crear.</p>
 
-  <div class="cursos-grid fade-up">
-    <div class="curso-content" id="cursoContent">
-      <h3 class="curso-content-title" id="cursoTitle">Talleres Adultos</h3>
-      <p class="curso-content-desc" id="cursoDesc">Un espacio semanal para explorar distintas técnicas creativas — pintura, collage, ilustración, arcilla — en grupo reducido y con buen ambiente. No hace falta experiencia previa, solo ganas de crear.</p>
-      <div class="curso-info">
-        <div class="curso-info-title">Cómo funcionan los cursos</div>
-        <ul class="curso-info-list">
+  <div class="cursos-lista fade-up">
+
+    <div class="curso-item">
+      <div class="curso-row" onclick="toggleCurso('adultos')">
+        <div class="curso-row-left">
+          <div class="curso-emoji">🎨</div>
+          <div>
+            <div class="curso-nombre">Talleres adultos</div>
+            <div class="curso-precio">60€ / mes</div>
+          </div>
+        </div>
+        <div class="curso-row-right">
+          <span class="curso-badge">Plaza libre</span>
+          <span class="curso-chevron" id="chev-adultos">▾</span>
+        </div>
+      </div>
+      <div class="curso-detalle" id="detail-adultos">
+        <p class="curso-detalle-desc">Un espacio semanal para explorar pintura, collage, ilustración y arcilla en grupo reducido y buen ambiente. No hace falta experiencia previa.</p>
+        <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora</li>
           <li>4 clases al mes incluidas</li>
-          <li>Grupo fijo de máximo 10 personas</li>
+          <li>Máximo 10 personas por grupo</li>
           <li>Materiales incluidos en el precio</li>
-          <li>No hace falta experiencia :)</li>
         </ul>
+        <a href="#" class="curso-reservar-btn">Reservar plaza →</a>
       </div>
-      <a href="#" class="curso-reserve-btn" id="cursoReserveBtn" onclick="alert('Redirigiendo a Calendly para elegir tu grupo...')">Reservar curso →</a>
     </div>
-    <div class="curso-tabs">
-      <button class="curso-tab active" data-curso="adultos">
-        <div class="curso-tab-name">Talleres Adultos</div>
-        <div class="curso-tab-price">60€ / mes</div>
-      </button>
-      <button class="curso-tab" data-curso="ninos">
-        <div class="curso-tab-name">Talleres Niños</div>
-        <div class="curso-tab-price">50€ / mes</div>
-      </button>
-      <button class="curso-tab" data-curso="costura">
-        <div class="curso-tab-name">Curso de Costura</div>
-        <div class="curso-tab-price">55€ / mes</div>
-      </button>
+
+    <div class="curso-item">
+      <div class="curso-row" onclick="toggleCurso('ninos')">
+        <div class="curso-row-left">
+          <div class="curso-emoji">✏️</div>
+          <div>
+            <div class="curso-nombre">Talleres niños</div>
+            <div class="curso-precio">50€ / mes</div>
+          </div>
+        </div>
+        <div class="curso-row-right">
+          <span class="curso-chevron" id="chev-ninos">▾</span>
+        </div>
+      </div>
+      <div class="curso-detalle" id="detail-ninos">
+        <p class="curso-detalle-desc">Un taller semanal para que los peques experimenten con materiales, colores y texturas en un ambiente libre y seguro.</p>
+        <ul class="curso-detalle-lista">
+          <li>1 día a la semana, mismo día y hora</li>
+          <li>4 clases al mes incluidas</li>
+          <li>Máximo 8 niños por grupo</li>
+          <li>Materiales incluidos en el precio</li>
+        </ul>
+        <a href="#" class="curso-reservar-btn">Reservar plaza →</a>
+      </div>
     </div>
+
+    <div class="curso-item">
+      <div class="curso-row" onclick="toggleCurso('costura')">
+        <div class="curso-row-left">
+          <div class="curso-emoji">🧵</div>
+          <div>
+            <div class="curso-nombre">Curso de costura</div>
+            <div class="curso-precio">55€ / mes</div>
+          </div>
+        </div>
+        <div class="curso-row-right">
+          <span class="curso-badge">Pocas plazas</span>
+          <span class="curso-chevron" id="chev-costura">▾</span>
+        </div>
+      </div>
+      <div class="curso-detalle" id="detail-costura">
+        <p class="curso-detalle-desc">Aprende a coser desde cero o perfecciona tu técnica. Desde pespunte básico hasta proyectos propios, a tu ritmo.</p>
+        <ul class="curso-detalle-lista">
+          <li>1 día a la semana, mismo día y hora</li>
+          <li>4 clases al mes incluidas</li>
+          <li>Máximo 10 personas por grupo</li>
+          <li>Materiales incluidos en el precio</li>
+        </ul>
+        <a href="#" class="curso-reservar-btn">Reservar plaza →</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -539,7 +624,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <div class="contact-cloud"></div>
   <div class="contact-inner">
     <div class="contact-photo">🎨</div>
-    <div class="contact-name">La de FOCO</div>
+    <div class="contact-name">Andrea la de FOCO</div>
     <div class="contact-role">Fundadora & Creativa</div>
     <p class="contact-bio">Un día descubrí que <em>mi hobby era tener hobbies</em>. Así que monté un espacio donde todo el mundo pueda venir a probar, crear y pasárselo bien.</p>
     <div class="contact-links">
@@ -555,7 +640,11 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 <footer class="footer">
   <div class="footer-logo">f<span>★</span>co</div>
   <div class="footer-center">Espacio Creativo · Logroño · © 2026</div>
-  <div class="footer-right">Hecho con ✦ y mucha pintura</div>
+  <div class="footer-right">
+    <a href="/aviso-legal.html" style="color:#666;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Aviso legal</a>
+    <a href="/privacidad.html" style="color:#666;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Privacidad</a>
+    <a href="/cookies.html" style="color:#666;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;">Cookies</a>
+  </div>
 </footer>
 
 <!-- MODAL (reused) -->
@@ -571,21 +660,18 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 </div>
 
 <script>
-// ===== CURSOS TABS =====
-const cursosData = {
-  adultos: {
-    title: 'Talleres Adultos',
-    desc: 'Un espacio semanal para explorar distintas técnicas creativas — pintura, collage, ilustración, arcilla — en grupo reducido y con buen ambiente. No hace falta experiencia previa, solo ganas de crear.'
-  },
-  ninos: {
-    title: 'Talleres Niños',
-    desc: 'Un taller semanal pensado para que los peques experimenten con materiales, colores y texturas en un ambiente libre y seguro. Aprenden creando, jugando y siendo ellos mismos.'
-  },
-  costura: {
-    title: 'Curso de Costura',
-    desc: 'Aprende a coser desde cero o perfecciona tu técnica. Desde pespunte básico hasta proyectos propios. Un curso práctico, con ritmo propio y un grupo de máximo 10 personas.'
+// ===== CURSOS DESPLEGABLES =====
+function toggleCurso(id) {
+  const detail = document.getElementById('detail-' + id);
+  const chev = document.getElementById('chev-' + id);
+  const isOpen = detail.classList.contains('open');
+  document.querySelectorAll('.curso-detalle').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.curso-chevron').forEach(c => c.classList.remove('open'));
+  if (!isOpen) {
+    detail.classList.add('open');
+    chev.classList.add('open');
   }
-};
+}
 
 document.querySelectorAll('.curso-tab').forEach(tab => {
   tab.addEventListener('click', () => {
@@ -606,7 +692,7 @@ const events = {
   '2026-3-28': { name: 'Arcilla Charms', short: 'Arcilla Charms', sub: 'Especial', desc: 'Modela charms de arcilla polimérica: frutas, animales, dulces... Piezas pequeñas con mucho detalle. Ideal para principiantes.', price: '22€' }
 };
 
-let currentMonth = 2; // March (0-indexed)
+let currentMonth = 6; // July (0-indexed)
 let currentYear = 2026;
 
 function renderCalendar(month, year) {
@@ -633,6 +719,7 @@ function renderCalendar(month, year) {
     const key = `${year}-${month+1}-${d}`;
     const isToday = today.getDate() === d && today.getMonth() === month && today.getFullYear() === year;
     if (isToday) cell.classList.add('today');
+    if (new Date(year, month, d) < today && !isToday) cell.classList.add('past');
 
     cell.innerHTML = `<span class="cal-num">${d}</span>`;
 
@@ -688,6 +775,31 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// MENÚ HAMBURGUESA
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+function cerrarMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+// NAVBAR SCROLL
+let lastScroll = 0;
+const nav = document.querySelector('nav.nav');
+window.addEventListener('scroll', () => {
+  const currentScroll = window.scrollY;
+  if (currentScroll <= 0) {
+    nav.style.transform = 'translateY(0)';
+    return;
+  }
+  if (currentScroll > lastScroll) {
+    nav.style.transform = 'translateY(-100%)';
+  } else {
+    nav.style.transform = 'translateY(0)';
+  }
+  lastScroll = currentScroll;
+});
 </script>
 </body>
 </html>
