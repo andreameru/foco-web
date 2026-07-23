@@ -104,7 +104,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 /* CURSOS */
 .cursos { padding:100px 60px; background:#fff; border-top:2px solid var(--negro); }
-.cursos-lista { max-width:700px; display:flex; flex-direction:column; gap:8px; }
+.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
 .curso-item { border:1.5px solid var(--black); border-radius:12px; overflow:hidden; background:#fff; }
 .curso-row { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; cursor:pointer; transition:background .15s; }
 .curso-row:hover { background:var(--grey); }
@@ -209,7 +209,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:0 16px 12px; position:relative; z-index:2; }
 .cal-cell { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid rgba(74,32,48,.05); border-right:1px solid rgba(74,32,48,.04); position:relative; transition:all .2s; padding:4px 2px; }
 .cal-cell:nth-child(7n) { border-right:none; }
-.cal-cell .cal-num { font-family:'Bebas Neue',cursive; font-size:28px; color:rgba(74,32,48,.3); line-height:1; transition:color .2s; }
+.cal-cell .cal-num { font-family:'Bebas Neue',cursive; font-size:28px; color:rgba(74,32,48,.75); line-height:1; transition:color .2s; }
 .cal-cell.empty { background:transparent; }
 .cal-cell.empty .cal-num { color:transparent; }
 .cal-cell.today { background:rgba(74,32,48,.08); border-radius:8px; }
@@ -301,7 +301,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .nav-links.open { display:flex; }
   .nav-links a { font-size:.9rem; padding:.9rem 0; border-bottom:1px solid var(--grey); letter-spacing:.04em; }
   .nav-pill { background:var(--pink); color:var(--white)!important; padding:.7rem 1.2rem!important; border-radius:2rem; margin-top:.5rem; text-align:center; border:none!important; }
-  .hero-left { padding:3rem 1.5rem 2rem; }
+  .hero-left { padding:1.5rem 1.5rem 1.5rem; }
+  .cursos-lista { grid-template-columns:1fr; }
   .hero-left h1 { font-size:2.2rem; }
   .club, .cursos, .talleres, .grupos-section, .contacto { padding:40px 16px; }
   .pricing-grid { grid-template-columns:1fr; gap:16px; }
@@ -788,6 +789,8 @@ function cerrarMenu() {
 let lastScroll = 0;
 const nav = document.querySelector('nav.nav');
 window.addEventListener('scroll', () => {
+  const navLinks = document.getElementById('navLinks');
+  if (navLinks.classList.contains('open')) return;
   const currentScroll = window.scrollY;
   if (currentScroll <= 0) {
     nav.style.transform = 'translateY(0)';
