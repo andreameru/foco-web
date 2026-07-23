@@ -1,0 +1,54 @@
+backend:
+  name: github
+  repo: andreameru/foco-web
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "talleres_calendario"
+    label: "Talleres del calendario"
+    folder: "_talleres"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Nombre del taller", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Subtítulo (ej: Monográfico, Especial...)", name: "subtitulo", widget: "string" }
+      - { label: "Descripción", name: "descripcion", widget: "text" }
+      - { label: "Precio (ej: 25€)", name: "precio", widget: "string" }
+
+  - name: "cursos"
+    label: "Cursos y talleres semanales"
+    folder: "_cursos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nombre", name: "title", widget: "string" }
+      - { label: "Descripción corta", name: "descripcion", widget: "text" }
+      - { label: "Precio mensual (ej: 55€/mes)", name: "precio", widget: "string" }
+
+  - name: "contacto"
+    label: "Datos de contacto"
+    files:
+      - label: "Contacto"
+        name: "contacto"
+        file: "_data/contacto.yml"
+        fields:
+          - { label: "Instagram", name: "instagram", widget: "string" }
+          - { label: "WhatsApp (solo números, ej: 34600000000)", name: "whatsapp", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Dirección", name: "direccion", widget: "string" }
+          - { label: "Bio (texto bajo el nombre)", name: "bio", widget: "text" }
+
+  - name: "textos"
+    label: "Textos generales"
+    files:
+      - label: "Hero (portada)"
+        name: "hero"
+        file: "_data/hero.yml"
+        fields:
+          - { label: "Título principal (primera línea)", name: "titulo1", widget: "string" }
+          - { label: "Título principal (segunda línea)", name: "titulo2", widget: "string" }
+          - { label: "Subtítulo bajo el título", name: "subtitulo", widget: "text" }
