@@ -33,7 +33,7 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--white); color:va
 /* NAV */
 nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); border-bottom:1.5px solid var(--black); }
 .nav-logo { font-family:'Space Mono',monospace; font-size:1.6rem; font-weight:700; letter-spacing:.25em; color:var(--black); text-decoration:none; }
-.nav-logo span { color:var(--pink); }
+.nav-logo span { color:var(--pink); font-size:1.8em; line-height:0; vertical-align:-.1em; }
 .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
 .nav-links a { font-size:.82rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--black); text-decoration:none; transition:color .2s; }
 .nav-links a:hover { color:var(--pink); }
@@ -47,11 +47,11 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hero-eyebrow::before { content:''; width:2rem; height:1.5px; background:var(--pink); display:block; }
 .hero-left h1 { font-family:'Space Mono',monospace; font-size:clamp(2.8rem,5vw,4.5rem); font-weight:700; line-height:1.05; letter-spacing:-.02em; margin-bottom:2rem; }
 .hero-left h1 .hl { display:inline-block; background:var(--pink); color:var(--white); padding:0 .3em; transform:rotate(-1deg); }
-.hero-left p { font-size:1.1rem; line-height:1.75; color:var(--grey-mid); max-width:400px; margin-bottom:3rem; }
+.hero-left p { font-size:1.1rem; line-height:1.75; color:var(--grey-mid); max-width:400px; }
 .hero-right { background:transparent; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:2rem; position:relative; }
 .hero-collage-img { width:100%; height:auto; max-height:90%; object-fit:contain; display:block; }
 .hero-placeholder { font-family:'Space Mono',monospace; font-size:13px; color:var(--grey-mid); text-transform:uppercase; letter-spacing:2px; }
-.hero-right::before { content:'🎨'; font-size:120px; opacity:.08; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+.hero-right::before { content:none; font-size:120px; opacity:.08; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
 .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
 .btn-black { background:var(--black); color:var(--white); padding:.9rem 2rem; border-radius:3rem; font-size:.88rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; border:none; cursor:pointer; text-decoration:none; transition:background .2s,transform .15s; display:inline-block; }
 .btn-black:hover { background:var(--pink); transform:translateY(-3px); }
@@ -76,6 +76,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cloud1 { position:absolute; top:40px; left:45%; width:400px; height:180px; background:radial-gradient(ellipse,rgba(255,255,255,.65) 0%,transparent 70%); filter:blur(18px); pointer-events:none; }
 .cloud2 { position:absolute; bottom:120px; left:20%; width:320px; height:150px; background:radial-gradient(ellipse,rgba(255,255,255,.5) 0%,transparent 70%); filter:blur(18px); pointer-events:none; }
 .club .section-label { color:#fff; }
+.club .section-subtitle { color:#1f3442; position:relative; z-index:2; }
+.club .mat-i-text { color:#2d4250; }
 
 /* PRICING CARDS */
 .pricing-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; margin:0 auto 28px; position:relative; z-index:2; max-width:1060px; }
@@ -94,6 +96,17 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .price-card-btn.rosa:hover { background:#d45a78; }
 .badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--rosa); color:#fff; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; padding:6px 18px; border-radius:50px; white-space:nowrap; }
 
+.carta-pasos-linea { list-style:none; display:flex; flex-wrap:wrap; gap:10px; max-width:1060px; margin:0 auto 24px; position:relative; z-index:2; }
+.carta-pasos-linea li { background:rgba(255,255,255,.6); border:1.5px solid rgba(255,255,255,.9); border-radius:50px; padding:8px 18px; font-size:14px; color:#333; }
+.carta-pasos-linea b { font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--negro); margin-right:4px; }
+.carta-tiles { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; max-width:1060px; margin:0 auto 28px; position:relative; z-index:2; }
+.carta-tile { aspect-ratio:1; border:1.5px solid var(--negro); border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; position:relative; overflow:hidden;
+  background-color:var(--c); background-image:radial-gradient(rgba(0,0,0,.14) 1.2px, transparent 1.6px); background-size:9px 9px; box-shadow:3px 4px 0 rgba(0,0,0,.15); }
+.carta-tile:nth-child(odd) { transform:rotate(-1.2deg); }
+.carta-tile:nth-child(even) { transform:rotate(1deg); }
+.carta-tile-emoji { font-size:38px; line-height:1; }
+.carta-tile-name { font-family:'Bebas Neue',cursive; font-size:22px; letter-spacing:1px; background:#fff; color:var(--negro); padding:2px 10px; border:1.5px solid var(--negro); }
+
 /* MATERIALS — OPTION I (text with thick divider) */
 .mat-i { display:flex; gap:48px; align-items:stretch; position:relative; z-index:2; max-width:1060px; margin:0 auto; }
 .mat-i-block { flex:1; padding:12px 0; }
@@ -103,8 +116,25 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .mat-i-text { font-size:13px; color:rgba(0,0,0,.45); line-height:1.7; }
 
 /* CURSOS */
-.cursos { padding:100px 60px; background:#fff; border-top:2px solid var(--negro); }
-.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+.cursos { padding:100px 60px; border-top:2px solid var(--negro); position:relative;
+  /* Placa de acero cepillado */
+  background-color:#c9ced3;
+  background-image:
+    radial-gradient(circle at 22px 22px, #8d949b 0 5px, #e9ecef 5.5px 6.5px, transparent 7px),
+    radial-gradient(circle at calc(100% - 22px) 22px, #8d949b 0 5px, #e9ecef 5.5px 6.5px, transparent 7px),
+    radial-gradient(circle at 22px calc(100% - 22px), #8d949b 0 5px, #e9ecef 5.5px 6.5px, transparent 7px),
+    radial-gradient(circle at calc(100% - 22px) calc(100% - 22px), #8d949b 0 5px, #e9ecef 5.5px 6.5px, transparent 7px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 3px, rgba(0,0,0,.02) 3px 4px, transparent 4px 7px),
+    linear-gradient(135deg, #dde1e5 0%, #b9c0c6 30%, #d6dade 52%, #aeb5bc 75%, #cfd4d8 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -2px 0 rgba(0,0,0,.12); }
+.cursos .section-subtitle { color:#2b2f33; }
+.cursos .curso-item { background:linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 3px 4px 0 rgba(0,0,0,.16); }
+.cursos .curso-row:hover { background:rgba(255,255,255,.22); }
+.cursos .curso-emoji { background:rgba(255,255,255,.45); }
+.cursos .curso-precio, .cursos .curso-chevron { color:#4b5157; }
+.cursos .curso-detalle { border-top-color:rgba(0,0,0,.15); }
+.cursos .curso-detalle-desc, .cursos .curso-detalle-lista li { color:#2b2f33; }
+.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; align-items:start; }
 .curso-item { border:1.5px solid var(--black); border-radius:12px; overflow:hidden; background:#fff; }
 .curso-row { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; cursor:pointer; transition:background .15s; }
 .curso-row:hover { background:var(--grey); }
@@ -162,8 +192,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 /* Cork texture layer 5 — warm highlights and shadows */
 .cork-tex5 { position:absolute; inset:0; pointer-events:none; z-index:0; background: radial-gradient(ellipse at 25% 20%, rgba(220,190,140,.15) 0%, transparent 45%), radial-gradient(ellipse at 75% 75%, rgba(0,0,0,.08) 0%, transparent 45%), radial-gradient(ellipse at 60% 10%, rgba(210,180,130,.1) 0%, transparent 35%), radial-gradient(ellipse at 10% 80%, rgba(180,140,80,.06) 0%, transparent 30%); }
 
-.talleres .section-label { color:rgba(255,255,255,.95); position:relative; z-index:2; text-shadow:0 2px 8px rgba(0,0,0,.35); }
-.talleres .section-subtitle { color:rgba(255,255,255,.65); position:relative; z-index:2; text-shadow:0 1px 4px rgba(0,0,0,.25); }
+.talleres .section-label { color:#1a1a1a; position:relative; z-index:2; }
+.talleres .section-subtitle { color:#1a1a1a; font-weight:500; position:relative; z-index:2; text-shadow:0 1px 2px rgba(255,255,255,.25); }
 
 /* Stars */
 .chalk-star { position:absolute; pointer-events:none; z-index:1; }
@@ -179,7 +209,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .chalk-deco-line2 { position:absolute; top:55%; left:35px; width:3px; height:100px; background:rgba(255,255,255,.03); transform:rotate(4deg); pointer-events:none; }
 
 /* CALENDARIO POST-IT ROSA SOBRE CORCHO */
-.calendar-frame { max-width:750px; margin:0 auto; position:relative; z-index:2; transform:rotate(0.6deg); }
+.calendar-frame { max-width:1180px; margin:0 auto; position:relative; z-index:2; transform:rotate(0.6deg); }
 
 /* Chincheta — pin realista */
 .pushpin { position:absolute; top:-12px; left:50%; transform:translateX(-50%); z-index:10; width:28px; height:28px; }
@@ -207,7 +237,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); border-bottom:2px solid rgba(74,32,48,.1); border-top:2px solid rgba(74,32,48,.1); margin:0 16px; position:relative; z-index:2; }
 .cal-day-name { font-family:'Space Mono',monospace; font-size:9px; color:rgba(74,32,48,.35); text-transform:uppercase; text-align:center; padding:8px 0; letter-spacing:2px; font-weight:700; }
 .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:0 16px 12px; position:relative; z-index:2; }
-.cal-cell { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid rgba(74,32,48,.05); border-right:1px solid rgba(74,32,48,.04); position:relative; transition:all .2s; padding:4px 2px; }
+.cal-cell { aspect-ratio:4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid rgba(74,32,48,.05); border-right:1px solid rgba(74,32,48,.04); position:relative; transition:all .2s; padding:4px 2px; }
 .cal-cell:nth-child(7n) { border-right:none; }
 .cal-cell .cal-num { font-family:'Bebas Neue',cursive; font-size:28px; color:rgba(74,32,48,.75); line-height:1; transition:color .2s; }
 .cal-cell.empty { background:transparent; }
@@ -253,6 +283,36 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .ep-val { font-family:'Bebas Neue',cursive; font-size:28px; color:var(--pink); text-align:right; white-space:nowrap; }
 .grupos-section { padding:0; border-top:2px solid var(--black); overflow:hidden; }
 
+/* REGALA */
+.regala-section { border-top:2px solid var(--black); padding:80px 60px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+  /* Base de corte verde */
+  background-color:#2e6a52;
+  background-image:
+    linear-gradient(45deg, transparent calc(50% - .5px), rgba(255,255,255,.07) 50%, transparent calc(50% + .5px)),
+    linear-gradient(rgba(255,255,255,.28) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(255,255,255,.28) 1.5px, transparent 1.5px),
+    linear-gradient(rgba(255,255,255,.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.11) 1px, transparent 1px);
+  background-size:300px 300px, 150px 150px, 150px 150px, 30px 30px, 30px 30px;
+  box-shadow:inset 0 0 0 10px #255a45, inset 0 0 0 11px rgba(255,255,255,.25); }
+.regala-section .seccion-tag { color:var(--lime); }
+.regala-section .seccion-title { color:#fff; }
+.regala-section .seccion-body { color:rgba(255,255,255,.9); }
+.regala-section .curso-detalle-lista li { color:rgba(255,255,255,.85); }
+.regala-section .curso-detalle-lista li::before { color:var(--lime); }
+.regala-section .btn-black { background:#fff; color:var(--black); }
+.regala-section .btn-black:hover { background:var(--pink); color:#fff; }
+.regala-tarjeta-wrap { display:flex; justify-content:center; }
+.regala-tarjeta { width:100%; max-width:440px; aspect-ratio:85/55; background-color:var(--pink); background-image:radial-gradient(rgba(0,0,0,.16) 1.3px, transparent 1.8px); background-size:10px 10px; border:2px solid var(--black); border-radius:16px; box-shadow:6px 8px 0 var(--black); transform:rotate(-3deg); padding:22px 24px; display:flex; flex-direction:column; justify-content:space-between; color:var(--black); position:relative; }
+.rt-top { display:flex; justify-content:space-between; align-items:flex-start; }
+.rt-logo { font-family:'Space Mono',monospace; font-weight:700; font-size:22px; letter-spacing:.2em; background:#fff; padding:2px 8px; border:1.5px solid var(--black); }
+.rt-logo span { color:var(--pink); }
+.rt-tag { font-family:'Space Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:2px; background:var(--black); color:#fff; padding:4px 10px; border-radius:50px; }
+.rt-titulo { font-family:'Bebas Neue',cursive; font-size:clamp(34px,5vw,52px); line-height:.95; color:#fff; text-shadow:2px 2px 0 var(--black); }
+.rt-campos { background:#fff; border:1.5px solid var(--black); padding:8px 12px; font-family:'Space Mono',monospace; font-size:11px; line-height:1.9; }
+.rt-campos i { font-style:normal; display:inline-block; min-width:60px; color:var(--grey-mid); }
+.regala-inner { max-width:640px; }
+
 /* CONTACTO — Rosa pálido con nubes */
 .contact-section{background:linear-gradient(160deg,#FFE8F4 0%,#FFF0F8 40%,#FFF6FB 100%);padding:70px 60px;text-align:center;position:relative;overflow:hidden;border-top:2px solid var(--black)}
 .contact-section::before{content:'';position:absolute;top:40px;left:10%;width:320px;height:200px;background:radial-gradient(ellipse,rgba(255,255,255,.7) 0%,transparent 70%);filter:blur(18px);pointer-events:none}
@@ -283,9 +343,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 /* RESPONSIVE */
 @media(max-width:1024px) {
   .nav-hamburger { display:none; }
-  #hero { grid-template-columns:1fr; }
-  .hero-right { min-height:300px; }
+  #hero { grid-template-columns:1fr; min-height:auto; }
+  .hero-right { min-height:0; padding:0 1.5rem 2rem; }
   .pricing-grid { grid-template-columns:repeat(2,1fr); }
+  .carta-tiles { grid-template-columns:repeat(3,1fr); }
   .cursos-grid { grid-template-columns:1fr; }
   #eventos { grid-template-columns:1fr; }
   .ev-price { padding-top:60px; }
@@ -301,20 +362,29 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .nav-links.open { display:flex; }
   .nav-links a { font-size:.9rem; padding:.9rem 0; border-bottom:1px solid var(--grey); letter-spacing:.04em; }
   .nav-pill { background:var(--pink); color:var(--white)!important; padding:.7rem 1.2rem!important; border-radius:2rem; margin-top:.5rem; text-align:center; border:none!important; }
+  #hero { padding-top:0; }
   .hero-left { padding:1.5rem 1.5rem 1.5rem; }
   .cursos-lista { grid-template-columns:1fr; }
   .hero-left h1 { font-size:2.2rem; }
-  .club, .cursos, .talleres, .grupos-section, .contacto { padding:40px 16px; }
+  .club, .cursos, .talleres, .grupos-section, .contacto, .regala-section { padding:40px 16px; }
+  .ev-info, .ev-price { padding:40px 16px; }
   .pricing-grid { grid-template-columns:1fr; gap:16px; }
   .price-card { padding:16px 14px; }
   .price-card-price { font-size:32px; }
   .materials-grid { grid-template-columns:1fr; }
+  .mat-i { flex-direction:column; gap:12px; }
+  .carta-tiles { gap:10px; }
+  .carta-tile-emoji { font-size:28px; }
+  .carta-tile-name { font-size:17px; }
+  .regala-section { grid-template-columns:1fr; }
+  .regala-tarjeta { max-width:88%; padding:16px 18px; }
   .section-label { font-size:24px; }
   .footer { flex-direction:column; gap:16px; text-align:center; }
   .calendar-frame { transform:none; overflow-x:auto; }
   .calendar { min-width:320px; }
   .cal-header-title { font-size:36px; }
   .cal-cell .cal-num { font-size:20px; }
+  .cal-cell { aspect-ratio:1; }
   .cal-header-desc { display:none; }
 }
 </style>
@@ -323,15 +393,16 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#" class="nav-logo">f<span>★</span>co</a>
+  <a href="#" class="nav-logo">F<span>★</span>CO</a>
   <button class="nav-hamburger" id="navToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="#club" onclick="cerrarMenu()">Club Creativo</a>
     <a href="#cursos" onclick="cerrarMenu()">Cursos</a>
     <a href="#talleres" onclick="cerrarMenu()">Talleres</a>
+    <a href="#carta" onclick="cerrarMenu()">A la carta</a>
     <a href="#grupos" onclick="cerrarMenu()">Grupos</a>
+    <a href="#regala" onclick="cerrarMenu()">Regala</a>
     <a href="#contacto" class="nav-pill" onclick="cerrarMenu()">Contacto</a>
   </div>
 </nav>
@@ -342,128 +413,74 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <span class="hero-eyebrow">Espacio Creativo · Logroño</span>
     <h1>aquí se<br><span class="hl">crea.</span></h1>
     <p>Un lugar para venir a crear, desconectar y compartir tiempo con otras personas creativas.</p>
-    <div class="hero-btns">
-      <a href="#club" class="btn-black">Explorar</a>
-      <a href="#contacto" class="btn-ghost">Contacto</a>
-    </div>
   </div>
   <div class="hero-right">
-    <span class="hero-placeholder">[ foto del espacio ]</span>
+    <img class="hero-collage-img" src="/images/espacio-foco-ilustracion.jpg" alt="Ilustración del espacio FOCO: mesa de creación, estanterías de materiales, corcho de inspiración y techo rosa" width="1264" height="842">
   </div>
 </section>
 
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Club Creativo <i class="star">★</i> Cursos Semanales <i class="star">★</i> Talleres Especiales <i class="star">★</i> Grupos Privados <i class="star">★</i> Club Creativo <i class="star">★</i> Cursos Semanales <i class="star">★</i> Talleres Especiales <i class="star">★</i> Grupos Privados <i class="star">★</i> </span>
-    <span>Club Creativo <i class="star">★</i> Cursos Semanales <i class="star">★</i> Talleres Especiales <i class="star">★</i> Grupos Privados <i class="star">★</i> Club Creativo <i class="star">★</i> Cursos Semanales <i class="star">★</i> Talleres Especiales <i class="star">★</i> Grupos Privados <i class="star">★</i> </span>
+    <span>Cursos semanales <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> Cursos semanales <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> </span>
+    <span>Cursos semanales <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> Cursos semanales <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> </span>
   </div>
 </div>
-
-<!-- CLUB CREATIVO -->
-<section class="club" id="club">
-  <div class="cloud1"></div>
-  <div class="cloud2"></div>
-  <h2 class="section-label fade-up">Club Creativo</h2>
-  <p class="section-subtitle fade-up">Franjas de creación libre donde vienes a trabajar en tus proyectos, probar técnicas nuevas o disfrutar creando en compañía. El espacio, las herramientas y los materiales están a tu disposición. Sin guía, sin presión, a tu ritmo.<br><br>Puedes venir con tu proyecto, usar materiales del espacio, venir sola o con amigas. No necesitas saber nada.</p>
-
-  <div class="pricing-grid fade-up">
-    <!-- Card 1 -->
-    <div class="price-card">
-      <div class="price-card-name">Sesión Suelta</div>
-      <div class="price-card-price">18€</div>
-      <div class="price-card-detail">por sesión de 2h</div>
-      <ul class="price-card-features">
-        <li>2 horas en el espacio</li>
-        <li>Materiales básicos incluidos</li>
-        <li>Sin permanencia</li>
-      </ul>
-      <a href="#" class="price-card-btn" onclick="alert('Redirigiendo a Calendly para reservar...')">Reservar</a>
-    </div>
-    <!-- Card 2 -->
-    <div class="price-card">
-      <div class="price-card-name">Bono 2 Sesiones</div>
-      <div class="price-card-price">34€</div>
-      <div class="price-card-detail">17€/sesión · válido 1 mes</div>
-      <ul class="price-card-features">
-        <li>2 sesiones de 2h</li>
-        <li>Materiales básicos incluidos</li>
-        <li>Válido 1 mes</li>
-      </ul>
-      <a href="#" class="price-card-btn" onclick="alert('Redirigiendo a Calendly para reservar...')">Reservar</a>
-    </div>
-    <!-- Card 3 -->
-    <div class="price-card">
-      <div class="price-card-name">Bono Mensual</div>
-      <div class="price-card-price">59€</div>
-      <div class="price-card-detail">14,75€/sesión · válido 2 meses</div>
-      <ul class="price-card-features">
-        <li>4 sesiones de 2h</li>
-        <li>Materiales básicos incluidos</li>
-        <li>Válido 2 meses</li>
-      </ul>
-      <a href="#" class="price-card-btn" onclick="alert('Redirigiendo a Calendly para reservar...')">Reservar</a>
-    </div>
-    <!-- Card 4 — Premium -->
-    <div class="price-card premium">
-      <div class="badge">Limitado · Máx. 20 Socias</div>
-      <div class="price-card-name">Membresía Club</div>
-      <div class="price-card-price">69€</div>
-      <div class="price-card-detail">al mes · acceso ilimitado</div>
-      <ul class="price-card-features">
-        <li>Acceso ilimitado entre semana</li>
-        <li>Materiales básicos incluidos</li>
-        <li>Trae a un amigo 1 vez/mes gratis</li>
-        <li>10% descuento en talleres especiales</li>
-        <li>Prioridad en talleres</li>
-      </ul>
-      <a href="#" class="price-card-btn rosa" onclick="alert('Redirigiendo a Stripe para hacerte socia...')">Quiero ser socia</a>
-    </div>
-  </div>
-
-  <!-- Materials -->
-  <div class="mat-i fade-up">
-    <div class="mat-i-block">
-      <div class="mat-i-title">✓ Básicos incluidos</div>
-      <div class="mat-i-text">Pinturas acrílicas · Pinceles · Papel · Pegamentos · Tijeras · Herramientas básicas</div>
-    </div>
-    <div class="mat-i-block">
-      <div class="mat-i-title">+ Premium (suplemento)</div>
-      <div class="mat-i-text">Arcilla · Charms · Resina · Cuentas · Telas especiales · Kits bordado</div>
-    </div>
-  </div>
-</section>
 
 <!-- CURSOS -->
 <section class="cursos" id="cursos">
   <h2 class="section-label fade-up">Cursos semanales</h2>
-  <p class="section-subtitle fade-up">Aprende, crea y desconecta cada semana en grupo reducido. Sin experiencia previa, solo ganas de crear.</p>
+  <p class="section-subtitle fade-up">Aprende algo nuevo, a tu ritmo y en buena compañía. Clubs semanales en pequeño grupo, sin experiencia previa: solo ganas de crear y desconectar. Aquí se aprende haciendo.</p>
 
   <div class="cursos-lista fade-up">
+
+    <div class="curso-item">
+      <div class="curso-row" onclick="toggleCurso('costura')">
+        <div class="curso-row-left">
+          <div class="curso-emoji">🧵</div>
+          <div>
+            <div class="curso-nombre">Club de costura</div>
+            <div class="curso-precio">Desde enero 2027</div>
+          </div>
+        </div>
+        <div class="curso-row-right">
+          <span class="curso-badge">Próximamente</span>
+          <span class="curso-chevron" id="chev-costura">▾</span>
+        </div>
+      </div>
+      <div class="curso-detalle" id="detail-costura">
+        <p class="curso-detalle-desc">Aprende a coser desde cero o perfecciona tu técnica. No hace falta saber coser: aquí se viene a disfrutar. Desde lo más básico hasta tus propios proyectos, a tu ritmo.</p>
+        <ul class="curso-detalle-lista">
+          <li>1 día a la semana, mismo día y hora</li>
+          <li>Grupo reducido</li>
+          <li>Sin experiencia previa</li>
+        </ul>
+        <a href="mailto:hola@espaciofoco.es?subject=Club%20de%20costura" class="curso-reservar-btn">Avísame cuando abra →</a>
+      </div>
+    </div>
 
     <div class="curso-item">
       <div class="curso-row" onclick="toggleCurso('adultos')">
         <div class="curso-row-left">
           <div class="curso-emoji">🎨</div>
           <div>
-            <div class="curso-nombre">Talleres adultos</div>
-            <div class="curso-precio">60€ / mes</div>
+            <div class="curso-nombre">Club creativo · Adultos</div>
+            <div class="curso-precio">Desde enero 2027</div>
           </div>
         </div>
         <div class="curso-row-right">
-          <span class="curso-badge">Plaza libre</span>
+          <span class="curso-badge">Próximamente</span>
           <span class="curso-chevron" id="chev-adultos">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-adultos">
-        <p class="curso-detalle-desc">Un espacio semanal para explorar pintura, collage, ilustración y arcilla en grupo reducido y buen ambiente. No hace falta experiencia previa.</p>
+        <p class="curso-detalle-desc">Cada sesión, un material distinto: velas, arcilla, resina, abalorios… Vienes cada semana, pruebas técnicas nuevas y te llevas a casa lo que creas.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora</li>
-          <li>4 clases al mes incluidas</li>
-          <li>Máximo 10 personas por grupo</li>
-          <li>Materiales incluidos en el precio</li>
+          <li>Grupo reducido</li>
+          <li>Materiales incluidos</li>
         </ul>
-        <a href="#" class="curso-reservar-btn">Reservar plaza →</a>
+        <a href="mailto:hola@espaciofoco.es?subject=Club%20creativo%20adultos" class="curso-reservar-btn">Avísame cuando abra →</a>
       </div>
     </div>
 
@@ -472,49 +489,23 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         <div class="curso-row-left">
           <div class="curso-emoji">✏️</div>
           <div>
-            <div class="curso-nombre">Talleres niños</div>
-            <div class="curso-precio">50€ / mes</div>
+            <div class="curso-nombre">Club creativo · Niños</div>
+            <div class="curso-precio">Desde enero 2027</div>
           </div>
         </div>
         <div class="curso-row-right">
+          <span class="curso-badge">Próximamente</span>
           <span class="curso-chevron" id="chev-ninos">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-ninos">
-        <p class="curso-detalle-desc">Un taller semanal para que los peques experimenten con materiales, colores y texturas en un ambiente libre y seguro.</p>
+        <p class="curso-detalle-desc">Un rato cada semana para que los peques experimenten con materiales, colores y texturas en un ambiente libre y seguro. Lo imparte Andrea, maestra de educación infantil especializada en pedagogía terapéutica.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora</li>
-          <li>4 clases al mes incluidas</li>
-          <li>Máximo 8 niños por grupo</li>
-          <li>Materiales incluidos en el precio</li>
+          <li>Grupo reducido</li>
+          <li>Materiales incluidos</li>
         </ul>
-        <a href="#" class="curso-reservar-btn">Reservar plaza →</a>
-      </div>
-    </div>
-
-    <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('costura')">
-        <div class="curso-row-left">
-          <div class="curso-emoji">🧵</div>
-          <div>
-            <div class="curso-nombre">Curso de costura</div>
-            <div class="curso-precio">55€ / mes</div>
-          </div>
-        </div>
-        <div class="curso-row-right">
-          <span class="curso-badge">Pocas plazas</span>
-          <span class="curso-chevron" id="chev-costura">▾</span>
-        </div>
-      </div>
-      <div class="curso-detalle" id="detail-costura">
-        <p class="curso-detalle-desc">Aprende a coser desde cero o perfecciona tu técnica. Desde pespunte básico hasta proyectos propios, a tu ritmo.</p>
-        <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora</li>
-          <li>4 clases al mes incluidas</li>
-          <li>Máximo 10 personas por grupo</li>
-          <li>Materiales incluidos en el precio</li>
-        </ul>
-        <a href="#" class="curso-reservar-btn">Reservar plaza →</a>
+        <a href="mailto:hola@espaciofoco.es?subject=Club%20creativo%20ni%C3%B1os" class="curso-reservar-btn">Avísame cuando abra →</a>
       </div>
     </div>
 
@@ -543,7 +534,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <div class="chalk-deco-line2"></div>
 
   <h2 class="section-label fade-up">Talleres</h2>
-  <p class="section-subtitle fade-up">Sesiones únicas con artistas invitados, monográficos y experiencias creativas de fin de semana. Pincha en el día para ver el taller.</p>
+  <p class="section-subtitle fade-up">Un taller, una idea y un ratito para ti. Crea algo con tus manos y llévatelo a casa. Echa un vistazo al calendario, elige tu taller y reserva tu plaza.</p>
 
   <div class="calendar-frame fade-up">
     <div class="pushpin"></div>
@@ -551,10 +542,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <div class="calendar">
       <div class="cal-header">
         <div>
-          <div class="cal-header-title" id="calTitle">Marzo 2026</div>
+          <div class="cal-header-title" id="calTitle"></div>
         </div>
         <div class="cal-header-right">
-          <div class="cal-header-desc">tallerets monográfics d'un dia per crear</div>
+          <div class="cal-header-desc">pincha en un día para ver el taller</div>
           <div class="cal-nav-wrap">
             <button class="cal-nav-btn" id="calPrev">←</button>
             <button class="cal-nav-btn" id="calNext">→</button>
@@ -577,22 +568,51 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 </div>
 </div>
 
+<!-- A LA CARTA -->
+<section class="club" id="carta">
+  <div class="cloud1"></div>
+  <div class="cloud2"></div>
+  <h2 class="section-label fade-up">A la carta</h2>
+  <p class="section-subtitle fade-up">¿No te encaja la fecha de ningún taller? Aquí decides tú: elige día y hora, escoge una de las manualidades de la carta y disfruta creando a tu aire. Todo el material incluido.</p>
+
+  <ol class="carta-pasos-linea fade-up">
+    <li><b>1 · Reserva</b> tu hora</li>
+    <li><b>2 · Elige</b> una manualidad de la carta</li>
+    <li><b>3 · Crea</b> y llévatela terminada</li>
+  </ol>
+
+  <div class="carta-tiles fade-up">
+    <div class="carta-tile" style="--c:#FF3FA4"><span class="carta-tile-emoji">🕯️</span><span class="carta-tile-name">Velas</span></div>
+    <div class="carta-tile" style="--c:#C8A87A"><span class="carta-tile-emoji">🏺</span><span class="carta-tile-name">Arcilla</span></div>
+    <div class="carta-tile" style="--c:#6B8FA8"><span class="carta-tile-emoji">💧</span><span class="carta-tile-name">Resina</span></div>
+    <div class="carta-tile" style="--c:#7FFF00"><span class="carta-tile-emoji">📿</span><span class="carta-tile-name">Abalorios</span></div>
+    <div class="carta-tile" style="--c:#FF85C8"><span class="carta-tile-emoji">🎨</span><span class="carta-tile-name">Pintura</span></div>
+    <div class="carta-tile" style="--c:#F0E4D0"><span class="carta-tile-emoji">🪡</span><span class="carta-tile-name">Bordado</span></div>
+  </div>
+
+  <div class="mat-i fade-up">
+    <div class="mat-i-block">
+      <div class="mat-i-title">✓ Qué incluye</div>
+      <div class="mat-i-text">Todo el material y las herramientas · Instrucciones paso a paso · Ayuda cuando la necesites · Tu creación terminada para llevar a casa. ¿Venís en grupo? Reservad todas las plazas a la vez y os sentamos juntas.</div>
+    </div>
+  </div>
+</section>
+
 <!-- 04 EVENTOS Y GRUPOS -->
 <section class="grupos-section" id="grupos">
   <div id="eventos" class="fade-up">
     <div class="ev-info">
       <span class="seccion-tag">Grupos</span>
       <h2 class="seccion-title">Hazlo especial.<br>Hazlo en <span class="accent">foco.</span></h2>
-      <p class="seccion-body">Diseñamos la experiencia creativa perfecta para tu grupo. Privado, personalizado y con todo incluido. Mínimo 6 personas.</p>
+      <p class="seccion-body">Cumpleaños, despedidas, teambuildings o simplemente un plan diferente con tu gente. Reservamos el espacio para tu grupo y preparamos una actividad a tu medida. Cuéntanos qué tienes en mente y te enviamos una propuesta.</p>
       <div class="ev-tipos">
         <div class="ev-chip">💍 Despedidas de soltera</div>
         <div class="ev-chip">🎂 Cumpleaños adultos</div>
         <div class="ev-chip">🎈 Fiestas infantiles creativas</div>
         <div class="ev-chip">👩‍👩‍👧 Grupos de amigas</div>
-        <div class="ev-chip">🏢 Team building empresarial</div>
-        <div class="ev-chip">🎁 Experiencia regalo</div>
+        <div class="ev-chip">🏢 Teambuilding para empresas</div>
       </div>
-      <a href="mailto:hola@foco-logrono.com" class="btn-black">Pedir presupuesto</a>
+      <a href="mailto:hola@espaciofoco.es?subject=Presupuesto%20para%20grupo" class="btn-black">Pedir presupuesto</a>
     </div>
     <div class="ev-price">
       <div style="padding-bottom:1.5rem;border-bottom:1.5px solid rgba(0,0,0,.1)">
@@ -601,21 +621,44 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
       </div>
       <div class="ep-row">
         <div><div class="ep-label">Eventos privados adultos</div><div class="ep-sub">2-3h · materiales y guía incluidos</div></div>
-        <div class="ep-val">25–35€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/persona</span></div>
+        <div class="ep-val">desde 25€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/persona</span></div>
       </div>
       <div class="ep-row">
         <div><div class="ep-label">Cumpleaños infantiles</div><div class="ep-sub">1.5h · kit de creación para cada niño</div></div>
-        <div class="ep-val">16–28€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/niño</span></div>
+        <div class="ep-val">desde 16€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/niño</span></div>
       </div>
       <div class="ep-row">
-        <div><div class="ep-label">Team building empresas</div><div class="ep-sub">2-4h · adaptado al grupo · factura disponible</div></div>
+        <div><div class="ep-label">Teambuilding para empresas</div><div class="ep-sub">2-4h · adaptado al grupo · factura disponible</div></div>
         <div class="ep-val">A medida</div>
       </div>
       <div class="ep-row">
         <div><div class="ep-label">Grupo mínimo</div><div class="ep-sub">Para reserva privada del espacio</div></div>
-        <div class="ep-val">5 pers. O 150€</div>
+        <div class="ep-val">5 pers. o 150€</div>
       </div>
-      <a href="mailto:hola@foco-logrono.com" class="btn-pink" style="margin-top:1rem">Contactar para grupos →</a>
+      <p style="font-size:14px;color:#555;line-height:1.6;margin:1.5rem 0 1rem">Cada propuesta es personalizada: cuéntanos qué tienes en mente y te enviamos presupuesto sin compromiso.</p>
+      <a href="mailto:hola@espaciofoco.es?subject=Presupuesto%20para%20grupo" class="btn-black">Contactar para grupos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- REGALA -->
+<section class="regala-section" id="regala">
+  <div class="regala-inner fade-up">
+    <span class="seccion-tag">Regala</span>
+    <h2 class="seccion-title">Regala <span class="accent">foco.</span></h2>
+    <p class="seccion-body">Un rato para crear, envuelto para regalar. Elige un taller, una manualidad de la carta o un importe libre, y que lo disfrute quien tú quieras.</p>
+    <ul class="curso-detalle-lista" style="margin-bottom:2rem">
+      <li>En el local: lo pagas y te lo llevas en el momento.</li>
+      <li>Online: lo recoges en FOCO, te lo enviamos por correo postal o te lo mandamos en PDF para imprimir o regalar por WhatsApp.</li>
+    </ul>
+    <a href="mailto:hola@espaciofoco.es?subject=Quiero%20regalar%20FOCO" class="btn-black">Quiero regalar</a>
+  </div>
+  <!-- Tarjeta regalo de ejemplo: sustituir por imagen real cuando esté (images/tarjeta-regalo.jpg) -->
+  <div class="regala-tarjeta-wrap fade-up" aria-hidden="true">
+    <div class="regala-tarjeta">
+      <div class="rt-top"><span class="rt-logo">F<span>★</span>CO</span><span class="rt-tag">Vale regalo</span></div>
+      <div class="rt-titulo">Un rato<br>para crear</div>
+      <div class="rt-campos"><i>Para:</i> ________________<br><i>De:</i> ________________<br><i>Vale por:</i> un taller a elegir</div>
     </div>
   </div>
 </section>
@@ -630,16 +673,16 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <p class="contact-bio">Un día descubrí que <em>mi hobby era tener hobbies</em>. Así que monté un espacio donde todo el mundo pueda venir a probar, crear y pasárselo bien.</p>
     <div class="contact-links">
       <a class="contact-link" href="https://instagram.com/espacio_foco" target="_blank">📸 @espacio_foco</a>
-      <a class="contact-link" href="https://wa.me/34600000000" target="_blank">💬 WhatsApp</a>
-      <a class="contact-link" href="mailto:hola@foco-logrono.com">✉️ hola@foco-logrono.com</a>
-      <a class="contact-link" href="https://maps.google.com" target="_blank">📍 Logroño, La Rioja</a>
+      <a class="contact-link" href="https://wa.me/34633933741" target="_blank">💬 WhatsApp</a>
+      <a class="contact-link" href="mailto:hola@espaciofoco.es">✉️ hola@espaciofoco.es</a>
+      <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Calle+Huesca+30+Logro%C3%B1o" target="_blank">📍 C/ Huesca 30, Logroño</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">f<span>★</span>co</div>
+  <div class="footer-logo">F<span>★</span>CO</div>
   <div class="footer-center">Espacio Creativo · Logroño · © 2026</div>
   <div class="footer-right">
     <a href="/aviso-legal.html" style="color:#666;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Aviso legal</a>
@@ -661,40 +704,30 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 </div>
 
 <script>
+// ===== EMPEZAR SIEMPRE ARRIBA =====
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+window.scrollTo(0, 0);
+window.addEventListener('load', () => window.scrollTo(0, 0));
+
 // ===== CURSOS DESPLEGABLES =====
 function toggleCurso(id) {
   const detail = document.getElementById('detail-' + id);
   const chev = document.getElementById('chev-' + id);
   const isOpen = detail.classList.contains('open');
-  document.querySelectorAll('.curso-detalle').forEach(d => d.classList.remove('open'));
-  document.querySelectorAll('.curso-chevron').forEach(c => c.classList.remove('open'));
-  if (!isOpen) {
-    detail.classList.add('open');
-    chev.classList.add('open');
-  }
+  detail.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
 }
 
-document.querySelectorAll('.curso-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.curso-tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    const key = tab.dataset.curso;
-    document.getElementById('cursoTitle').textContent = cursosData[key].title;
-    document.getElementById('cursoDesc').textContent = cursosData[key].desc;
-  });
-});
-
 // ===== CALENDAR =====
+// Talleres: añade uno por línea con la fecha 'año-mes-día'.
+// url = enlace de reserva de ese taller en Zenamu (cuando esté).
 const events = {
-  '2026-3-7': { name: 'Taller Cerámica', short: 'Taller Cerámica', sub: 'Artista invitada', desc: 'Sesión especial de cerámica con artista invitada. Aprende a modelar piezas únicas con técnicas tradicionales y modernas.', price: '35€' },
-  '2026-3-14': { name: 'Joyería Resina', short: 'Joyería Resina', sub: 'Monográfico', desc: 'Crea tus propios colgantes y anillos de resina con flores secas, pigmentos y brillos. Todo el material incluido.', price: '28€' },
-  '2026-3-21': { name: 'Bordado Creativo', short: 'Bordado Creativo', sub: 'Monográfico', desc: 'Iníciate en el bordado moderno con diseños contemporáneos. Punto atrás, nudo francés, relleno... todo lo que necesitas para empezar.', price: '25€' },
-  '2026-3-22': { name: 'Pintura Textil', short: 'Pintura Textil', sub: 'Fin de semana', desc: 'Personaliza tu propia tote bag o camiseta con pintura textil. Una sesión divertida y creativa para llevar tu arte puesto.', price: '32€' },
-  '2026-3-28': { name: 'Arcilla Charms', short: 'Arcilla Charms', sub: 'Especial', desc: 'Modela charms de arcilla polimérica: frutas, animales, dulces... Piezas pequeñas con mucho detalle. Ideal para principiantes.', price: '22€' }
+  // '2026-12-12': { name: 'Nombre del taller', short: 'Nombre corto', sub: 'Taller · 2 h', desc: 'Descripción del taller.', price: '25€', url: '' },
 };
 
-let currentMonth = 6; // July (0-indexed)
-let currentYear = 2026;
+let currentMonth = new Date().getMonth();
+let currentYear = new Date().getFullYear();
 
 function renderCalendar(month, year) {
   const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
@@ -755,7 +788,9 @@ function openModal(event) {
   document.getElementById('modalSub').textContent = event.sub;
   document.getElementById('modalDesc').textContent = event.desc;
   document.getElementById('modalPrice').textContent = event.price;
-  document.getElementById('modalBtn').onclick = (e) => { e.preventDefault(); alert('Redirigiendo a Calendly para reservar tu plaza...'); };
+  const btn = document.getElementById('modalBtn');
+  if (event.url) { btn.href = event.url; btn.target = '_blank'; btn.textContent = 'Reservar plaza →'; }
+  else { btn.href = 'mailto:hola@espaciofoco.es?subject=' + encodeURIComponent('Reserva: ' + event.name); btn.removeAttribute('target'); btn.textContent = 'Quiero una plaza →'; }
   document.getElementById('modalOverlay').classList.add('open');
 }
 
