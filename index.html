@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOCO — Espacio Creativo · Logroño</title>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 :root {
@@ -32,8 +32,8 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--white); color:va
 
 /* NAV */
 nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); border-bottom:1.5px solid var(--black); }
-.nav-logo, .footer-logo { font-family:'Caveat',cursive; font-weight:700; font-size:2.6rem; line-height:1; color:var(--black); text-decoration:none; display:inline-flex; align-items:center; }
-.logo-star { height:.95em; width:auto; margin:0 .02em; transform:rotate(-8deg) translateY(-.05em); }
+.nav-logo { font-family:'Space Mono',monospace; font-size:1.6rem; font-weight:700; letter-spacing:.25em; color:var(--black); text-decoration:none; }
+.nav-logo span { color:var(--pink); }
 .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
 .nav-links a { font-size:.82rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--black); text-decoration:none; transition:color .2s; }
 .nav-links a:hover { color:var(--pink); }
@@ -277,7 +277,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 /* FOOTER */
 .footer { background:var(--negro); border-top:4px solid var(--rosa); padding:40px 60px; display:flex; justify-content:space-between; align-items:center; }
-.footer-logo { color:#fff; }
+.footer-logo { font-family:'Bebas Neue',cursive; font-size:32px; color:#fff; }
+.footer-logo span { color:var(--rosa); }
 .footer-center { font-family:'Space Mono',monospace; font-size:11px; color:#666; }
 .footer-right { font-family:'Space Mono',monospace; font-size:11px; color:#666; }
 
@@ -332,7 +333,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#" class="nav-logo" aria-label="FOCO, inicio">f<img src="img/estrella.png" alt="" class="logo-star">co</a>
+  <a href="#" class="nav-logo">f<span>★</span>co</a>
   <button class="nav-hamburger" id="navToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -624,7 +625,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">f<img src="img/estrella.png" alt="" class="logo-star">co</div>
+  <div class="footer-logo">f<span>★</span>co</div>
   <div class="footer-center">Espacio Creativo · Logroño · © 2026</div>
   <div class="footer-right">
     <a href="/aviso-legal.html" style="color:#666;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Aviso legal</a>
