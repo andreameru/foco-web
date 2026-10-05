@@ -51,7 +51,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hero-right { background:transparent; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:2rem; position:relative; }
 .hero-collage-img { width:100%; height:auto; max-height:90%; object-fit:contain; display:block; }
 .hero-placeholder { font-family:'Space Mono',monospace; font-size:13px; color:var(--grey-mid); text-transform:uppercase; letter-spacing:2px; }
-.hero-right::before { content:'🎨'; font-size:120px; opacity:.08; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+.hero-right::before { content:none; font-size:120px; opacity:.08; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
 .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
 .btn-black { background:var(--black); color:var(--white); padding:.9rem 2rem; border-radius:3rem; font-size:.88rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; border:none; cursor:pointer; text-decoration:none; transition:background .2s,transform .15s; display:inline-block; }
 .btn-black:hover { background:var(--pink); transform:translateY(-3px); }
@@ -106,7 +106,19 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .mat-i-text { font-size:13px; color:rgba(0,0,0,.45); line-height:1.7; }
 
 /* CURSOS */
-.cursos { padding:100px 60px; background:#fff; border-top:2px solid var(--negro); }
+.cursos { padding:100px 60px; border-top:2px solid var(--negro); position:relative;
+  /* Placa de acero cepillado */
+  background-color:#c9ced3;
+  background-image:
+    radial-gradient(circle at 22px 22px, #8d949b 0 5px, #e9ecef 5.5px 6.5px, transparent 7px),
+    radial-gradient(circle at calc(100% - 22px) 22px, #8d949b 0 5px, #e9ecef 5.5px 6.5px, transparent 7px),
+    radial-gradient(circle at 22px calc(100% - 22px), #8d949b 0 5px, #e9ecef 5.5px 6.5px, transparent 7px),
+    radial-gradient(circle at calc(100% - 22px) calc(100% - 22px), #8d949b 0 5px, #e9ecef 5.5px 6.5px, transparent 7px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.12) 0 1px, transparent 1px 3px, rgba(0,0,0,.02) 3px 4px, transparent 4px 7px),
+    linear-gradient(135deg, #dde1e5 0%, #b9c0c6 30%, #d6dade 52%, #aeb5bc 75%, #cfd4d8 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -2px 0 rgba(0,0,0,.12); }
+.cursos .section-subtitle { color:#2b2f33; }
+.cursos .curso-item { box-shadow:3px 4px 0 rgba(0,0,0,.18); }
 .cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
 .curso-item { border:1.5px solid var(--black); border-radius:12px; overflow:hidden; background:#fff; }
 .curso-row { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; cursor:pointer; transition:background .15s; }
@@ -166,7 +178,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cork-tex5 { position:absolute; inset:0; pointer-events:none; z-index:0; background: radial-gradient(ellipse at 25% 20%, rgba(220,190,140,.15) 0%, transparent 45%), radial-gradient(ellipse at 75% 75%, rgba(0,0,0,.08) 0%, transparent 45%), radial-gradient(ellipse at 60% 10%, rgba(210,180,130,.1) 0%, transparent 35%), radial-gradient(ellipse at 10% 80%, rgba(180,140,80,.06) 0%, transparent 30%); }
 
 .talleres .section-label { color:rgba(255,255,255,.95); position:relative; z-index:2; text-shadow:0 2px 8px rgba(0,0,0,.35); }
-.talleres .section-subtitle { color:rgba(255,255,255,.65); position:relative; z-index:2; text-shadow:0 1px 4px rgba(0,0,0,.25); }
+.talleres .section-subtitle { color:#1a1a1a; font-weight:500; position:relative; z-index:2; text-shadow:0 1px 2px rgba(255,255,255,.25); }
 
 /* Stars */
 .chalk-star { position:absolute; pointer-events:none; z-index:1; }
@@ -182,7 +194,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .chalk-deco-line2 { position:absolute; top:55%; left:35px; width:3px; height:100px; background:rgba(255,255,255,.03); transform:rotate(4deg); pointer-events:none; }
 
 /* CALENDARIO POST-IT ROSA SOBRE CORCHO */
-.calendar-frame { max-width:750px; margin:0 auto; position:relative; z-index:2; transform:rotate(0.6deg); }
+.calendar-frame { max-width:900px; margin:0 auto; position:relative; z-index:2; transform:rotate(0.6deg); }
 
 /* Chincheta — pin realista */
 .pushpin { position:absolute; top:-12px; left:50%; transform:translateX(-50%); z-index:10; width:28px; height:28px; }
@@ -290,8 +302,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 /* RESPONSIVE */
 @media(max-width:1024px) {
   .nav-hamburger { display:none; }
-  #hero { grid-template-columns:1fr; }
-  .hero-right { min-height:300px; }
+  #hero { grid-template-columns:1fr; min-height:auto; }
+  .hero-right { min-height:0; padding:0 1.5rem 2rem; }
   .pricing-grid { grid-template-columns:repeat(2,1fr); }
   .carta-pasos { grid-template-columns:1fr; }
   .cursos-grid { grid-template-columns:1fr; }
@@ -359,7 +371,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </div>
   </div>
   <div class="hero-right">
-    <span class="hero-placeholder">[ foto del espacio ]</span>
+    <img class="hero-collage-img" src="/images/espacio-foco-ilustracion.jpg" alt="Ilustración del espacio FOCO: mesa de creación, estanterías de materiales, corcho de inspiración y techo rosa" width="1264" height="842">
   </div>
 </section>
 
@@ -478,7 +490,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <div class="chalk-deco-line2"></div>
 
   <h2 class="section-label fade-up">Talleres</h2>
-  <p class="section-subtitle fade-up">Una sesión, una idea y un ratito para ti. Crea algo con tus manos y llévatelo a casa. Echa un vistazo al calendario, elige tu taller y reserva tu plaza.</p>
+  <p class="section-subtitle fade-up">Un taller, una idea y un ratito para ti. Crea algo con tus manos y llévatelo a casa. Echa un vistazo al calendario, elige tu taller y reserva tu plaza.</p>
 
   <div class="calendar-frame fade-up">
     <div class="pushpin"></div>
@@ -616,7 +628,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <p class="contact-bio">Un día descubrí que <em>mi hobby era tener hobbies</em>. Así que monté un espacio donde todo el mundo pueda venir a probar, crear y pasárselo bien.</p>
     <div class="contact-links">
       <a class="contact-link" href="https://instagram.com/espacio_foco" target="_blank">📸 @espacio_foco</a>
-      <a class="contact-link" href="https://wa.me/34600000000" target="_blank">💬 WhatsApp</a>
+      <a class="contact-link" href="https://wa.me/34633933741" target="_blank">💬 WhatsApp</a>
       <a class="contact-link" href="mailto:hola@espaciofoco.es">✉️ hola@espaciofoco.es</a>
       <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Calle+Huesca+30+Logro%C3%B1o" target="_blank">📍 C/ Huesca 30, Logroño</a>
     </div>
