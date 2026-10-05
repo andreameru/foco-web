@@ -284,7 +284,24 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .grupos-section { padding:0; border-top:2px solid var(--black); overflow:hidden; }
 
 /* REGALA */
-.regala-section { background:var(--kraft-light); border-top:2px solid var(--black); padding:80px 60px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+.regala-section { border-top:2px solid var(--black); padding:80px 60px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+  /* Base de corte verde */
+  background-color:#2e6a52;
+  background-image:
+    linear-gradient(45deg, transparent calc(50% - .5px), rgba(255,255,255,.07) 50%, transparent calc(50% + .5px)),
+    linear-gradient(rgba(255,255,255,.28) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(255,255,255,.28) 1.5px, transparent 1.5px),
+    linear-gradient(rgba(255,255,255,.11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.11) 1px, transparent 1px);
+  background-size:300px 300px, 150px 150px, 150px 150px, 30px 30px, 30px 30px;
+  box-shadow:inset 0 0 0 10px #255a45, inset 0 0 0 11px rgba(255,255,255,.25); }
+.regala-section .seccion-tag { color:var(--lime); }
+.regala-section .seccion-title { color:#fff; }
+.regala-section .seccion-body { color:rgba(255,255,255,.9); }
+.regala-section .curso-detalle-lista li { color:rgba(255,255,255,.85); }
+.regala-section .curso-detalle-lista li::before { color:var(--lime); }
+.regala-section .btn-black { background:#fff; color:var(--black); }
+.regala-section .btn-black:hover { background:var(--pink); color:#fff; }
 .regala-tarjeta-wrap { display:flex; justify-content:center; }
 .regala-tarjeta { width:100%; max-width:440px; aspect-ratio:85/55; background-color:var(--pink); background-image:radial-gradient(rgba(0,0,0,.16) 1.3px, transparent 1.8px); background-size:10px 10px; border:2px solid var(--black); border-radius:16px; box-shadow:6px 8px 0 var(--black); transform:rotate(-3deg); padding:22px 24px; display:flex; flex-direction:column; justify-content:space-between; color:var(--black); position:relative; }
 .rt-top { display:flex; justify-content:space-between; align-items:flex-start; }
