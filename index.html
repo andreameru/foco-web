@@ -47,7 +47,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hero-eyebrow::before { content:''; width:2rem; height:1.5px; background:var(--pink); display:block; }
 .hero-left h1 { font-family:'Space Mono',monospace; font-size:clamp(2.8rem,5vw,4.5rem); font-weight:700; line-height:1.05; letter-spacing:-.02em; margin-bottom:2rem; }
 .hero-left h1 .hl { display:inline-block; background:var(--pink); color:var(--white); padding:0 .3em; transform:rotate(-1deg); }
-.hero-left p { font-size:1.1rem; line-height:1.75; color:var(--grey-mid); max-width:400px; margin-bottom:3rem; }
+.hero-left p { font-size:1.1rem; line-height:1.75; color:var(--grey-mid); max-width:400px; }
 .hero-right { background:transparent; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:2rem; position:relative; }
 .hero-collage-img { width:100%; height:auto; max-height:90%; object-fit:contain; display:block; }
 .hero-placeholder { font-family:'Space Mono',monospace; font-size:13px; color:var(--grey-mid); text-transform:uppercase; letter-spacing:2px; }
@@ -76,6 +76,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cloud1 { position:absolute; top:40px; left:45%; width:400px; height:180px; background:radial-gradient(ellipse,rgba(255,255,255,.65) 0%,transparent 70%); filter:blur(18px); pointer-events:none; }
 .cloud2 { position:absolute; bottom:120px; left:20%; width:320px; height:150px; background:radial-gradient(ellipse,rgba(255,255,255,.5) 0%,transparent 70%); filter:blur(18px); pointer-events:none; }
 .club .section-label { color:#fff; }
+.club .section-subtitle { color:#1f3442; position:relative; z-index:2; }
+.club .mat-i-text { color:#2d4250; }
 
 /* PRICING CARDS */
 .pricing-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; margin:0 auto 28px; position:relative; z-index:2; max-width:1060px; }
@@ -94,8 +96,16 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .price-card-btn.rosa:hover { background:#d45a78; }
 .badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--rosa); color:#fff; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; padding:6px 18px; border-radius:50px; white-space:nowrap; }
 
-.carta-pasos { grid-template-columns:repeat(3,1fr); }
-.carta-pasos .price-card-price { font-size:38px; }
+.carta-pasos-linea { list-style:none; display:flex; flex-wrap:wrap; gap:10px; max-width:1060px; margin:0 auto 24px; position:relative; z-index:2; }
+.carta-pasos-linea li { background:rgba(255,255,255,.6); border:1.5px solid rgba(255,255,255,.9); border-radius:50px; padding:8px 18px; font-size:14px; color:#333; }
+.carta-pasos-linea b { font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--negro); margin-right:4px; }
+.carta-tiles { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; max-width:1060px; margin:0 auto 28px; position:relative; z-index:2; }
+.carta-tile { aspect-ratio:1; border:1.5px solid var(--negro); border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; position:relative; overflow:hidden;
+  background-color:var(--c); background-image:radial-gradient(rgba(0,0,0,.14) 1.2px, transparent 1.6px); background-size:9px 9px; box-shadow:3px 4px 0 rgba(0,0,0,.15); }
+.carta-tile:nth-child(odd) { transform:rotate(-1.2deg); }
+.carta-tile:nth-child(even) { transform:rotate(1deg); }
+.carta-tile-emoji { font-size:38px; line-height:1; }
+.carta-tile-name { font-family:'Bebas Neue',cursive; font-size:22px; letter-spacing:1px; background:#fff; color:var(--negro); padding:2px 10px; border:1.5px solid var(--negro); }
 
 /* MATERIALS — OPTION I (text with thick divider) */
 .mat-i { display:flex; gap:48px; align-items:stretch; position:relative; z-index:2; max-width:1060px; margin:0 auto; }
@@ -118,8 +128,13 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     linear-gradient(135deg, #dde1e5 0%, #b9c0c6 30%, #d6dade 52%, #aeb5bc 75%, #cfd4d8 100%);
   box-shadow:inset 0 2px 0 rgba(255,255,255,.6), inset 0 -2px 0 rgba(0,0,0,.12); }
 .cursos .section-subtitle { color:#2b2f33; }
-.cursos .curso-item { box-shadow:3px 4px 0 rgba(0,0,0,.18); }
-.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+.cursos .curso-item { background:linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 3px 4px 0 rgba(0,0,0,.16); }
+.cursos .curso-row:hover { background:rgba(255,255,255,.22); }
+.cursos .curso-emoji { background:rgba(255,255,255,.45); }
+.cursos .curso-precio, .cursos .curso-chevron { color:#4b5157; }
+.cursos .curso-detalle { border-top-color:rgba(0,0,0,.15); }
+.cursos .curso-detalle-desc, .cursos .curso-detalle-lista li { color:#2b2f33; }
+.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; align-items:start; }
 .curso-item { border:1.5px solid var(--black); border-radius:12px; overflow:hidden; background:#fff; }
 .curso-row { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; cursor:pointer; transition:background .15s; }
 .curso-row:hover { background:var(--grey); }
@@ -177,7 +192,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 /* Cork texture layer 5 — warm highlights and shadows */
 .cork-tex5 { position:absolute; inset:0; pointer-events:none; z-index:0; background: radial-gradient(ellipse at 25% 20%, rgba(220,190,140,.15) 0%, transparent 45%), radial-gradient(ellipse at 75% 75%, rgba(0,0,0,.08) 0%, transparent 45%), radial-gradient(ellipse at 60% 10%, rgba(210,180,130,.1) 0%, transparent 35%), radial-gradient(ellipse at 10% 80%, rgba(180,140,80,.06) 0%, transparent 30%); }
 
-.talleres .section-label { color:rgba(255,255,255,.95); position:relative; z-index:2; text-shadow:0 2px 8px rgba(0,0,0,.35); }
+.talleres .section-label { color:#1a1a1a; position:relative; z-index:2; }
 .talleres .section-subtitle { color:#1a1a1a; font-weight:500; position:relative; z-index:2; text-shadow:0 1px 2px rgba(255,255,255,.25); }
 
 /* Stars */
@@ -194,7 +209,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .chalk-deco-line2 { position:absolute; top:55%; left:35px; width:3px; height:100px; background:rgba(255,255,255,.03); transform:rotate(4deg); pointer-events:none; }
 
 /* CALENDARIO POST-IT ROSA SOBRE CORCHO */
-.calendar-frame { max-width:900px; margin:0 auto; position:relative; z-index:2; transform:rotate(0.6deg); }
+.calendar-frame { max-width:1180px; margin:0 auto; position:relative; z-index:2; transform:rotate(0.6deg); }
 
 /* Chincheta — pin realista */
 .pushpin { position:absolute; top:-12px; left:50%; transform:translateX(-50%); z-index:10; width:28px; height:28px; }
@@ -222,7 +237,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); border-bottom:2px solid rgba(74,32,48,.1); border-top:2px solid rgba(74,32,48,.1); margin:0 16px; position:relative; z-index:2; }
 .cal-day-name { font-family:'Space Mono',monospace; font-size:9px; color:rgba(74,32,48,.35); text-transform:uppercase; text-align:center; padding:8px 0; letter-spacing:2px; font-weight:700; }
 .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:0 16px 12px; position:relative; z-index:2; }
-.cal-cell { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid rgba(74,32,48,.05); border-right:1px solid rgba(74,32,48,.04); position:relative; transition:all .2s; padding:4px 2px; }
+.cal-cell { aspect-ratio:4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid rgba(74,32,48,.05); border-right:1px solid rgba(74,32,48,.04); position:relative; transition:all .2s; padding:4px 2px; }
 .cal-cell:nth-child(7n) { border-right:none; }
 .cal-cell .cal-num { font-family:'Bebas Neue',cursive; font-size:28px; color:rgba(74,32,48,.75); line-height:1; transition:color .2s; }
 .cal-cell.empty { background:transparent; }
@@ -269,7 +284,16 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .grupos-section { padding:0; border-top:2px solid var(--black); overflow:hidden; }
 
 /* REGALA */
-.regala-section { background:var(--kraft-light); border-top:2px solid var(--black); padding:80px 60px; }
+.regala-section { background:var(--kraft-light); border-top:2px solid var(--black); padding:80px 60px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+.regala-tarjeta-wrap { display:flex; justify-content:center; }
+.regala-tarjeta { width:100%; max-width:440px; aspect-ratio:85/55; background-color:var(--pink); background-image:radial-gradient(rgba(0,0,0,.16) 1.3px, transparent 1.8px); background-size:10px 10px; border:2px solid var(--black); border-radius:16px; box-shadow:6px 8px 0 var(--black); transform:rotate(-3deg); padding:22px 24px; display:flex; flex-direction:column; justify-content:space-between; color:var(--black); position:relative; }
+.rt-top { display:flex; justify-content:space-between; align-items:flex-start; }
+.rt-logo { font-family:'Space Mono',monospace; font-weight:700; font-size:22px; letter-spacing:.2em; background:#fff; padding:2px 8px; border:1.5px solid var(--black); }
+.rt-logo span { color:var(--pink); }
+.rt-tag { font-family:'Space Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:2px; background:var(--black); color:#fff; padding:4px 10px; border-radius:50px; }
+.rt-titulo { font-family:'Bebas Neue',cursive; font-size:clamp(34px,5vw,52px); line-height:.95; color:#fff; text-shadow:2px 2px 0 var(--black); }
+.rt-campos { background:#fff; border:1.5px solid var(--black); padding:8px 12px; font-family:'Space Mono',monospace; font-size:11px; line-height:1.9; }
+.rt-campos i { font-style:normal; display:inline-block; min-width:60px; color:var(--grey-mid); }
 .regala-inner { max-width:640px; }
 
 /* CONTACTO — Rosa pálido con nubes */
@@ -305,7 +329,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   #hero { grid-template-columns:1fr; min-height:auto; }
   .hero-right { min-height:0; padding:0 1.5rem 2rem; }
   .pricing-grid { grid-template-columns:repeat(2,1fr); }
-  .carta-pasos { grid-template-columns:1fr; }
+  .carta-tiles { grid-template-columns:repeat(3,1fr); }
   .cursos-grid { grid-template-columns:1fr; }
   #eventos { grid-template-columns:1fr; }
   .ev-price { padding-top:60px; }
@@ -321,6 +345,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .nav-links.open { display:flex; }
   .nav-links a { font-size:.9rem; padding:.9rem 0; border-bottom:1px solid var(--grey); letter-spacing:.04em; }
   .nav-pill { background:var(--pink); color:var(--white)!important; padding:.7rem 1.2rem!important; border-radius:2rem; margin-top:.5rem; text-align:center; border:none!important; }
+  #hero { padding-top:0; }
   .hero-left { padding:1.5rem 1.5rem 1.5rem; }
   .cursos-lista { grid-template-columns:1fr; }
   .hero-left h1 { font-size:2.2rem; }
@@ -331,12 +356,18 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .price-card-price { font-size:32px; }
   .materials-grid { grid-template-columns:1fr; }
   .mat-i { flex-direction:column; gap:12px; }
+  .carta-tiles { gap:10px; }
+  .carta-tile-emoji { font-size:28px; }
+  .carta-tile-name { font-size:17px; }
+  .regala-section { grid-template-columns:1fr; }
+  .regala-tarjeta { max-width:88%; padding:16px 18px; }
   .section-label { font-size:24px; }
   .footer { flex-direction:column; gap:16px; text-align:center; }
   .calendar-frame { transform:none; overflow-x:auto; }
   .calendar { min-width:320px; }
   .cal-header-title { font-size:36px; }
   .cal-cell .cal-num { font-size:20px; }
+  .cal-cell { aspect-ratio:1; }
   .cal-header-desc { display:none; }
 }
 </style>
@@ -345,7 +376,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#" class="nav-logo">f<span>★</span>co</a>
+  <a href="#" class="nav-logo">F<span>★</span>CO</a>
   <button class="nav-hamburger" id="navToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -365,10 +396,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <span class="hero-eyebrow">Espacio Creativo · Logroño</span>
     <h1>aquí se<br><span class="hl">crea.</span></h1>
     <p>Un lugar para venir a crear, desconectar y compartir tiempo con otras personas creativas.</p>
-    <div class="hero-btns">
-      <a href="#talleres" class="btn-black">Explorar</a>
-      <a href="#contacto" class="btn-ghost">Contacto</a>
-    </div>
   </div>
   <div class="hero-right">
     <img class="hero-collage-img" src="/images/espacio-foco-ilustracion.jpg" alt="Ilustración del espacio FOCO: mesa de creación, estanterías de materiales, corcho de inspiración y techo rosa" width="1264" height="842">
@@ -531,32 +558,25 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <h2 class="section-label fade-up">A la carta</h2>
   <p class="section-subtitle fade-up">¿No te encaja la fecha de ningún taller? Aquí decides tú: elige día y hora, escoge una de las manualidades de la carta y disfruta creando a tu aire. Todo el material incluido.</p>
 
-  <div class="pricing-grid carta-pasos fade-up">
-    <div class="price-card">
-      <div class="price-card-name">Paso 1</div>
-      <div class="price-card-price">Reserva</div>
-      <div class="price-card-detail">tu hora en los horarios disponibles</div>
-    </div>
-    <div class="price-card">
-      <div class="price-card-name">Paso 2</div>
-      <div class="price-card-price">Elige</div>
-      <div class="price-card-detail">una manualidad de la carta del mes</div>
-    </div>
-    <div class="price-card">
-      <div class="price-card-name">Paso 3</div>
-      <div class="price-card-price">Crea</div>
-      <div class="price-card-detail">a tu ritmo, con ayuda si la necesitas, y llévatela terminada</div>
-    </div>
+  <ol class="carta-pasos-linea fade-up">
+    <li><b>1 · Reserva</b> tu hora</li>
+    <li><b>2 · Elige</b> una manualidad de la carta</li>
+    <li><b>3 · Crea</b> y llévatela terminada</li>
+  </ol>
+
+  <div class="carta-tiles fade-up">
+    <div class="carta-tile" style="--c:#FF3FA4"><span class="carta-tile-emoji">🕯️</span><span class="carta-tile-name">Velas</span></div>
+    <div class="carta-tile" style="--c:#C8A87A"><span class="carta-tile-emoji">🏺</span><span class="carta-tile-name">Arcilla</span></div>
+    <div class="carta-tile" style="--c:#6B8FA8"><span class="carta-tile-emoji">💧</span><span class="carta-tile-name">Resina</span></div>
+    <div class="carta-tile" style="--c:#7FFF00"><span class="carta-tile-emoji">📿</span><span class="carta-tile-name">Abalorios</span></div>
+    <div class="carta-tile" style="--c:#FF85C8"><span class="carta-tile-emoji">🎨</span><span class="carta-tile-name">Pintura</span></div>
+    <div class="carta-tile" style="--c:#F0E4D0"><span class="carta-tile-emoji">🪡</span><span class="carta-tile-name">Bordado</span></div>
   </div>
 
   <div class="mat-i fade-up">
     <div class="mat-i-block">
       <div class="mat-i-title">✓ Qué incluye</div>
-      <div class="mat-i-text">Todo el material y las herramientas · Instrucciones paso a paso · Ayuda cuando la necesites · Tu creación terminada para llevar a casa</div>
-    </div>
-    <div class="mat-i-block">
-      <div class="mat-i-title">★ La carta de este mes</div>
-      <div class="mat-i-text">Muy pronto publicaremos las primeras manualidades. ¿Venís en grupo? Reservad todas las plazas a la vez y os sentamos juntas.</div>
+      <div class="mat-i-text">Todo el material y las herramientas · Instrucciones paso a paso · Ayuda cuando la necesites · Tu creación terminada para llevar a casa. ¿Venís en grupo? Reservad todas las plazas a la vez y os sentamos juntas.</div>
     </div>
   </div>
 </section>
@@ -616,6 +636,14 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </ul>
     <a href="mailto:hola@espaciofoco.es?subject=Quiero%20regalar%20FOCO" class="btn-black">Quiero regalar</a>
   </div>
+  <!-- Tarjeta regalo de ejemplo: sustituir por imagen real cuando esté (images/tarjeta-regalo.jpg) -->
+  <div class="regala-tarjeta-wrap fade-up" aria-hidden="true">
+    <div class="regala-tarjeta">
+      <div class="rt-top"><span class="rt-logo">F<span>★</span>CO</span><span class="rt-tag">Vale regalo</span></div>
+      <div class="rt-titulo">Un rato<br>para crear</div>
+      <div class="rt-campos"><i>Para:</i> ________________<br><i>De:</i> ________________<br><i>Vale por:</i> un taller a elegir</div>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACTO -->
@@ -637,7 +665,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">f<span>★</span>co</div>
+  <div class="footer-logo">F<span>★</span>CO</div>
   <div class="footer-center">Espacio Creativo · Logroño · © 2026</div>
   <div class="footer-right">
     <a href="/aviso-legal.html" style="color:#666;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Aviso legal</a>
@@ -664,12 +692,8 @@ function toggleCurso(id) {
   const detail = document.getElementById('detail-' + id);
   const chev = document.getElementById('chev-' + id);
   const isOpen = detail.classList.contains('open');
-  document.querySelectorAll('.curso-detalle').forEach(d => d.classList.remove('open'));
-  document.querySelectorAll('.curso-chevron').forEach(c => c.classList.remove('open'));
-  if (!isOpen) {
-    detail.classList.add('open');
-    chev.classList.add('open');
-  }
+  detail.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
 }
 
 // ===== CALENDAR =====
