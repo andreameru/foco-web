@@ -161,7 +161,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .curso-nombre { font-size:15px; font-weight:600; color:var(--black); }
 .curso-precio { font-size:13px; color:var(--grey-mid); margin-top:2px; }
 .curso-row-right { display:flex; align-items:center; gap:10px; }
-.curso-badge { font-size:11px; padding:3px 10px; border-radius:99px; background:var(--pink-pale); color:var(--pink); font-family:'Space Mono',monospace; }
+.curso-badge { font-size:11px; padding:3px 10px; border-radius:99px; background:var(--pink-pale); color:#B5176B; font-family:'Space Mono',monospace; }
 .curso-chevron { font-size:18px; color:var(--grey-mid); transition:transform .2s; display:inline-block; }
 .curso-chevron.open { transform:rotate(180deg); }
 .curso-detalle { display:none; padding:0 1.25rem 1.25rem; border-top:1.5px solid var(--grey); }
@@ -248,12 +248,12 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cal-header { background:transparent; border-bottom:none; padding:14px 24px 6px; display:flex; justify-content:space-between; align-items:center; position:relative; z-index:2; }
 .cal-header-title { font-family:'Bebas Neue',cursive; font-size:52px; color:#4a2030; line-height:1; letter-spacing:2px; }
 .cal-header-right { display:flex; gap:8px; align-items:center; }
-.cal-header-desc { font-family:'Space Mono',monospace; font-size:11px; color:rgba(74,32,48,.3); text-transform:uppercase; letter-spacing:2px; max-width:200px; text-align:right; line-height:1.5; }
+.cal-header-desc { font-family:'Space Mono',monospace; font-size:11px; color:rgba(74,32,48,.65); text-transform:uppercase; letter-spacing:2px; max-width:200px; text-align:right; line-height:1.5; }
 .cal-nav-btn { width:36px; height:36px; border:2px solid rgba(74,32,48,.18); background:transparent; color:rgba(74,32,48,.45); cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:all .2s; }
 .cal-nav-btn:hover { background:rgba(74,32,48,.08); color:#4a2030; border-color:rgba(74,32,48,.35); }
 .cal-nav-wrap { display:flex; gap:8px; }
 .cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); border-bottom:2px solid rgba(74,32,48,.1); border-top:2px solid rgba(74,32,48,.1); margin:0 16px; position:relative; z-index:2; }
-.cal-day-name { font-family:'Space Mono',monospace; font-size:9px; color:rgba(74,32,48,.35); text-transform:uppercase; text-align:center; padding:8px 0; letter-spacing:2px; font-weight:700; }
+.cal-day-name { font-family:'Space Mono',monospace; font-size:9px; color:rgba(74,32,48,.7); text-transform:uppercase; text-align:center; padding:8px 0; letter-spacing:1px; font-weight:700; }
 .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:0 16px 12px; position:relative; z-index:2; }
 .cal-cell { aspect-ratio:4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid rgba(74,32,48,.05); border-right:1px solid rgba(74,32,48,.04); position:relative; transition:all .2s; padding:4px 2px; }
 .cal-cell:nth-child(7n) { border-right:none; }
@@ -262,8 +262,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cal-cell.empty .cal-num { color:transparent; }
 .cal-cell.today { background:rgba(74,32,48,.08); border-radius:8px; }
 .cal-cell.today .cal-num { color:#4a2030; }
-.cal-cell.past { opacity:0.35; }
-.cal-cell.past .cal-num { color:rgba(74,32,48,.4); }
+.cal-cell.past { opacity:1; }
+.cal-cell.past .cal-num { color:rgba(74,32,48,.55); }
 .cal-cell.has-event { cursor:pointer; }
 .cal-cell.has-event .cal-num { color:rgba(74,32,48,.55); }
 .cal-cell.has-event:hover { background:rgba(232,107,138,.18); border-radius:8px; transform:scale(1.04); z-index:2; }
@@ -578,13 +578,13 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
       </div>
       <div class="cal-days-header">
-        <div class="cal-day-name">Lunes</div>
-        <div class="cal-day-name">Martes</div>
-        <div class="cal-day-name">Miérc.</div>
-        <div class="cal-day-name">Jueves</div>
-        <div class="cal-day-name">Viernes</div>
-        <div class="cal-day-name">Sábado</div>
-        <div class="cal-day-name">Doming.</div>
+        <div class="cal-day-name">Lun</div>
+        <div class="cal-day-name">Mar</div>
+        <div class="cal-day-name">Mié</div>
+        <div class="cal-day-name">Jue</div>
+        <div class="cal-day-name">Vie</div>
+        <div class="cal-day-name">Sáb</div>
+        <div class="cal-day-name">Dom</div>
       </div>
       <div class="cal-grid" id="calGrid"></div>
     </div>
@@ -674,7 +674,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <p class="seccion-body">Un rato para crear, envuelto para regalar. Elige un taller, una manualidad de la carta o un importe libre, y que lo disfrute quien tú quieras.</p>
     <ul class="curso-detalle-lista" style="margin-bottom:2rem">
       <li>En el local: lo pagas y te lo llevas en el momento.</li>
-      <li>Online: lo recoges en FOCO, te lo enviamos por correo postal o te lo mandamos en PDF para imprimir o regalar por WhatsApp.</li>
+      <li>Online: lo recoges en FOCO o te lo mandamos en PDF para imprimir o regalar por WhatsApp.</li>
     </ul>
     <a href="mailto:hola@espaciofoco.es?subject=Quiero%20regalar%20FOCO" class="btn-black">Quiero regalar</a>
   </div>
@@ -695,7 +695,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <div class="contact-photo">🎨</div>
     <div class="contact-name">Andrea la de FOCO</div>
     <div class="contact-role">Fundadora & Creativa</div>
-    <p class="contact-bio">Un día descubrí que <em>mi hobby era tener hobbies</em>. Así que monté un espacio donde todo el mundo pueda venir a probar, crear y pasárselo bien.</p>
+    <p class="contact-bio">Un día descubrí que <em>mi hobby era tener hobbies</em>. Así que monté un espacio donde todo el mundo pueda venir a probar, crear y pasárselo bien. Soy maestra de educación infantil, con especialidad en pedagogía terapéutica.</p>
     <div class="contact-links">
       <a class="contact-link" href="https://instagram.com/espacio_foco" target="_blank" rel="noopener noreferrer">📸 @espacio_foco</a>
       <a class="contact-link" href="https://wa.me/34633933741" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
