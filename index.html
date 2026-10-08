@@ -5,7 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOCO — Espacio Creativo · Logroño</title>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta name="description" content="Espacio creativo en Logroño: clubs creativos y de costura, talleres, manualidades a la carta y celebraciones en grupo. Muy pronto en Calle Huesca 30.">
+<link rel="canonical" href="https://espaciofoco.es/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="FOCO">
+<meta property="og:title" content="FOCO — Espacio Creativo · Logroño">
+<meta property="og:description" content="Espacio creativo en Logroño: clubs creativos y de costura, talleres, manualidades a la carta y celebraciones en grupo. Muy pronto en Calle Huesca 30.">
+<meta property="og:url" content="https://espaciofoco.es/">
+<meta property="og:image" content="https://espaciofoco.es/images/og-foco.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ilustración del espacio creativo FOCO en Logroño">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FF3FA4">
+<link rel="preload" href="/fonts/space-mono-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts.css">
 <style>
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 :root {
@@ -15,7 +33,7 @@
   --black: #111111;
   --white: #FFFFFF;
   --grey: #EBEBEB;
-  --grey-mid: #8A8A8A;
+  --grey-mid: #6B6B6B;
   --blue: #6B8FA8;
   --lime: #7FFF00;
   --kraft: #C8A87A;
@@ -332,8 +350,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .footer { background:var(--negro); border-top:4px solid var(--rosa); padding:40px 60px; display:flex; justify-content:space-between; align-items:center; }
 .footer-logo { font-family:'Bebas Neue',cursive; font-size:32px; color:#fff; }
 .footer-logo span { color:var(--rosa); }
-.footer-center { font-family:'Space Mono',monospace; font-size:11px; color:#666; }
-.footer-right { font-family:'Space Mono',monospace; font-size:11px; color:#666; }
+.footer-center { font-family:'Space Mono',monospace; font-size:11px; color:#A3A3A3; }
+.footer-right { font-family:'Space Mono',monospace; font-size:11px; color:#A3A3A3; }
 
 /* ANIMATIONS */
 @keyframes fadeUp { from { opacity:0; transform:translateY(30px) } to { opacity:1; transform:translateY(0) } }
@@ -413,9 +431,16 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <span class="hero-eyebrow">Espacio Creativo · Logroño</span>
     <h1>aquí se<br><span class="hl">crea.</span></h1>
     <p>Un lugar para venir a crear, desconectar y compartir tiempo con otras personas creativas.</p>
+    <div class="hero-btns" style="margin-top:2rem">
+      <a href="#cursos" class="btn-black">Ver cursos</a>
+      <a href="#contacto" class="btn-ghost">Escríbenos</a>
+    </div>
   </div>
   <div class="hero-right">
-    <img class="hero-collage-img" src="/images/espacio-foco-ilustracion.jpg" alt="Ilustración del espacio FOCO: mesa de creación, estanterías de materiales, corcho de inspiración y techo rosa" width="1264" height="842">
+    <picture>
+      <source srcset="/images/espacio-foco-ilustracion.webp" type="image/webp">
+      <img class="hero-collage-img" src="/images/espacio-foco-ilustracion.jpg" alt="Ilustración del espacio FOCO: mesa de creación, estanterías de materiales, corcho de inspiración y techo rosa" width="1264" height="842" fetchpriority="high" decoding="async">
+    </picture>
   </div>
 </section>
 
@@ -672,10 +697,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <div class="contact-role">Fundadora & Creativa</div>
     <p class="contact-bio">Un día descubrí que <em>mi hobby era tener hobbies</em>. Así que monté un espacio donde todo el mundo pueda venir a probar, crear y pasárselo bien.</p>
     <div class="contact-links">
-      <a class="contact-link" href="https://instagram.com/espacio_foco" target="_blank">📸 @espacio_foco</a>
-      <a class="contact-link" href="https://wa.me/34633933741" target="_blank">💬 WhatsApp</a>
+      <a class="contact-link" href="https://instagram.com/espacio_foco" target="_blank" rel="noopener noreferrer">📸 @espacio_foco</a>
+      <a class="contact-link" href="https://wa.me/34633933741" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
       <a class="contact-link" href="mailto:hola@espaciofoco.es">✉️ hola@espaciofoco.es</a>
-      <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Calle+Huesca+30+Logro%C3%B1o" target="_blank">📍 C/ Huesca 30, Logroño</a>
+      <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=Calle+Huesca+30+Logro%C3%B1o" target="_blank" rel="noopener noreferrer">📍 C/ Huesca 30, Logroño</a>
     </div>
   </div>
 </section>
@@ -685,9 +710,9 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <div class="footer-logo">F<span>★</span>CO</div>
   <div class="footer-center">Espacio Creativo · Logroño · © 2026</div>
   <div class="footer-right">
-    <a href="/aviso-legal.html" style="color:#666;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Aviso legal</a>
-    <a href="/privacidad.html" style="color:#666;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Privacidad</a>
-    <a href="/cookies.html" style="color:#666;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;">Cookies</a>
+    <a href="/aviso-legal.html" style="color:#A3A3A3;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Aviso legal</a>
+    <a href="/privacidad.html" style="color:#A3A3A3;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Privacidad</a>
+    <a href="/cookies.html" style="color:#A3A3A3;text-decoration:none;font-family:'Space Mono',monospace;font-size:11px;">Cookies</a>
   </div>
 </footer>
 

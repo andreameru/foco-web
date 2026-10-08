@@ -1,0 +1,28 @@
+# Cabeceras de seguridad para todas las páginas.
+# Netlify ya sirve la web por HTTPS y renueva el certificado solo;
+# Strict-Transport-Security hace que el navegador use siempre HTTPS.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+
+# Las tipografías y las imágenes casi no cambian: que el navegador las guarde.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# El panel de edición no debe salir en buscadores.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
