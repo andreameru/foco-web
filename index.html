@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FOCO — Espacio Creativo · Logroño</title>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 :root {
@@ -154,6 +154,40 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .curso-detalle-lista li::before { content:'✦'; position:absolute; left:0; color:var(--pink); font-size:10px; top:2px; }
 .curso-reservar-btn { display:inline-block; font-size:13px; padding:8px 20px; border-radius:50px; border:1.5px solid var(--black); background:transparent; color:var(--black); cursor:pointer; text-decoration:none; transition:all .2s; }
 .curso-reservar-btn:hover { background:var(--black); color:#fff; }
+
+/* HORARIO SEMANAL (trazo a mano) */
+.horario-wrap { margin-top:56px; }
+.horario-titulo { font-family:'Caveat',cursive; font-weight:700; text-transform:uppercase; letter-spacing:.06em; font-size:clamp(30px,5vw,44px); color:#1f2428; text-align:center; margin-bottom:18px; }
+.horario-hoja { position:relative; max-width:1000px; margin:0 auto; padding:10px; background:var(--crema); border-radius:26px 20px 28px 18px / 20px 28px 18px 26px; box-shadow:3px 4px 0 rgba(0,0,0,.16); }
+.horario-hoja::before { content:''; position:absolute; inset:3px; border:3px solid #111; border-radius:24px 18px 26px 16px / 18px 26px 16px 24px; filter:url(#trazo-mano); pointer-events:none; }
+.horario { width:100%; border-collapse:separate; border-spacing:0; table-layout:fixed; position:relative; }
+.horario th, .horario td { position:relative; text-align:center; vertical-align:middle; font-family:'Caveat',cursive; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#111; padding:8px 4px; }
+.horario th::after, .horario td::after { content:''; position:absolute; inset:0; border-right:2.5px solid #111; border-bottom:2.5px solid #111; filter:url(#trazo-mano); pointer-events:none; }
+.horario th:last-child::after, .horario td:last-child::after { border-right:none; }
+.horario tr:last-child th::after, .horario tr:last-child td::after { border-bottom:none; }
+.horario thead th { font-size:clamp(17px,2vw,25px); letter-spacing:.02em; padding:14px 2px 10px; white-space:nowrap; }
+.horario tbody th { font-size:clamp(17px,2.2vw,24px); color:var(--pink); line-height:1.05; width:17%; }
+.horario tbody th span { display:inline; }
+.horario tbody td { height:84px; font-size:clamp(15px,1.9vw,21px); line-height:1.1; }
+.horario .d-corto { display:none; }
+.horario .h-sep { display:inline; }
+@media(max-width:860px) {
+  .horario .d-largo { display:none; }
+  .horario .d-corto { display:inline; }
+}
+@media(max-width:640px) {
+  .horario-wrap { margin-top:36px; }
+  .horario-hoja { padding:6px; border-radius:20px 16px 22px 14px / 16px 22px 14px 20px; }
+  .horario-hoja::before { inset:2px; border-width:2.5px; }
+  .horario th, .horario td { padding:6px 1px; letter-spacing:.02em; }
+  .horario .d-largo { display:none; }
+  .horario .d-corto { display:inline; }
+  .horario thead th { font-size:19px; padding:10px 1px 8px; }
+  .horario tbody th { font-size:17px; width:19%; }
+  .horario tbody th span { display:block; }
+  .horario .h-sep { display:none; }
+  .horario tbody td { height:68px; font-size:13px; }
+}
 .cursos-grid { display:grid; grid-template-columns:2fr 1fr; gap:60px; }
 .curso-content-title { font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; margin-bottom:16px; }
 .curso-content-desc { font-size:16px; color:#555; line-height:1.7; margin-bottom:32px; }
@@ -585,6 +619,41 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
       </div>
     </div>
 
+  </div>
+
+  <div class="horario-wrap fade-up">
+    <h3 class="horario-titulo">Horario semanal</h3>
+    <!-- Para rellenar: escribe el nombre del club dentro del <td> que corresponda, p. ej. <td>Costura adultos</td> -->
+    <div class="horario-hoja">
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <filter id="trazo-mano" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7" result="ruido"/>
+          <feDisplacementMap in="SourceGraphic" in2="ruido" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </svg>
+      <table class="horario">
+        <thead>
+          <tr>
+            <th scope="col"><span class="visually-hidden" style="position:absolute;left:-9999px">Hora</span></th>
+            <th scope="col"><span class="d-largo">LUNES</span><span class="d-corto">LUN</span></th><th scope="col"><span class="d-largo">MARTES</span><span class="d-corto">MAR</span></th><th scope="col"><span class="d-largo">MIÉRCOLES</span><span class="d-corto">MIÉ</span></th><th scope="col"><span class="d-largo">JUEVES</span><span class="d-corto">JUE</span></th><th scope="col"><span class="d-largo">VIERNES</span><span class="d-corto">VIE</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><span>10:30</span><span class="h-sep"> – </span><span>12:00</span></th>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th scope="row"><span>17:00</span><span class="h-sep"> – </span><span>18:30</span></th>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <th scope="row"><span>18:30</span><span class="h-sep"> – </span><span>20:00</span></th>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
