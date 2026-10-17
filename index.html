@@ -165,6 +165,9 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .horario td.vacio { border:1px dashed rgba(35,39,43,.28); }
 .horario thead th { font-size:12px; letter-spacing:.1em; text-transform:uppercase; padding:6px 2px; }
 .horario tbody th { font-weight:400; color:#23272b; font-size:12px; letter-spacing:.02em; }
+.horario td.multi { padding:0; border:none; height:auto; background:transparent; }
+.horario .hm { border:1px solid rgba(35,39,43,.38); border-radius:10px; padding:7px 4px; min-height:36px; display:flex; align-items:center; justify-content:center; }
+.horario .hm + .hm { margin-top:4px; }
 .hc-azul { background:#D3E2EE; color:#1f3f58; }
 .hc-rosa { background:#FADCEB; color:#7a2250; }
 .hc-verde { background:#DDEBCD; color:#33501d; }
@@ -174,6 +177,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 @media(max-width:640px) {
   .horario-wrap { margin-top:34px; }
   .horario td { height:58px; font-size:12px; padding:4px 3px; border-radius:8px; }
+  .horario .hm { border-radius:8px; padding:5px 3px; min-height:32px; }
   .horario thead th { font-size:12px; letter-spacing:.02em; }
   .horario tbody th { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
 }
@@ -827,6 +831,7 @@ function toggleCurso(id) {
 // Para rellenarlo: añade una línea en HORARIO.celdas con 'día hora de inicio': 'club'.
 // Días: lunes, martes, miercoles, jueves, viernes. Horas: 10:30, 17:00, 18:30.
 // Ejemplo:  'lunes 10:30': 'costura-adultos',
+// Si coinciden dos clubs a la vez, usa una lista:  'martes 17:00': ['costura-adultos', 'creativo-ninos'],
 const CLUBS = {
   'costura-adultos': { nombre:'Costura adultos', clase:'hc-azul' },
   'costura-ninos':   { nombre:'Costura niños',   clase:'hc-rosa' },
@@ -839,11 +844,16 @@ const HORARIO = {
   dias: [['lunes','Lunes','Lun'],['martes','Martes','Mar'],['miercoles','Miércoles','Mié'],['jueves','Jueves','Jue'],['viernes','Viernes','Vie']],
   franjas: [['10:30','12:00'],['17:00','18:30'],['18:30','20:00']],
   celdas: {
+    'martes 17:00': ['costura-adultos', 'creativo-ninos'],
+    'martes 18:30': 'creativo-adultos'
   }
 };
 function celdaHorario(dia, franja) {
-  const club = CLUBS[HORARIO.celdas[dia + ' ' + franja]];
-  return club ? '<td class="' + club.clase + '">' + club.nombre + '</td>' : '<td class="vacio"></td>';
+  const valor = HORARIO.celdas[dia + ' ' + franja];
+  const clubs = (Array.isArray(valor) ? valor : [valor]).map(k => CLUBS[k]).filter(Boolean);
+  if (clubs.length === 0) return '<td class="vacio"></td>';
+  if (clubs.length === 1) return '<td class="' + clubs[0].clase + '">' + clubs[0].nombre + '</td>';
+  return '<td class="multi">' + clubs.map(c => '<div class="hm ' + c.clase + '">' + c.nombre + '</div>').join('') + '</td>';
 }
 function renderHorario() {
   const el = document.getElementById('horario');
