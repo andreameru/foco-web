@@ -154,6 +154,29 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .curso-detalle-lista li::before { content:'✦'; position:absolute; left:0; color:var(--pink); font-size:10px; top:2px; }
 .curso-reservar-btn { display:inline-block; font-size:13px; padding:8px 20px; border-radius:50px; border:1.5px solid var(--black); background:transparent; color:var(--black); cursor:pointer; text-decoration:none; transition:all .2s; }
 .curso-reservar-btn:hover { background:var(--black); color:#fff; }
+
+/* HORARIO SEMANAL */
+.horario-wrap { margin-top:48px; }
+.horario-titulo { font-family:'Space Mono',monospace; font-weight:700; font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:#23272b; text-align:center; margin-bottom:14px; }
+.horario-caja { max-width:1000px; margin:0 auto; }
+.horario { width:calc(100% + 12px); margin:-6px; border-collapse:separate; border-spacing:6px; table-layout:fixed; font-family:'Space Mono',monospace; color:#23272b; }
+.horario th, .horario td { text-align:center; vertical-align:middle; font-size:12px; font-weight:700; line-height:1.25; }
+.horario td { height:64px; padding:6px 4px; border:1px solid rgba(35,39,43,.38); border-radius:10px; }
+.horario td.vacio { border:1px dashed rgba(35,39,43,.28); }
+.horario thead th { font-size:12px; letter-spacing:.1em; text-transform:uppercase; padding:6px 2px; }
+.horario tbody th { font-weight:400; color:#23272b; font-size:12px; letter-spacing:.02em; }
+.hc-azul { background:#D3E2EE; color:#1f3f58; }
+.hc-rosa { background:#FADCEB; color:#7a2250; }
+.hc-verde { background:#DDEBCD; color:#33501d; }
+.hc-kraft { background:#F0E4D0; color:#5c4220; }
+.hc-arena { background:#E6D3B1; color:#54401c; }
+.hc-gris { background:#E8EBED; color:#2f363c; }
+@media(max-width:640px) {
+  .horario-wrap { margin-top:34px; }
+  .horario td { height:58px; font-size:12px; padding:4px 3px; border-radius:8px; }
+  .horario thead th { font-size:12px; letter-spacing:.02em; }
+  .horario tbody th { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+}
 .cursos-grid { display:grid; grid-template-columns:2fr 1fr; gap:60px; }
 .curso-content-title { font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; margin-bottom:16px; }
 .curso-content-desc { font-size:16px; color:#555; line-height:1.7; margin-bottom:32px; }
@@ -586,6 +609,11 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </div>
 
   </div>
+
+  <div class="horario-wrap fade-up">
+    <h3 class="horario-titulo">Horario semanal</h3>
+    <div class="horario-caja" id="horario"></div>
+  </div>
 </section>
 
 <!-- TALLERES -->
@@ -794,6 +822,57 @@ function toggleCurso(id) {
   detail.classList.toggle('open', !isOpen);
   chev.classList.toggle('open', !isOpen);
 }
+
+// ===== HORARIO SEMANAL =====
+// Para rellenarlo: añade una línea en HORARIO.celdas con 'día hora de inicio': 'club'.
+// Días: lunes, martes, miercoles, jueves, viernes. Horas: 10:30, 17:00, 18:30.
+// Ejemplo:  'lunes 10:30': 'costura-adultos',
+const CLUBS = {
+  'costura-adultos': { nombre:'Costura adultos', clase:'hc-azul' },
+  'costura-ninos':   { nombre:'Costura niños',   clase:'hc-rosa' },
+  'creativo-adultos':{ nombre:'Creativo adultos',clase:'hc-verde' },
+  'creativo-ninos':  { nombre:'Creativo niños',  clase:'hc-kraft' },
+  'ganchillo':       { nombre:'Ganchillo',       clase:'hc-arena' },
+  'lectura':         { nombre:'Lectura',         clase:'hc-gris' }
+};
+const HORARIO = {
+  dias: [['lunes','Lunes','Lun'],['martes','Martes','Mar'],['miercoles','Miércoles','Mié'],['jueves','Jueves','Jue'],['viernes','Viernes','Vie']],
+  franjas: [['10:30','12:00'],['17:00','18:30'],['18:30','20:00']],
+  celdas: {
+  }
+};
+function celdaHorario(dia, franja) {
+  const club = CLUBS[HORARIO.celdas[dia + ' ' + franja]];
+  return club ? '<td class="' + club.clase + '">' + club.nombre + '</td>' : '<td class="vacio"></td>';
+}
+function renderHorario() {
+  const el = document.getElementById('horario');
+  if (!el) return;
+  const movil = window.matchMedia('(max-width:640px)').matches;
+  let h = '<table class="horario">';
+  if (!movil) {
+    h += '<colgroup><col style="width:14%"><col><col><col><col><col></colgroup><thead><tr><th></th>';
+    HORARIO.dias.forEach(d => { h += '<th scope="col">' + d[1] + '</th>'; });
+    h += '</tr></thead><tbody>';
+    HORARIO.franjas.forEach(f => {
+      h += '<tr><th scope="row">' + f[0] + '<br>' + f[1] + '</th>';
+      HORARIO.dias.forEach(d => { h += celdaHorario(d[0], f[0]); });
+      h += '</tr>';
+    });
+  } else {
+    h += '<colgroup><col style="width:44px"><col><col><col></colgroup><thead><tr><th></th>';
+    HORARIO.franjas.forEach(f => { h += '<th scope="col">' + f[0] + '<br>' + f[1] + '</th>'; });
+    h += '</tr></thead><tbody>';
+    HORARIO.dias.forEach(d => {
+      h += '<tr><th scope="row">' + d[2] + '</th>';
+      HORARIO.franjas.forEach(f => { h += celdaHorario(d[0], f[0]); });
+      h += '</tr>';
+    });
+  }
+  el.innerHTML = h + '</tbody></table>';
+}
+renderHorario();
+window.matchMedia('(max-width:640px)').addEventListener('change', renderHorario);
 
 // ===== CALENDAR =====
 // Talleres: añade uno por línea con la fecha 'año-mes-día'.
