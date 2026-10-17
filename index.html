@@ -160,26 +160,27 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .horario-titulo { font-family:'Space Mono',monospace; font-weight:700; font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:#23272b; text-align:center; margin-bottom:14px; }
 .horario-caja { max-width:1000px; margin:0 auto; }
 .horario { width:calc(100% + 12px); margin:-6px; border-collapse:separate; border-spacing:6px; table-layout:fixed; font-family:'Space Mono',monospace; color:#23272b; }
-.horario th, .horario td { text-align:center; vertical-align:middle; font-size:12px; font-weight:700; line-height:1.25; }
-.horario td { height:64px; padding:6px 4px; border:1px solid rgba(35,39,43,.38); border-radius:10px; }
-.horario td.vacio { border:1px dashed rgba(35,39,43,.28); }
+.horario th, .horario td { text-align:center; vertical-align:middle; font-size:12px; font-weight:700; line-height:1.3; }
+.horario td { height:64px; padding:6px 5px; border-radius:12px; }
+.horario td.vacio { border:1px dashed rgba(35,39,43,.3); }
+.horario td.club { border:1.5px solid var(--black); background:linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 3px 4px 0 rgba(0,0,0,.16); }
+.horario td.multi { padding:6px 5px; }
+.horario .hl + .hl { margin-top:6px; padding-top:6px; border-top:1px dashed rgba(17,17,17,.4); }
 .horario thead th { font-size:12px; letter-spacing:.1em; text-transform:uppercase; padding:6px 2px; }
 .horario tbody th { font-weight:400; color:#23272b; font-size:12px; letter-spacing:.02em; }
-.horario td.multi { padding:0; border:none; height:auto; background:transparent; }
-.horario .hm { border:1px solid rgba(35,39,43,.38); border-radius:10px; padding:7px 4px; min-height:36px; display:flex; align-items:center; justify-content:center; }
-.horario .hm + .hm { margin-top:4px; }
-.hc-azul { background:#D3E2EE; color:#1f3f58; }
-.hc-rosa { background:#FADCEB; color:#7a2250; }
-.hc-verde { background:#DDEBCD; color:#33501d; }
-.hc-kraft { background:#F0E4D0; color:#5c4220; }
-.hc-arena { background:#E6D3B1; color:#54401c; }
-.hc-gris { background:#E8EBED; color:#2f363c; }
+.hpunto { display:inline-block; width:9px; height:9px; border-radius:50%; border:1.5px solid var(--black); margin-right:6px; vertical-align:-1px; }
+.hp-azul { background:#5B7FA6; }
+.hp-rosa { background:#FF3FA4; }
+.hp-kraft { background:#C8A87A; }
+.hp-verde { background:#3DFF00; }
+.horario-leyenda { display:flex; justify-content:center; flex-wrap:wrap; gap:6px 18px; margin-top:14px; font-family:'Space Mono',monospace; font-size:12px; color:#23272b; }
 @media(max-width:640px) {
   .horario-wrap { margin-top:34px; }
-  .horario td { height:58px; font-size:12px; padding:4px 3px; border-radius:8px; }
-  .horario .hm { border-radius:8px; padding:5px 3px; min-height:32px; }
-  .horario thead th { font-size:12px; letter-spacing:.02em; }
-  .horario tbody th { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+  .horario td { height:58px; padding:4px 3px; border-radius:10px; }
+  .horario td.multi { padding:5px 3px; }
+  .horario thead th { letter-spacing:.02em; }
+  .horario tbody th { font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
+  .hpunto { margin-right:4px; }
 }
 .cursos-grid { display:grid; grid-template-columns:2fr 1fr; gap:60px; }
 .curso-content-title { font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; margin-bottom:16px; }
@@ -617,6 +618,12 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <div class="horario-wrap fade-up">
     <h3 class="horario-titulo">Horario semanal</h3>
     <div class="horario-caja" id="horario"></div>
+    <div class="horario-leyenda" aria-hidden="true">
+      <span><i class="hpunto hp-azul"></i>Costura</span>
+      <span><i class="hpunto hp-rosa"></i>Club creativo</span>
+      <span><i class="hpunto hp-kraft"></i>Ganchillo</span>
+      <span><i class="hpunto hp-verde"></i>Lectura</span>
+    </div>
   </div>
 </section>
 
@@ -833,12 +840,12 @@ function toggleCurso(id) {
 // Ejemplo:  'lunes 10:30': 'costura-adultos',
 // Si coinciden dos clubs a la vez, usa una lista:  'martes 17:00': ['costura-adultos', 'creativo-ninos'],
 const CLUBS = {
-  'costura-adultos': { nombre:'Costura adultos', clase:'hc-azul' },
-  'costura-ninos':   { nombre:'Costura niños',   clase:'hc-rosa' },
-  'creativo-adultos':{ nombre:'Creativo adultos',clase:'hc-verde' },
-  'creativo-ninos':  { nombre:'Creativo niños',  clase:'hc-kraft' },
-  'ganchillo':       { nombre:'Ganchillo',       clase:'hc-arena' },
-  'lectura':         { nombre:'Lectura',         clase:'hc-gris' }
+  'costura-adultos': { nombre:'Costura adultos', punto:'hp-azul' },
+  'costura-ninos':   { nombre:'Costura niños',   punto:'hp-azul' },
+  'creativo-adultos':{ nombre:'Creativo adultos',punto:'hp-rosa' },
+  'creativo-ninos':  { nombre:'Creativo niños',  punto:'hp-rosa' },
+  'ganchillo':       { nombre:'Ganchillo',       punto:'hp-kraft' },
+  'lectura':         { nombre:'Lectura',         punto:'hp-verde' }
 };
 const HORARIO = {
   dias: [['lunes','Lunes','Lun'],['martes','Martes','Mar'],['miercoles','Miércoles','Mié'],['jueves','Jueves','Jue'],['viernes','Viernes','Vie']],
@@ -852,8 +859,8 @@ function celdaHorario(dia, franja) {
   const valor = HORARIO.celdas[dia + ' ' + franja];
   const clubs = (Array.isArray(valor) ? valor : [valor]).map(k => CLUBS[k]).filter(Boolean);
   if (clubs.length === 0) return '<td class="vacio"></td>';
-  if (clubs.length === 1) return '<td class="' + clubs[0].clase + '">' + clubs[0].nombre + '</td>';
-  return '<td class="multi">' + clubs.map(c => '<div class="hm ' + c.clase + '">' + c.nombre + '</div>').join('') + '</td>';
+  const lineas = clubs.map(c => '<div class="hl"><i class="hpunto ' + c.punto + '"></i>' + c.nombre + '</div>').join('');
+  return '<td class="club' + (clubs.length > 1 ? ' multi' : '') + '">' + lineas + '</td>';
 }
 function renderHorario() {
   const el = document.getElementById('horario');
