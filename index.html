@@ -174,6 +174,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hp-kraft { background:#C8A87A; }
 .hp-verde { background:#3DFF00; }
 .horario-leyenda { display:flex; justify-content:center; flex-wrap:wrap; gap:6px 18px; margin-top:14px; font-family:'Space Mono',monospace; font-size:12px; color:#23272b; }
+.horario-nota { max-width:620px; margin:22px auto 0; padding:14px 18px; border:1.5px solid var(--black); border-radius:12px; background:linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 3px 4px 0 rgba(0,0,0,.16); color:#2b2f33; font-size:14px; line-height:1.65; text-align:center; }
+.horario-nota-titulo { font-family:'Space Mono',monospace; font-weight:700; font-size:12px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
 @media(max-width:640px) {
   .horario-wrap { margin-top:34px; }
   .horario td { height:58px; padding:4px 3px; border-radius:10px; }
@@ -181,6 +183,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .horario thead th { letter-spacing:.02em; }
   .horario tbody th { font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
   .hpunto { margin-right:4px; }
+  .horario-nota { margin-top:18px; padding:12px 14px; font-size:14px; }
 }
 .cursos-grid { display:grid; grid-template-columns:2fr 1fr; gap:60px; }
 .curso-content-title { font-family:'Space Grotesk',sans-serif; font-size:32px; font-weight:700; margin-bottom:16px; }
@@ -623,6 +626,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
       <span><i class="hpunto hp-rosa"></i>Club creativo</span>
       <span><i class="hpunto hp-kraft"></i>Ganchillo</span>
       <span><i class="hpunto hp-verde"></i>Lectura</span>
+    </div>
+    <div class="horario-nota">
+      <p class="horario-nota-titulo">✦ Los martes, de 17:00 a 18:30</p>
+      <p>Coinciden el Club de costura para adultos y el Club creativo para niños. Si quieres un rato para ti y aprender a coser, y no tienes con quién dejar a tu peque, puede venir contigo al club creativo. Si os apuntáis a los dos, tenéis precio especial.</p>
     </div>
   </div>
 </section>
