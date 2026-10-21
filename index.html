@@ -934,7 +934,7 @@ function renderCalendar(month, year) {
   for (let d = 1; d <= daysInMonth; d++) {
     const cell = document.createElement('div');
     cell.className = 'cal-cell';
-    const key = `${year}-${month+1}-${d}`;
+    const key = `${year}-${String(month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
     const isToday = today.getDate() === d && today.getMonth() === month && today.getFullYear() === year;
     if (isToday) cell.classList.add('today');
     if (new Date(year, month, d) < today && !isToday) cell.classList.add('past');
