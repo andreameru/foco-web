@@ -135,7 +135,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cursos .curso-precio, .cursos .curso-chevron { color:#4b5157; }
 .cursos .curso-detalle { border-top-color:rgba(0,0,0,.15); }
 .cursos .curso-detalle-desc, .cursos .curso-detalle-lista li { color:#2b2f33; }
-.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; align-items:start; }
+.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); grid-template-rows:repeat(2, auto); grid-auto-flow:column; gap:16px; align-items:start; }
 .curso-item { border:1.5px solid var(--black); border-radius:12px; overflow:hidden; background:#fff; }
 .curso-row { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; cursor:pointer; transition:background .15s; }
 .curso-row:hover { background:var(--grey); }
@@ -397,7 +397,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .nav-pill { background:var(--pink); color:var(--white)!important; padding:.7rem 1.2rem!important; border-radius:2rem; margin-top:.5rem; text-align:center; border:none!important; }
   #hero { padding-top:0; }
   .hero-left { padding:1.5rem 1.5rem 1.5rem; }
-  .cursos-lista { grid-template-columns:1fr; }
+  .cursos-lista { grid-template-columns:1fr; grid-template-rows:none; grid-auto-flow:row; }
   .hero-left h1 { font-size:2.2rem; }
   .club, .cursos, .talleres, .grupos-section, .contacto, .regala-section { padding:40px 16px; }
   .ev-info, .ev-price { padding:40px 16px; }
@@ -431,7 +431,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="#cursos" onclick="cerrarMenu()">Cursos</a>
+    <a href="#cursos" onclick="cerrarMenu()">Clubs</a>
     <a href="#talleres" onclick="cerrarMenu()">Talleres</a>
     <a href="#carta" onclick="cerrarMenu()">A la carta</a>
     <a href="#grupos" onclick="cerrarMenu()">Grupos</a>
@@ -445,7 +445,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <div class="hero-left">
     <span class="hero-eyebrow">Espacio Creativo · Logroño</span>
     <h1>aquí se<br><span class="hl">crea.</span></h1>
-    <p>Un lugar para venir a crear, desconectar y compartir tiempo con otras personas creativas.</p>
+    <p>Un lugar para venir a crear, desconectar y compartir tiempo con otras personas.</p>
   </div>
   <div class="hero-right">
     <img class="hero-collage-img" src="/images/espacio-foco-ilustracion.jpg" alt="Ilustración del espacio FOCO: mesa de creación, estanterías de materiales, corcho de inspiración y techo rosa" width="1264" height="842">
@@ -455,14 +455,14 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Cursos semanales <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> Cursos semanales <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> </span>
-    <span>Cursos semanales <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> Cursos semanales <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> </span>
+    <span>Clubs <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> Clubs <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> </span>
+    <span>Clubs <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> Clubs <i class="star">★</i> Talleres <i class="star">★</i> A la carta <i class="star">★</i> Grupos y celebraciones <i class="star">★</i> Regala FOCO <i class="star">★</i> </span>
   </div>
 </div>
 
 <!-- CURSOS -->
 <section class="cursos" id="cursos">
-  <h2 class="section-label fade-up">Cursos semanales</h2>
+  <h2 class="section-label fade-up">Clubs</h2>
   <p class="section-subtitle fade-up">Aprende algo nuevo, a tu ritmo y en buena compañía. Clubs semanales en pequeño grupo, sin experiencia previa: solo ganas de crear y desconectar. Aquí se aprende haciendo.</p>
 
   <div class="cursos-lista fade-up">
@@ -473,7 +473,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <div class="curso-emoji">🧵</div>
           <div>
             <div class="curso-nombre">Club de costura · Adultos</div>
-            <div class="curso-precio">Desde enero 2027</div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -482,12 +481,14 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
       </div>
       <div class="curso-detalle" id="detail-costura">
-        <p class="curso-detalle-desc">Aprende a coser desde cero o perfecciona tu técnica. No hace falta saber coser: aquí se viene a disfrutar. Desde lo más básico hasta tus propios proyectos, a tu ritmo.</p>
+        <p class="curso-detalle-desc">Aprende a coser desde cero, a tu ritmo y acompañada por Mari Jose, la profesora del club. Aquí se viene a disfrutar: desde lo más básico hasta proyectos que elegiremos entre todas.</p>
         <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora</li>
-          <li>Grupo reducido</li>
+          <li>1 día a la semana, mismo día y hora (1 h 30)</li>
+          <li>Grupo reducido: máximo 6 personas</li>
           <li>Sin experiencia previa</li>
+          <li>Cada persona trae su máquina de coser</li>
         </ul>
+        <p class="curso-detalle-desc">¿No tienes máquina? Escríbenos y te asesoramos. Si prefieres probar con la nuestra antes de comprarte una, también puedes (bajo disponibilidad).</p>
         <div class="curso-reservar-opciones">
           <a href="https://app.zenamu.com/foco/courses/148216" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 10:30–12:00 →</a>
           <a href="https://app.zenamu.com/foco/courses/148221" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 18:30–20:00 →</a>
@@ -501,7 +502,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <div class="curso-emoji">🪡</div>
           <div>
             <div class="curso-nombre">Club de costura · Niños</div>
-            <div class="curso-precio">Desde enero 2027</div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -510,13 +510,14 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
       </div>
       <div class="curso-detalle" id="detail-costura-ninos">
-        <p class="curso-detalle-desc">Un rato cada semana para que los peques se inicien en la costura creando sus propias piezas. Aprenden haciendo, a su ritmo y en grupo pequeño.</p>
+        <p class="curso-detalle-desc">Un espacio para que niños y niñas de 10 a 14 años aprendan a coser desde cero. Proyectos sencillos y adaptados a su edad, a su ritmo y en grupo pequeño, acompañados por Mari Jose, la profesora del club.</p>
         <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora</li>
-          <li>Grupo reducido</li>
+          <li>1 día a la semana, mismo día y hora (1 h 30)</li>
+          <li>Grupo reducido: máximo 6 niños y niñas</li>
           <li>Sin experiencia previa</li>
+          <li>Cada niño o niña trae su máquina de coser</li>
         </ul>
-        <a href="mailto:hola@espaciofoco.es?subject=Club%20de%20costura%20ni%C3%B1os" class="curso-reservar-btn">Avísame cuando abra →</a>
+        <p class="curso-detalle-desc">¿No tenéis máquina? Escribidnos y os asesoramos. También podéis probar con una de las nuestras antes de comprar (bajo disponibilidad).</p>
       </div>
     </div>
 
@@ -526,7 +527,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <div class="curso-emoji">🎨</div>
           <div>
             <div class="curso-nombre">Club creativo · Adultos</div>
-            <div class="curso-precio">Desde enero 2027</div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -535,13 +535,14 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
       </div>
       <div class="curso-detalle" id="detail-adultos">
-        <p class="curso-detalle-desc">Cada sesión, un material distinto: velas, arcilla, resina, abalorios… Vienes cada semana, pruebas técnicas nuevas y te llevas a casa lo que creas.</p>
+        <p class="curso-detalle-desc">Es como apuntarte al gimnasio, pero para tu creatividad: un rato fijo cada semana para probar materiales y técnicas distintas. Cada sesión, una propuesta nueva: decoupage, arcilla, abalorios, pintura… Vienes, creas y te llevas a casa lo que has hecho.</p>
         <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora</li>
-          <li>Grupo reducido</li>
+          <li>1 día a la semana, mismo día y hora (1 h 30)</li>
+          <li>Grupos pequeños, para poder conversar y que te echemos una mano</li>
+          <li>Sin experiencia previa</li>
           <li>Materiales incluidos</li>
         </ul>
-        <a href="mailto:hola@espaciofoco.es?subject=Club%20creativo%20adultos" class="curso-reservar-btn">Avísame cuando abra →</a>
+        <p class="curso-detalle-desc">Un momento para ti: para crear, desconectar y compartir tiempo con otras personas.</p>
       </div>
     </div>
 
@@ -551,7 +552,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <div class="curso-emoji">✏️</div>
           <div>
             <div class="curso-nombre">Club creativo · Niños</div>
-            <div class="curso-precio">Desde enero 2027</div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -560,13 +560,14 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
       </div>
       <div class="curso-detalle" id="detail-ninos">
-        <p class="curso-detalle-desc">Un rato cada semana para que los peques experimenten con materiales, colores y texturas en un ambiente libre y seguro. Lo imparte Andrea, maestra de educación infantil especializada en pedagogía terapéutica.</p>
+        <p class="curso-detalle-desc">Un espacio para que niños y niñas de 8 a 12 años prueben cada semana materiales y técnicas distintas: decoupage, arcilla, abalorios, pintura… Aprenden haciendo, a su ritmo, y se llevan a casa lo que crean.</p>
         <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora</li>
-          <li>Grupo reducido</li>
+          <li>1 día a la semana, mismo día y hora (1 h 30)</li>
+          <li>Grupo reducido: máximo 8 niños y niñas</li>
+          <li>Sin experiencia previa</li>
           <li>Materiales incluidos</li>
         </ul>
-        <a href="mailto:hola@espaciofoco.es?subject=Club%20creativo%20ni%C3%B1os" class="curso-reservar-btn">Avísame cuando abra →</a>
+        <p class="curso-detalle-desc">Acompañados por Andrea, maestra de educación primaria y pedagogía terapéutica.</p>
       </div>
     </div>
 
@@ -576,7 +577,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <div class="curso-emoji">🧶</div>
           <div>
             <div class="curso-nombre">Club de ganchillo</div>
-            <div class="curso-precio">Desde enero 2027</div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -592,7 +592,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <li>Sin experiencia previa</li>
           <li>Materiales aparte</li>
         </ul>
-        <a href="mailto:hola@espaciofoco.es?subject=Club%20de%20ganchillo" class="curso-reservar-btn">Avísame cuando abra →</a>
       </div>
     </div>
 
@@ -602,7 +601,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <div class="curso-emoji">📚</div>
           <div>
             <div class="curso-nombre">Club de lectura</div>
-            <div class="curso-precio">Desde enero 2027</div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -617,7 +615,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <li>Grupo pequeño</li>
           <li>Para adultos</li>
         </ul>
-        <a href="mailto:hola@espaciofoco.es?subject=Club%20de%20lectura" class="curso-reservar-btn">Avísame cuando abra →</a>
       </div>
     </div>
 
@@ -634,7 +631,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </div>
     <div class="horario-nota">
       <p class="horario-nota-titulo">✦ Los martes, de 17:00 a 18:30</p>
-      <p>Coinciden el Club de costura para adultos y el Club creativo para niños. Si quieres un rato para ti y aprender a coser, y no tienes con quién dejar a tu peque, puede venir contigo al club creativo. Si os apuntáis a los dos, tenéis precio especial.</p>
+      <p>Coinciden el Club de costura para adultos y el Club creativo para niños. Si os apuntáis a los dos, tenéis precio especial.</p>
     </div>
   </div>
 </section>
