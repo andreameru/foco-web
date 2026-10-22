@@ -155,6 +155,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .curso-detalle-lista li::before { content:'✦'; position:absolute; left:0; color:var(--pink); font-size:10px; top:2px; }
 .curso-reservar-btn { display:inline-block; font-size:13px; padding:8px 20px; border-radius:50px; border:1.5px solid var(--black); background:transparent; color:var(--black); cursor:pointer; text-decoration:none; transition:all .2s; }
 .curso-reservar-btn:hover { background:var(--black); color:#fff; }
+.curso-reservar-opciones { display:flex; flex-wrap:wrap; gap:10px; }
 
 /* HORARIO SEMANAL */
 .horario-wrap { margin-top:48px; }
@@ -487,7 +488,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
           <li>Grupo reducido</li>
           <li>Sin experiencia previa</li>
         </ul>
-        <a href="https://app.zenamu.com/foco/courses/148192" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme →</a>
+        <div class="curso-reservar-opciones">
+          <a href="https://app.zenamu.com/foco/courses/148216" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 10:30–12:00 →</a>
+          <a href="https://app.zenamu.com/foco/courses/148221" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 18:30–20:00 →</a>
+        </div>
       </div>
     </div>
 
