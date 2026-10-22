@@ -629,10 +629,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
       <span><i class="hpunto hp-kraft"></i>Ganchillo</span>
       <span><i class="hpunto hp-verde"></i>Lectura</span>
     </div>
-    <div class="horario-nota">
-      <p class="horario-nota-titulo">✦ Los martes, de 17:00 a 18:30</p>
-      <p>Coinciden el Club de costura para adultos y el Club creativo para niños. Si os apuntáis a los dos, tenéis precio especial.</p>
-    </div>
   </div>
 </section>
 
@@ -864,8 +860,9 @@ const HORARIO = {
   dias: [['lunes','Lunes','Lun'],['martes','Martes','Mar'],['miercoles','Miércoles','Mié'],['jueves','Jueves','Jue'],['viernes','Viernes','Vie']],
   franjas: [['10:30','12:00'],['17:00','18:30'],['18:30','20:00']],
   celdas: {
-    'martes 17:00': ['costura-adultos', 'creativo-ninos'],
-    'martes 18:30': 'creativo-adultos'
+    'miercoles 10:30': 'costura-adultos',
+    'miercoles 17:00': ['costura-ninos', 'creativo-adultos'],
+    'miercoles 18:30': ['creativo-ninos', 'costura-adultos']
   }
 };
 function celdaHorario(dia, franja) {
