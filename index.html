@@ -148,6 +148,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .curso-chevron { font-size:18px; color:var(--grey-mid); transition:transform .2s; display:inline-block; }
 .curso-chevron.open { transform:rotate(180deg); }
 .curso-detalle { display:none; padding:0 1.25rem 1.25rem; border-top:1.5px solid var(--grey); }
+/* Clubs "Próximamente": no se pueden desplegar. Para activarlos en enero, quita esta línea y vuelve a poner onclick="toggleCurso('id')" en cada .curso-row */
+.cursos .curso-row { cursor:default; }
+.cursos .curso-row:hover { background:transparent; }
+.cursos .curso-detalle, .cursos .curso-detalle.open { display:none !important; }
 .curso-detalle.open { display:block; }
 .curso-detalle-desc { font-size:14px; color:#555; line-height:1.7; margin:1rem 0; }
 .curso-detalle-lista { list-style:none; display:flex; flex-direction:column; gap:6px; margin-bottom:1rem; }
@@ -468,7 +472,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <div class="cursos-lista fade-up">
 
     <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('costura')">
+      <div class="curso-row">
         <div class="curso-row-left">
           <div class="curso-emoji">🧵</div>
           <div>
@@ -477,7 +481,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-costura">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-costura">
@@ -499,7 +502,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </div>
 
     <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('costura-ninos')">
+      <div class="curso-row">
         <div class="curso-row-left">
           <div class="curso-emoji">🪡</div>
           <div>
@@ -508,7 +511,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-costura-ninos">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-costura-ninos">
@@ -526,7 +528,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </div>
 
     <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('adultos')">
+      <div class="curso-row">
         <div class="curso-row-left">
           <div class="curso-emoji">🎨</div>
           <div>
@@ -535,7 +537,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-adultos">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-adultos">
@@ -553,7 +554,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </div>
 
     <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('ninos')">
+      <div class="curso-row">
         <div class="curso-row-left">
           <div class="curso-emoji">✏️</div>
           <div>
@@ -562,7 +563,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-ninos">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-ninos">
@@ -580,7 +580,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </div>
 
     <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('ganchillo')">
+      <div class="curso-row">
         <div class="curso-row-left">
           <div class="curso-emoji">🧶</div>
           <div>
@@ -589,7 +589,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-ganchillo">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-ganchillo">
@@ -606,7 +605,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
     </div>
 
     <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('lectura')">
+      <div class="curso-row">
         <div class="curso-row-left">
           <div class="curso-emoji">📚</div>
           <div>
@@ -615,7 +614,6 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-lectura">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-lectura">
@@ -632,7 +630,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
   </div>
 
-  <div class="horario-wrap fade-up">
+  <!-- Horario semanal oculto hasta que abran los clubs: quita el atributo hidden para mostrarlo -->
+  <div class="horario-wrap fade-up" hidden>
     <h3 class="horario-titulo">Horario semanal</h3>
     <div class="horario-caja" id="horario"></div>
     <div class="horario-leyenda" aria-hidden="true">
@@ -920,10 +919,18 @@ window.matchMedia('(max-width:640px)').addEventListener('change', renderHorario)
 // url = enlace de reserva de ese taller en Zenamu (cuando esté).
 const events = {
   // '2026-12-12': { name: 'Nombre del taller', short: 'Nombre corto', sub: 'Taller · 2 h', desc: 'Descripción del taller.', price: '25€', url: '' },
+  '2026-12-12': { name: 'Taller navideño de costura', short: 'Costura navideña', sub: 'Sábado 12 de diciembre', desc: 'Un taller de costura con aire navideño para crear algo con tus manos y llevártelo a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
+  '2026-12-19': { name: 'Taller de velas', short: 'Taller velas', sub: 'Sábado 19 de diciembre', desc: 'Crea tus propias velas y llévatelas terminadas a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
 };
 
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
+// Que el calendario se abra en el mes del próximo taller
+(function () {
+  const hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+  const proximas = Object.keys(events).sort().filter(k => new Date(k + 'T00:00:00') >= hoy);
+  if (proximas.length) { const [y, m] = proximas[0].split('-'); currentYear = +y; currentMonth = +m - 1; }
+})();
 
 function renderCalendar(month, year) {
   const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
@@ -983,7 +990,7 @@ function openModal(event) {
   document.getElementById('modalTitle').textContent = event.name;
   document.getElementById('modalSub').textContent = event.sub;
   document.getElementById('modalDesc').textContent = event.desc;
-  document.getElementById('modalPrice').textContent = event.price;
+  const precio = document.getElementById('modalPrice'); precio.textContent = event.price || ''; precio.style.display = event.price ? '' : 'none';
   const btn = document.getElementById('modalBtn');
   if (event.url) { btn.href = event.url; btn.target = '_blank'; btn.textContent = 'Reservar plaza →'; }
   else { btn.href = 'mailto:hola@espaciofoco.es?subject=' + encodeURIComponent('Reserva: ' + event.name); btn.removeAttribute('target'); btn.textContent = 'Quiero una plaza →'; }
