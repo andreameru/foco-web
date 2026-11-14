@@ -318,6 +318,30 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .ep-label { font-family:'Space Grotesk',sans-serif; font-size:15px; color:var(--black); font-weight:600; }
 .ep-sub { font-family:'Space Grotesk',sans-serif; font-size:13px; color:var(--grey-mid); margin-top:4px; }
 .ep-val { font-family:'Bebas Neue',cursive; font-size:28px; color:var(--pink); text-align:right; white-space:nowrap; }
+.grupos-extra { background:var(--crema); padding:70px 60px; border-top:2px solid var(--black); display:flex; flex-direction:column; gap:56px; }
+.ge-bloque { max-width:1060px; width:100%; margin:0 auto; }
+.ge-titulo { font-family:'Bebas Neue',cursive; font-size:38px; line-height:1.05; color:var(--black); margin-bottom:10px; }
+.ge-sub { font-family:'Space Grotesk',sans-serif; font-size:15px; color:#555; line-height:1.6; margin-bottom:22px; }
+.ge-talleres { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.ge-taller { background:#fff; border:1.5px solid var(--black); border-radius:12px; padding:20px 18px; box-shadow:3px 4px 0 rgba(0,0,0,.12); }
+.ge-emoji { font-size:28px; display:block; margin-bottom:10px; }
+.ge-nombre { font-family:'Space Mono',monospace; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.ge-taller p { font-family:'Space Grotesk',sans-serif; font-size:14px; color:#555; line-height:1.6; }
+.ge-nota { font-family:'Space Grotesk',sans-serif; font-size:14px; color:#555; line-height:1.65; margin-top:20px; max-width:720px; }
+.ge-dos { max-width:1060px; width:100%; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+.ge-dos .ge-bloque { margin:0; }
+.ge-lista, .ge-pasos { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.ge-lista li, .ge-pasos li { font-family:'Space Grotesk',sans-serif; font-size:15px; color:#444; line-height:1.55; padding-left:20px; position:relative; }
+.ge-lista li::before { content:'✦'; position:absolute; left:0; color:var(--pink); font-size:11px; top:3px; }
+.ge-pasos li { padding-left:0; }
+.ge-pasos b { font-family:'Space Mono',monospace; font-size:13px; color:var(--black); }
+.ge-faq { display:flex; flex-direction:column; gap:10px; }
+.ge-faq details { background:#fff; border:1.5px solid var(--black); border-radius:12px; padding:0 18px; }
+.ge-faq summary { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; padding:14px 0; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:12px; }
+.ge-faq summary::-webkit-details-marker { display:none; }
+.ge-faq summary::after { content:'+'; color:var(--pink); font-size:20px; line-height:1; }
+.ge-faq details[open] summary::after { content:'–'; }
+.ge-faq details p { font-family:'Space Grotesk',sans-serif; font-size:14px; color:#555; line-height:1.65; padding-bottom:16px; }
 .grupos-section { padding:0; border-top:2px solid var(--black); overflow:hidden; }
 
 /* REGALA */
@@ -386,6 +410,9 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .carta-tiles { grid-template-columns:repeat(3,1fr); }
   .cursos-grid { grid-template-columns:1fr; }
   #eventos { grid-template-columns:1fr; }
+  .ge-talleres { grid-template-columns:1fr 1fr; }
+  .ge-dos { grid-template-columns:1fr; gap:36px; }
+  .grupos-extra { padding:50px 24px; }
   .ev-price { padding-top:60px; }
   .contacto-grid { grid-template-columns:1fr; }
   .section-label { font-size:32px; }
@@ -405,6 +432,9 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .hero-left h1 { font-size:2.2rem; }
   .club, .cursos, .talleres, .grupos-section, .contacto, .regala-section { padding:40px 16px; }
   .ev-info, .ev-price { padding:40px 16px; }
+  .grupos-extra { padding:40px 16px; gap:40px; }
+  .ge-talleres { grid-template-columns:1fr; }
+  .ge-titulo { font-size:30px; }
   .pricing-grid { grid-template-columns:1fr; gap:16px; }
   .price-card { padding:16px 14px; }
   .price-card-price { font-size:32px; }
@@ -733,9 +763,9 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 <section class="grupos-section" id="grupos">
   <div id="eventos" class="fade-up">
     <div class="ev-info">
-      <span class="seccion-tag">Grupos</span>
+      <span class="seccion-tag">Grupos · Logroño</span>
       <h2 class="seccion-title">Hazlo especial.<br>Hazlo en <span class="accent">foco.</span></h2>
-      <p class="seccion-body">Cumpleaños, despedidas, teambuildings o simplemente un plan diferente con tu gente. Reservamos el espacio para tu grupo y preparamos una actividad a tu medida. Cuéntanos qué tienes en mente y te enviamos una propuesta.</p>
+      <p class="seccion-body">Cumpleaños, despedidas, teambuildings o simplemente un plan diferente con tu gente. Reservamos el espacio para tu grupo y preparamos un taller creativo a tu medida. Adaptamos la temática y los detalles a la ocasión: cuéntanos qué tienes en mente y te enviamos una propuesta.</p>
       <div class="ev-tipos">
         <div class="ev-chip">💍 Despedidas de soltera</div>
         <div class="ev-chip">🎂 Cumpleaños adultos</div>
@@ -751,23 +781,76 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
         <h3 style="font-family:'Space Mono',monospace;font-size:1.2rem;margin-top:.5rem;color:var(--negro)">Todo incluido para tu grupo</h3>
       </div>
       <div class="ep-row">
-        <div><div class="ep-label">Eventos privados adultos</div><div class="ep-sub">2-3h · materiales y guía incluidos</div></div>
-        <div class="ep-val">desde 25€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/persona</span></div>
+        <div><div class="ep-label">Eventos privados adultos</div><div class="ep-sub">2 h · materiales y guía incluidos</div></div>
+        <div class="ep-val">desde 30€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/persona</span></div>
       </div>
       <div class="ep-row">
-        <div><div class="ep-label">Cumpleaños infantiles</div><div class="ep-sub">1.5h · kit de creación para cada niño</div></div>
+        <div><div class="ep-label">Cumpleaños infantiles</div><div class="ep-sub">1,5 h · kit de creación para cada niño</div></div>
         <div class="ep-val">desde 16€<span style="font-size:.65rem;font-family:'Space Grotesk',sans-serif;display:block;text-align:right">/niño</span></div>
       </div>
       <div class="ep-row">
-        <div><div class="ep-label">Teambuilding para empresas</div><div class="ep-sub">2-4h · adaptado al grupo · factura disponible</div></div>
+        <div><div class="ep-label">Teambuilding para empresas</div><div class="ep-sub">2-4 h · adaptado al grupo · factura disponible</div></div>
         <div class="ep-val">A medida</div>
       </div>
       <div class="ep-row">
-        <div><div class="ep-label">Grupo mínimo</div><div class="ep-sub">Para reserva privada del espacio</div></div>
-        <div class="ep-val">5 pers. o 150€</div>
+        <div><div class="ep-label">Reserva mínima</div><div class="ep-sub">5 personas adultas o unos 10 niños</div></div>
+        <div class="ep-val">150€</div>
       </div>
-      <p style="font-size:14px;color:#555;line-height:1.6;margin:1.5rem 0 1rem">Cada propuesta es personalizada: cuéntanos qué tienes en mente y te enviamos presupuesto sin compromiso.</p>
+      <div class="ep-row">
+        <div><div class="ep-label">Grupo máximo</div><div class="ep-sub">Espacio privado para tu grupo</div></div>
+        <div class="ep-val">20 pers.</div>
+      </div>
+      <p style="font-size:14px;color:#555;line-height:1.6;margin:1.5rem 0 1rem">Precios con IVA incluido. Reservamos tu fecha con una señal del 30&nbsp;%. Cada propuesta es personalizada: cuéntanos qué tienes en mente y te enviamos presupuesto sin compromiso.</p>
       <a href="mailto:hola@espaciofoco.es?subject=Presupuesto%20para%20grupo" class="btn-black">Contactar para grupos →</a>
+    </div>
+  </div>
+
+  <div class="grupos-extra">
+    <div class="ge-bloque fade-up">
+      <h3 class="ge-titulo">Elige tu taller</h3>
+      <p class="ge-sub">Para grupos de adultos. Cada taller dura unas 2 horas y no hace falta tener experiencia.</p>
+      <div class="ge-talleres">
+        <div class="ge-taller"><span class="ge-emoji">🎨</span><div class="ge-nombre">Cuadro neón</div><p>Pinta tu propio cuadro con colores neón y llévatelo a casa.</p></div>
+        <div class="ge-taller"><span class="ge-emoji">🖼️</span><div class="ge-nombre">Cuadro entre todos</div><p>Entre todo el grupo pintáis un único cuadro: un recuerdo de vuestra celebración.</p></div>
+        <div class="ge-taller"><span class="ge-emoji">👜</span><div class="ge-nombre">Pintar tote bag</div><p>Diseña y pinta tu propia bolsa de tela para llevártela a casa.</p></div>
+        <div class="ge-taller"><span class="ge-emoji">💡</span><div class="ge-nombre">Lámpara</div><p>Decora tu propia lámpara y llévatela a casa.</p></div>
+      </div>
+      <p class="ge-nota">¿Cumpleaños infantil? Preparamos talleres adaptados a su edad: dinos cuántos vienen y qué edad tienen y te proponemos uno. ¿Tienes otra idea? Cuéntanosla y vemos cómo hacerla.</p>
+    </div>
+
+    <div class="ge-dos fade-up">
+      <div class="ge-bloque">
+        <h3 class="ge-titulo">Qué incluye</h3>
+        <ul class="ge-lista">
+          <li>Todos los materiales del taller</li>
+          <li>Guía paso a paso durante todo el rato</li>
+          <li>Una creación o un recuerdo para llevarte a casa</li>
+          <li>El espacio solo para tu grupo</li>
+          <li>Sin necesidad de experiencia previa</li>
+        </ul>
+      </div>
+      <div class="ge-bloque">
+        <h3 class="ge-titulo">Cómo reservar</h3>
+        <ol class="ge-pasos">
+          <li><b>1 · Cuéntanos tu idea:</b> fecha, cuántos sois y qué celebráis.</li>
+          <li><b>2 · Te proponemos</b> el taller y el presupuesto, sin compromiso.</li>
+          <li><b>3 · Reservas con una señal del 30&nbsp;%</b> y solo te queda venir a crear.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="ge-bloque fade-up">
+      <h3 class="ge-titulo">Preguntas frecuentes</h3>
+      <div class="ge-faq">
+        <details><summary>¿Hace falta tener experiencia?</summary><p>No. Os guiamos paso a paso y cada taller está pensado para quien nunca ha pintado ni creado nada con las manos.</p></details>
+        <details><summary>¿Cuántas personas podemos ser?</summary><p>Hasta 20 personas. La reserva mínima es de 150&nbsp;€, que equivale a 5 personas adultas o a unos 10 niños.</p></details>
+        <details><summary>¿Cuánto dura?</summary><p>Los talleres para adultos duran unas 2 horas y los cumpleaños infantiles, 1 hora y media.</p></details>
+        <details><summary>¿Se puede personalizar?</summary><p>Sí. Adaptamos la temática, los colores y los detalles a la ocasión. Si quieres un taller que no está en la lista, cuéntanoslo y vemos si es posible.</p></details>
+        <details><summary>¿Cómo se reserva y cuánto hay que pagar por adelantado?</summary><p>Escríbenos con la fecha que tienes en mente y cuántos sois. Reservamos tu fecha con una señal del 30&nbsp;% y el resto se paga el día del taller.</p></details>
+        <details><summary>¿Los precios llevan IVA?</summary><p>Sí, los precios para particulares incluyen el IVA. Si reservas para tu empresa, te damos factura.</p></details>
+        <details><summary>¿Dónde está FOCO?</summary><p>En la calle Huesca 30, en Logroño.</p></details>
+      </div>
+      <a href="mailto:hola@espaciofoco.es?subject=Presupuesto%20para%20grupo" class="btn-black" style="margin-top:1.5rem">Pedir presupuesto →</a>
     </div>
   </div>
 </section>
