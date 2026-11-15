@@ -115,6 +115,13 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .carta-info { max-width:940px; margin:0 auto 26px; position:relative; z-index:2; display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; }
 .carta-info p { font-family:'Space Grotesk',sans-serif; font-size:15px; color:#1f3442; line-height:1.55; }
 
+.carta-faq { max-width:1060px; margin:22px auto 0; padding:0 0; position:relative; z-index:2; display:flex; flex-direction:column; gap:10px; }
+.carta-faq details { background:#fff; border:1.5px solid var(--black); border-radius:12px; padding:0 18px; }
+.carta-faq summary { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; padding:14px 0; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:12px; color:var(--negro); }
+.carta-faq summary::-webkit-details-marker { display:none; }
+.carta-faq summary::after { content:'+'; color:var(--pink); font-size:20px; line-height:1; }
+.carta-faq details[open] summary::after { content:'–'; }
+.carta-faq details p { font-family:'Space Grotesk',sans-serif; font-size:14px; color:#555; line-height:1.65; padding-bottom:16px; }
 /* MATERIALS — OPTION I (text with thick divider) */
 .mat-i { display:flex; gap:48px; align-items:stretch; position:relative; z-index:2; max-width:1060px; margin:0 auto; }
 .mat-i-block { flex:1; padding:12px 0; }
@@ -764,6 +771,12 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
       <div class="mat-i-title">✓ Qué incluye</div>
       <div class="mat-i-text">Todo el material y las herramientas · Instrucciones paso a paso · Ayuda cuando la necesites · Tu creación terminada para llevar a casa. Hasta 4 plazas por reserva: si venís más, mira <a href="#grupos" style="color:inherit;text-decoration:underline">Grupos y celebraciones</a>.</div>
     </div>
+  </div>
+  <div class="carta-faq fade-up">
+    <details><summary>¿Qué significa que sea semiguiada?</summary><p>Que no es un taller paso a paso con todo el grupo a la vez. Tienes una pequeña guía para hacer la manualidad a tu ritmo, y si necesitas ayuda, te la damos.</p></details>
+    <details><summary>¿Puedo elegir la manualidad el mismo día?</summary><p>Sí, tenemos las cuatro manualidades disponibles en cada sesión. Si vienes con una idea de lo que quieres hacer, aprovecharás mejor el tiempo.</p></details>
+    <details><summary>¿Hay plantillas para pintar el tote bag?</summary><p>Sí, tienes plantillas para elegir si no te atreves a dibujar desde cero. También puedes hacer tu propio diseño.</p></details>
+    <details><summary>¿Puedo venir solo/a?</summary><p>Claro. Es un plan perfecto para venir solo/a, con una amiga, con tu madre o con quien quieras.</p></details>
   </div>
 </section>
 
