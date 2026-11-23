@@ -172,6 +172,9 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 /* Clubs "Próximamente": se puede ver la información, pero los botones de reserva siguen ocultos. Para abrir inscripciones en enero, quita la línea de .curso-reservar-opciones */
 .cursos .curso-reservar-opciones { display:none; }
 .curso-detalle.open { display:block; }
+.curso-detalle > .curso-detalle-desc:first-child { margin-top:1.1rem; }
+.curso-detalle-lista + .curso-detalle-lista { margin-top:-.2rem; padding-top:.9rem; border-top:1.5px dashed rgba(0,0,0,.25); }
+.curso-detalle-lista b { color:#111; }
 .curso-sub { padding-top:1rem; }
 .curso-sub + .curso-sub { margin-top:1.1rem; border-top:1.5px dashed rgba(0,0,0,.25); }
 .curso-sub-titulo { display:inline-block; font-family:'Space Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:#fff; border:1.5px solid var(--black); border-radius:99px; padding:3px 12px; margin:0 0 2px; }
@@ -590,9 +593,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
       </div>
       <div class="curso-detalle" id="detail-costura">
-        <div class="curso-sub">
-          <h4 class="curso-sub-titulo">Adultos</h4>
-        <p class="curso-detalle-desc">Aprende a coser desde cero, a tu ritmo y acompañada por Mari Jose, la profesora del club. Aquí se viene a disfrutar: desde lo más básico hasta proyectos que elegiremos entre todas.</p>
+        <p class="curso-detalle-desc">Aprende a coser desde cero, a tu ritmo y acompañada por Mari Jose, la profesora del club. Aquí se viene a disfrutar: desde lo más básico hasta proyectos que elegiremos entre todas. Hay grupos para adultos y para niños y niñas, con proyectos adaptados a cada edad.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora (1 h 30)</li>
           <li>Grupo reducido: máximo 6 personas</li>
@@ -601,23 +602,10 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>Se abre grupo a partir de 4 personas</li>
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
+        <p class="curso-detalle-desc"><b>Niños y niñas:</b> si no tenéis máquina, podéis probar una clase con una de las nuestras antes de decidiros a comprar una (bajo disponibilidad).</p>
         <div class="curso-reservar-opciones">
           <a href="https://app.zenamu.com/foco/courses/148216" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 10:30–12:00 →</a>
           <a href="https://app.zenamu.com/foco/courses/148221" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 18:30–20:00 →</a>
-        </div>
-        </div>
-        <div class="curso-sub">
-          <h4 class="curso-sub-titulo">Niños</h4>
-        <p class="curso-detalle-desc">Un espacio para que niños y niñas aprendan a coser desde cero. Proyectos sencillos y adaptados a su edad, a su ritmo y en grupo pequeño, acompañados por Mari Jose, la profesora del club.</p>
-        <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora (1 h 30)</li>
-          <li>Grupo reducido: máximo 6 niños y niñas</li>
-          <li>Sin experiencia previa</li>
-          <li>Cada niño o niña trae su máquina de coser</li>
-          <li>Se abre grupo a partir de 4 personas</li>
-          <li>De enero a junio, con pago mes a mes</li>
-        </ul>
-        <p class="curso-detalle-desc">Si no tenéis máquina, podéis probar una clase con una de las nuestras antes de decidiros a comprar una (bajo disponibilidad).</p>
         </div>
       </div>
     </div>
@@ -636,32 +624,18 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
       </div>
       <div class="curso-detalle" id="detail-creativo">
-        <div class="curso-sub">
-          <h4 class="curso-sub-titulo">Adultos</h4>
-        <p class="curso-detalle-desc">Es como apuntarte al gimnasio, pero para tu creatividad: un rato fijo cada semana para probar materiales y técnicas distintas. Cada sesión, una propuesta nueva: decoupage, arcilla, abalorios, pintura… Vienes, creas y te llevas a casa lo que has hecho.</p>
+        <p class="curso-detalle-desc">Es como apuntarte al gimnasio, pero para tu creatividad: un rato fijo cada semana para probar materiales y técnicas distintas. Cada sesión, una propuesta nueva: decoupage, arcilla, abalorios, pintura… Vienes, creas y te llevas a casa lo que has hecho. Hay grupos para adultos y para niños y niñas.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora (1 h 30)</li>
-          <li>Grupo reducido: máximo 10 personas</li>
           <li>Sin experiencia previa</li>
           <li>Materiales incluidos</li>
           <li>Se abre grupo a partir de 4 personas</li>
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
-        <p class="curso-detalle-desc">Un momento para ti: para crear, desconectar y compartir tiempo con otras personas.</p>
-        </div>
-        <div class="curso-sub">
-          <h4 class="curso-sub-titulo">Niños</h4>
-        <p class="curso-detalle-desc">Un espacio para que niños y niñas prueben cada semana materiales y técnicas distintas: decoupage, arcilla, abalorios, pintura… Aprenden haciendo, a su ritmo, y se llevan a casa lo que crean.</p>
         <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora (1 h 30)</li>
-          <li>Grupo reducido: máximo 8 niños y niñas</li>
-          <li>Sin experiencia previa</li>
-          <li>Materiales incluidos</li>
-          <li>Se abre grupo a partir de 4 personas</li>
-          <li>De enero a junio, con pago mes a mes</li>
+          <li><b>Adultos:</b> grupo reducido, máximo 10 personas. Un momento para ti: para crear, desconectar y compartir tiempo con otras personas.</li>
+          <li><b>Niños y niñas:</b> grupo reducido, máximo 8. Acompañados por Andrea, maestra de educación primaria y pedagogía terapéutica.</li>
         </ul>
-        <p class="curso-detalle-desc">Acompañados por Andrea, maestra de educación primaria y pedagogía terapéutica.</p>
-        </div>
       </div>
     </div>
     </div>
@@ -680,29 +654,17 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
       </div>
       <div class="curso-detalle" id="detail-ganchillo">
-        <div class="curso-sub">
-          <h4 class="curso-sub-titulo">Niños</h4>
-        <p class="curso-detalle-desc">Un espacio para que niños y niñas aprendan ganchillo desde cero, a su ritmo y en grupo pequeño, con Eva, la profesora del club.</p>
-        <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora (2 h)</li>
-          <li>Grupo reducido: máximo 8 niños y niñas</li>
-          <li>Sin experiencia previa</li>
-          <li>Se abre grupo a partir de 4 personas</li>
-          <li>De enero a junio, con pago mes a mes</li>
-        </ul>
-        </div>
-        <div class="curso-sub">
-          <h4 class="curso-sub-titulo">Adultos · iniciación y avanzado</h4>
-        <p class="curso-detalle-desc">Aprende ganchillo desde cero o sigue avanzando con tus proyectos, con Eva, la profesora del club. Un rato tranquilo cada semana para tejer, charlar y desconectar. Hay dos grupos: iniciación y avanzado.</p>
+        <p class="curso-detalle-desc">Aprende ganchillo desde cero o sigue avanzando con tus proyectos, con Eva, la profesora del club. Un rato tranquilo cada semana para tejer, charlar y desconectar.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora (2 h)</li>
           <li>Grupo reducido: máximo 8 personas</li>
-          <li>Iniciación: sin experiencia previa</li>
-          <li>Materiales aparte</li>
           <li>Se abre grupo a partir de 4 personas</li>
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
-        </div>
+        <ul class="curso-detalle-lista">
+          <li><b>Adultos:</b> dos grupos, iniciación (sin experiencia previa) y avanzado. Materiales aparte.</li>
+          <li><b>Niños y niñas:</b> un grupo, sin experiencia previa.</li>
+        </ul>
       </div>
     </div>
 
@@ -720,28 +682,17 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
       </div>
       <div class="curso-detalle" id="detail-lectura">
-        <div class="curso-sub">
-          <h4 class="curso-sub-titulo">Juvenil</h4>
-        <p class="curso-detalle-desc">Un espacio para que jóvenes lean, compartan y conversen sobre libros con calma y en buena compañía. Dirigido por Raquel Villar, escritora y presidenta de la asociación de escritores.</p>
-        <ul class="curso-detalle-lista">
-          <li>Quincenal: 1 hora cada 15 días, mismo día y hora</li>
-          <li>A partir de 12 años</li>
-          <li>Se abre grupo a partir de 6 personas</li>
-          <li>Grupo máximo: 15 personas</li>
-          <li>Hasta junio, con pago mensual</li>
-        </ul>
-        </div>
-        <div class="curso-sub">
-          <h4 class="curso-sub-titulo">Adultos</h4>
         <p class="curso-detalle-desc">Un espacio para leer, compartir y conversar sobre libros con calma y en buena compañía. Dirigido por Raquel Villar, escritora y presidenta de la asociación de escritores.</p>
         <ul class="curso-detalle-lista">
           <li>Quincenal: 1 hora cada 15 días, mismo día y hora</li>
-          <li>Para adultos</li>
           <li>Se abre grupo a partir de 6 personas</li>
           <li>Grupo máximo: 15 personas</li>
           <li>Hasta junio, con pago mensual</li>
         </ul>
-        </div>
+        <ul class="curso-detalle-lista">
+          <li><b>Adultos:</b> un grupo para adultos.</li>
+          <li><b>Juvenil:</b> otro grupo, a partir de 12 años.</li>
+        </ul>
       </div>
     </div>
     </div>
