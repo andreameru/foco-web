@@ -495,7 +495,12 @@ a.hz-card:hover { transform:translateY(-2px); }
   .materials-grid { grid-template-columns:1fr; }
   .mat-i { flex-direction:column; gap:12px; }
   .carta-tiles { gap:10px; }
-  .carta-tiles.carta-3 { grid-template-columns:1fr; max-width:520px; }
+  .carta-tiles.carta-3 { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:520px; gap:12px; }
+  .cc { padding:10px 8px 10px; gap:5px; border-radius:14px; }
+  .cc-img svg { height:84px; }
+  .cc-name { font-size:19px; }
+  .cc-desc { font-size:12px; line-height:1.4; }
+  .cc-meta { font-size:10px; letter-spacing:.5px; padding-top:2px; }
   .carta-tile-emoji { font-size:28px; }
   .carta-tile-name { font-size:17px; }
   .regala-section { grid-template-columns:1fr; }
