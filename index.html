@@ -168,10 +168,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .curso-chevron { font-size:18px; color:var(--grey-mid); transition:transform .2s; display:inline-block; }
 .curso-chevron.open { transform:rotate(180deg); }
 .curso-detalle { display:none; padding:0 1.25rem 1.25rem; border-top:1.5px solid var(--grey); }
-/* Clubs "Próximamente": no se pueden desplegar. Para activarlos en enero, quita esta línea y vuelve a poner onclick="toggleCurso('id')" en cada .curso-row */
-.cursos .curso-row { cursor:default; }
-.cursos .curso-row:hover { background:transparent; }
-.cursos .curso-detalle, .cursos .curso-detalle.open { display:none !important; }
+/* Clubs "Próximamente": se puede ver la información, pero los botones de reserva siguen ocultos. Para abrir inscripciones en enero, quita la línea de .curso-reservar-opciones */
+.cursos .curso-reservar-opciones { display:none; }
 .curso-detalle.open { display:block; }
 .curso-detalle-desc { font-size:14px; color:#555; line-height:1.7; margin:1rem 0; }
 .curso-detalle-lista { list-style:none; display:flex; flex-direction:column; gap:6px; margin-bottom:1rem; }
@@ -573,7 +571,7 @@ a.hz-card:hover { transform:translateY(-2px); }
   <div class="cursos-lista fade-up">
 
     <div class="curso-item">
-      <div class="curso-row">
+      <div class="curso-row" onclick="toggleCurso('costura')">
         <div class="curso-row-left">
           <div class="curso-emoji">🧵</div>
           <div>
@@ -582,6 +580,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
+          <span class="curso-chevron" id="chev-costura">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-costura">
@@ -603,7 +602,7 @@ a.hz-card:hover { transform:translateY(-2px); }
     </div>
 
     <div class="curso-item">
-      <div class="curso-row">
+      <div class="curso-row" onclick="toggleCurso('costura-ninos')">
         <div class="curso-row-left">
           <div class="curso-emoji">🪡</div>
           <div>
@@ -612,6 +611,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
+          <span class="curso-chevron" id="chev-costura-ninos">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-costura-ninos">
@@ -629,7 +629,7 @@ a.hz-card:hover { transform:translateY(-2px); }
     </div>
 
     <div class="curso-item">
-      <div class="curso-row">
+      <div class="curso-row" onclick="toggleCurso('adultos')">
         <div class="curso-row-left">
           <div class="curso-emoji">🎨</div>
           <div>
@@ -638,6 +638,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
+          <span class="curso-chevron" id="chev-adultos">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-adultos">
@@ -655,7 +656,7 @@ a.hz-card:hover { transform:translateY(-2px); }
     </div>
 
     <div class="curso-item">
-      <div class="curso-row">
+      <div class="curso-row" onclick="toggleCurso('ninos')">
         <div class="curso-row-left">
           <div class="curso-emoji">✏️</div>
           <div>
@@ -664,6 +665,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
+          <span class="curso-chevron" id="chev-ninos">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-ninos">
@@ -681,7 +683,7 @@ a.hz-card:hover { transform:translateY(-2px); }
     </div>
 
     <div class="curso-item">
-      <div class="curso-row">
+      <div class="curso-row" onclick="toggleCurso('ganchillo')">
         <div class="curso-row-left">
           <div class="curso-emoji">🧶</div>
           <div>
@@ -690,6 +692,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
+          <span class="curso-chevron" id="chev-ganchillo">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-ganchillo">
@@ -706,7 +709,7 @@ a.hz-card:hover { transform:translateY(-2px); }
     </div>
 
     <div class="curso-item">
-      <div class="curso-row">
+      <div class="curso-row" onclick="toggleCurso('lectura')">
         <div class="curso-row-left">
           <div class="curso-emoji">📚</div>
           <div>
@@ -715,6 +718,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
+          <span class="curso-chevron" id="chev-lectura">▾</span>
         </div>
       </div>
       <div class="curso-detalle" id="detail-lectura">
