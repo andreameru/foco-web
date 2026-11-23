@@ -183,7 +183,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 /* HORARIO SEMANAL */
 .horario-wrap { margin-top:48px; }
-.horario-titulo { font-family:'Space Mono',monospace; font-weight:700; font-size:15px; letter-spacing:.14em; text-transform:uppercase; color:#23272b; text-align:center; margin-bottom:14px; }
+.horario-titulo { font-family:Georgia,'Times New Roman',serif; font-weight:700; font-size:clamp(40px,7vw,68px); line-height:1; letter-spacing:-.02em; color:var(--black); text-align:center; margin-bottom:22px; }
+.horario-titulo em { font-style:normal; color:var(--pink); }
 .horario-caja { max-width:1000px; margin:0 auto; }
 .horario { width:calc(100% + 12px); margin:-6px; border-collapse:separate; border-spacing:6px; table-layout:fixed; font-family:'Space Mono',monospace; color:#23272b; }
 .horario th, .horario td { text-align:center; vertical-align:middle; font-size:12px; font-weight:700; line-height:1.3; }
@@ -201,34 +202,39 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hp-verde { background:#3DFF00; }
 .hp-amarillo { background:#F2C94C; }
 .hp-lila { background:#A582F5; }
-.hz { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; align-items:start; font-family:'Space Mono',monospace; color:#23272b; }
-.hz-dia h4 { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-align:center; margin:0 0 8px; }
-.hz-lista { display:flex; flex-direction:column; gap:8px; }
-.hz-card { border:1.5px solid var(--black); border-radius:12px; padding:9px 11px 10px; background:linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 3px 4px 0 rgba(0,0,0,.16); }
+.hz { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1.5px; background:var(--black); border:1.5px solid var(--black); border-radius:16px; overflow:hidden; box-shadow:6px 8px 0 var(--black); font-family:'Space Mono',monospace; color:#23272b; }
+.hz-dia { background:#fbfaf7; display:flex; flex-direction:column; min-width:0; }
+.hz-dia h4 { font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; text-align:center; margin:0; padding:10px 6px; background:var(--black); color:#fff; }
+.hz-lista { display:flex; flex-direction:column; gap:8px; padding:10px; flex:1; }
+.hz-card { border-radius:9px; padding:8px 10px 9px; background:#f0f2f5; transition:opacity .2s, transform .15s; }
 .hz-costura { --tono:105,155,225; --a:.52; }
 .hz-creativo { --tono:255,105,185; --a:.46; }
 .hz-ganchillo { --tono:255,208,60; --a:.58; }
 .hz-lectura { --tono:110,235,80; --a:.48; }
-.hz-carta { --tono:165,130,245; --a:.66; border-color:#3f3366; }
-.hz-card[class*="hz-"] { background:linear-gradient(rgba(var(--tono),var(--a)), rgba(var(--tono),var(--a))), linear-gradient(160deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.2) 100%), #f0f2f5; }
-.hz-t { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; line-height:1.25; }
-.hz-t .hpunto { flex:none; margin:0; }
+.hz-carta { --tono:165,130,245; --a:.66; }
+.hz-card[class*="hz-"] { background:linear-gradient(rgba(var(--tono),var(--a)), rgba(var(--tono),var(--a))), #fff; }
+.hz-hora { font-size:13px; font-weight:700; line-height:1.2; }
+.hz-t { font-size:12px; font-weight:700; line-height:1.25; margin-top:3px; }
 .hz-pill { display:inline-block; font-size:10px; font-weight:400; padding:1px 9px; background:#fff; border:1px solid rgba(35,39,43,.35); border-radius:99px; margin-top:5px; }
-.hz-niv { font-size:10px; font-weight:400; margin-left:2px; }
-.hz-card { transition:opacity .2s, transform .15s; }
+.hz-niv { font-size:10px; font-weight:400; }
+.hz-nota { font-size:11px; font-weight:400; margin-top:2px; color:#4b5157; }
 a.hz-card { display:block; color:inherit; text-decoration:none; cursor:pointer; }
 a.hz-card:hover { transform:translateY(-2px); }
 .hz-mas { font-size:11px; font-weight:700; margin-top:5px; text-decoration:underline; }
 .hz[data-sel="costura"] .hz-card:not(.hz-costura), .hz[data-sel="creativo"] .hz-card:not(.hz-creativo), .hz[data-sel="ganchillo"] .hz-card:not(.hz-ganchillo), .hz[data-sel="lectura"] .hz-card:not(.hz-lectura), .hz[data-sel="carta"] .hz-card:not(.hz-carta) { opacity:.3; }
 .horario-leyenda span[data-c] { cursor:pointer; }
-.hz-hora { font-size:13px; font-weight:700; margin-top:5px; }
-.hz-nota { font-size:11px; font-weight:400; margin-top:2px; color:#4b5157; }
-@media(max-width:700px) {
-  .hz { grid-template-columns:1fr; gap:16px; }
-  .hz-dia h4 { text-align:left; }
-  .hz-lista { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; }
-  .hz-card { padding:8px 9px 9px; border-radius:10px; }
-  .hz-lista .hz-card:only-child { grid-column:1 / -1; }
+@media(max-width:900px) {
+  .hz { grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
+@media(max-width:520px) {
+  .hz { box-shadow:4px 6px 0 var(--black); border-radius:14px; margin-right:4px; }
+  .hz-lista { padding:7px; gap:6px; }
+  .hz-card { padding:6px 7px 7px; border-radius:8px; }
+  .hz-hora { font-size:11.5px; }
+  .hz-t { font-size:11px; }
+  .hz-pill { font-size:9.5px; padding:0 7px; margin-top:4px; }
+  .hz-nota, .hz-mas { font-size:10px; }
+  .hz-dia h4 { font-size:11px; padding:8px 4px; }
 }
 .horario-leyenda { display:flex; justify-content:center; flex-wrap:wrap; gap:6px 18px; margin-top:14px; font-family:'Space Mono',monospace; font-size:12px; color:#23272b; }
 .horario-nota { max-width:620px; margin:22px auto 0; padding:14px 18px; border:1.5px solid var(--black); border-radius:12px; background:linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 3px 4px 0 rgba(0,0,0,.16); color:#2b2f33; font-size:14px; line-height:1.65; text-align:center; }
@@ -711,7 +717,7 @@ a.hz-card:hover { transform:translateY(-2px); }
 
   <!-- Horario semanal -->
   <div class="horario-wrap fade-up">
-    <h3 class="horario-titulo">Horario semanal</h3>
+    <h3 class="horario-titulo">horario<em>.</em></h3>
     <div class="horario-caja" id="horario"></div>
     <div class="horario-leyenda">
       <span data-c="costura"><i class="hpunto hp-azul"></i>Costura</span>
@@ -1044,11 +1050,10 @@ function renderHorario() {
   HORARIO.forEach(d => {
     h += '<div class="hz-dia"><h4>' + d.dia + '</h4><div class="hz-lista">';
     d.items.forEach(i => {
-      h += '<' + (i.href ? 'a href="' + i.href + '"' : 'div') + ' class="hz-card hz-' + i.c + '"><div class="hz-t"><i class="hpunto ' + PUNTOS[i.c] + '"></i><span>' + i.n
-        + (i.v ? ' <span class="hz-niv">' + i.v + '</span>' : '') + '</span></div>'
+      h += '<' + (i.href ? 'a href="' + i.href + '"' : 'div') + ' class="hz-card hz-' + i.c + '"><div class="hz-hora">' + i.h + '</div><div class="hz-t">' + i.n
+        + (i.v ? ' <span class="hz-niv">· ' + i.v + '</span>' : '') + '</div>'
         + (i.nota ? '<div class="hz-nota">' + i.nota + '</div>' : '')
         + (i.p ? '<span class="hz-pill">' + i.p + '</span>' : '')
-        + '<div class="hz-hora">' + i.h + '</div>'
         + (i.mas ? '<div class="hz-mas">' + i.mas + '</div>' : '')
         + (i.href ? '</a>' : '</div>');
     });
