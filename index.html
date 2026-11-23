@@ -34,7 +34,7 @@ body { font-family:'Space Grotesk',sans-serif; background:var(--white); color:va
 /* NAV */
 nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); border-bottom:1.5px solid var(--black); }
 .nav-logo { font-family:'Space Mono',monospace; font-size:1.6rem; font-weight:700; letter-spacing:.25em; color:var(--black); text-decoration:none; }
-.nav-logo span { color:var(--pink); font-size:1.8em; line-height:0; vertical-align:-.1em; }
+.logo-estrella { height:1.3em; width:auto; margin-left:.15em; vertical-align:-.28em; display:inline-block; }
 .nav-links { display:flex; gap:2rem; list-style:none; align-items:center; }
 .nav-links a { font-size:.82rem; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--black); text-decoration:none; transition:color .2s; }
 .nav-links a:hover { color:var(--pink); }
@@ -457,7 +457,7 @@ a.hz-card:hover { transform:translateY(-2px); }
 /* FOOTER */
 .footer { background:var(--negro); border-top:4px solid var(--rosa); padding:40px 60px; display:flex; justify-content:space-between; align-items:center; }
 .footer-logo { font-family:'Bebas Neue',cursive; font-size:32px; color:#fff; }
-.footer-logo span { color:var(--rosa); }
+.footer-logo .logo-estrella { filter:brightness(1.5) saturate(1.3); height:1.7em; vertical-align:-.45em; margin-left:.2em; }
 .footer-center { font-family:'Space Mono',monospace; font-size:11px; color:#666; }
 .footer-right { font-family:'Space Mono',monospace; font-size:11px; color:#666; }
 
@@ -537,7 +537,7 @@ a.hz-card:hover { transform:translateY(-2px); }
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#" class="nav-logo">F<span>★</span>CO</a>
+  <a href="#" class="nav-logo" aria-label="FOCO">FOCO<img class="logo-estrella" src="/images/estrella-foco.svg" alt="" width="40" height="37"></a>
   <button class="nav-hamburger" id="navToggle" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -954,7 +954,7 @@ a.hz-card:hover { transform:translateY(-2px); }
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">F<span>★</span>CO</div>
+  <div class="footer-logo" aria-label="FOCO">FOCO<img class="logo-estrella" src="/images/estrella-foco.svg" alt="" width="40" height="37"></div>
   <div class="footer-center">Espacio Creativo · Logroño · © 2026</div>
   <div class="footer-right">
     <a href="/aviso-legal.html" style="color:#666;text-decoration:none;margin-right:16px;font-family:'Space Mono',monospace;font-size:11px;">Aviso legal</a>
