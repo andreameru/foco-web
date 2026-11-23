@@ -204,6 +204,12 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hz-dia h4 { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-align:center; margin:0 0 8px; }
 .hz-lista { display:flex; flex-direction:column; gap:8px; }
 .hz-card { border:1.5px solid var(--black); border-radius:12px; padding:9px 11px 10px; background:linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 3px 4px 0 rgba(0,0,0,.16); }
+.hz-costura { --tono:91,127,166; --a:.30; }
+.hz-creativo { --tono:255,63,164; --a:.24; }
+.hz-ganchillo { --tono:200,168,122; --a:.42; }
+.hz-lectura { --tono:61,255,0; --a:.22; }
+.hz-carta { --tono:180,140,255; --a:.34; }
+.hz-card[class*="hz-"] { background:linear-gradient(rgba(var(--tono),var(--a)), rgba(var(--tono),var(--a))), linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; }
 .hz-t { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; line-height:1.25; }
 .hz-t .hpunto { flex:none; margin:0; }
 .hz-pill { display:inline-block; font-size:10px; font-weight:400; padding:1px 8px; border:1px solid rgba(35,39,43,.55); border-radius:99px; margin-top:5px; }
@@ -1028,7 +1034,7 @@ function renderHorario() {
   HORARIO.forEach(d => {
     h += '<div class="hz-dia"><h4>' + d.dia + '</h4><div class="hz-lista">';
     d.items.forEach(i => {
-      h += '<div class="hz-card"><div class="hz-t"><i class="hpunto ' + PUNTOS[i.c] + '"></i>' + i.n + '</div>'
+      h += '<div class="hz-card hz-' + i.c + '"><div class="hz-t"><i class="hpunto ' + PUNTOS[i.c] + '"></i>' + i.n + '</div>'
         + (i.nota ? '<div class="hz-nota">' + i.nota + '</div>' : '')
         + '<span class="hz-pill">' + i.p + '</span>'
         + '<div class="hz-hora">' + i.h + '</div></div>';
