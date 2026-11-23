@@ -215,7 +215,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hz-t .hpunto { flex:none; margin:0; }
 .hz-pill { display:inline-block; font-size:10px; font-weight:400; padding:1px 9px; background:#fff; border:1px solid rgba(35,39,43,.35); border-radius:99px; margin-top:5px; }
 .hz-niv { font-size:10px; font-weight:400; margin-left:2px; }
-.hz-card { transition:opacity .2s; }
+.hz-card { transition:opacity .2s, transform .15s; }
+a.hz-card { display:block; color:inherit; text-decoration:none; cursor:pointer; }
+a.hz-card:hover { transform:translateY(-2px); }
+.hz-mas { font-size:11px; font-weight:700; margin-top:5px; text-decoration:underline; }
 .hz[data-sel="costura"] .hz-card:not(.hz-costura), .hz[data-sel="creativo"] .hz-card:not(.hz-creativo), .hz[data-sel="ganchillo"] .hz-card:not(.hz-ganchillo), .hz[data-sel="lectura"] .hz-card:not(.hz-lectura), .hz[data-sel="carta"] .hz-card:not(.hz-carta) { opacity:.3; }
 .horario-leyenda span[data-c] { cursor:pointer; }
 .hz-hora { font-size:13px; font-weight:700; margin-top:5px; }
@@ -1029,7 +1032,7 @@ const HORARIO = [
     { c:'costura', n:'Costura', p:'adultos', h:'18:30–20:00' }
   ]},
   { dia:'Jueves', items:[
-    { c:'carta', n:'A la carta', nota:'reserva tu hueco de 1 h 30', h:'17:00–20:30' }
+    { c:'carta', n:'A la carta', nota:'reserva tu hueco de 1 h 30', h:'17:00–20:30', href:'#carta', mas:'Ver cómo funciona →' }
   ]}
 ];
 function renderHorario() {
@@ -1039,11 +1042,13 @@ function renderHorario() {
   HORARIO.forEach(d => {
     h += '<div class="hz-dia"><h4>' + d.dia + '</h4><div class="hz-lista">';
     d.items.forEach(i => {
-      h += '<div class="hz-card hz-' + i.c + '"><div class="hz-t"><i class="hpunto ' + PUNTOS[i.c] + '"></i><span>' + i.n
+      h += '<' + (i.href ? 'a href="' + i.href + '"' : 'div') + ' class="hz-card hz-' + i.c + '"><div class="hz-t"><i class="hpunto ' + PUNTOS[i.c] + '"></i><span>' + i.n
         + (i.v ? ' <span class="hz-niv">' + i.v + '</span>' : '') + '</span></div>'
         + (i.nota ? '<div class="hz-nota">' + i.nota + '</div>' : '')
         + (i.p ? '<span class="hz-pill">' + i.p + '</span>' : '')
-        + '<div class="hz-hora">' + i.h + '</div></div>';
+        + '<div class="hz-hora">' + i.h + '</div>'
+        + (i.mas ? '<div class="hz-mas">' + i.mas + '</div>' : '')
+        + (i.href ? '</a>' : '</div>');
     });
     h += '</div></div>';
   });
