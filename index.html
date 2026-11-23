@@ -199,20 +199,25 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hp-rosa { background:#FF3FA4; }
 .hp-kraft { background:#C8A87A; }
 .hp-verde { background:#3DFF00; }
-.hp-lila { background:#B48CFF; }
+.hp-amarillo { background:#F2C94C; }
+.hp-lila { background:#A99AD1; }
 .hz { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; align-items:start; font-family:'Space Mono',monospace; color:#23272b; }
 .hz-dia h4 { font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-align:center; margin:0 0 8px; }
 .hz-lista { display:flex; flex-direction:column; gap:8px; }
 .hz-card { border:1.5px solid var(--black); border-radius:12px; padding:9px 11px 10px; background:linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 3px 4px 0 rgba(0,0,0,.16); }
 .hz-costura { --tono:91,127,166; --a:.30; }
 .hz-creativo { --tono:255,63,164; --a:.24; }
-.hz-ganchillo { --tono:200,168,122; --a:.42; }
+.hz-ganchillo { --tono:242,201,76; --a:.42; }
 .hz-lectura { --tono:61,255,0; --a:.22; }
-.hz-carta { --tono:180,140,255; --a:.34; }
+.hz-carta { --tono:150,135,190; --a:.40; border-color:#4a4066; }
 .hz-card[class*="hz-"] { background:linear-gradient(rgba(var(--tono),var(--a)), rgba(var(--tono),var(--a))), linear-gradient(160deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,.14) 100%), #c4cad0; }
 .hz-t { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:700; line-height:1.25; }
 .hz-t .hpunto { flex:none; margin:0; }
-.hz-pill { display:inline-block; font-size:10px; font-weight:400; padding:1px 8px; border:1px solid rgba(35,39,43,.55); border-radius:99px; margin-top:5px; }
+.hz-pill { display:inline-block; font-size:10px; font-weight:400; padding:1px 9px; background:#fff; border:1px solid rgba(35,39,43,.35); border-radius:99px; margin-top:5px; }
+.hz-niv { font-size:10px; font-weight:400; margin-left:2px; }
+.hz-card { transition:opacity .2s; }
+.hz[data-sel="costura"] .hz-card:not(.hz-costura), .hz[data-sel="creativo"] .hz-card:not(.hz-creativo), .hz[data-sel="ganchillo"] .hz-card:not(.hz-ganchillo), .hz[data-sel="lectura"] .hz-card:not(.hz-lectura), .hz[data-sel="carta"] .hz-card:not(.hz-carta) { opacity:.3; }
+.horario-leyenda span[data-c] { cursor:pointer; }
 .hz-hora { font-size:13px; font-weight:700; margin-top:5px; }
 .hz-nota { font-size:11px; font-weight:400; margin-top:2px; color:#4b5157; }
 @media(max-width:700px) {
@@ -704,12 +709,12 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   <div class="horario-wrap fade-up">
     <h3 class="horario-titulo">Horario semanal</h3>
     <div class="horario-caja" id="horario"></div>
-    <div class="horario-leyenda" aria-hidden="true">
-      <span><i class="hpunto hp-azul"></i>Costura</span>
-      <span><i class="hpunto hp-rosa"></i>Club creativo</span>
-      <span><i class="hpunto hp-kraft"></i>Ganchillo</span>
-      <span><i class="hpunto hp-verde"></i>Lectura</span>
-      <span><i class="hpunto hp-lila"></i>A la carta</span>
+    <div class="horario-leyenda">
+      <span data-c="costura"><i class="hpunto hp-azul"></i>Costura</span>
+      <span data-c="creativo"><i class="hpunto hp-rosa"></i>Club creativo</span>
+      <span data-c="ganchillo"><i class="hpunto hp-amarillo"></i>Ganchillo</span>
+      <span data-c="lectura"><i class="hpunto hp-verde"></i>Lectura</span>
+      <span data-c="carta"><i class="hpunto hp-lila"></i>A la carta</span>
     </div>
   </div>
 </section>
@@ -1005,26 +1010,26 @@ function toggleCurso(id) {
 // ===== HORARIO SEMANAL =====
 // Una lista por día. Cada actividad: club (color), nombre, nivel/aviso opcional, público (pill) y hora.
 // Se muestran ordenadas por hora de inicio. Para cambiar un horario, edita la línea correspondiente.
-const PUNTOS = { costura:'hp-azul', creativo:'hp-rosa', ganchillo:'hp-kraft', lectura:'hp-verde', carta:'hp-lila' };
+const PUNTOS = { costura:'hp-azul', creativo:'hp-rosa', ganchillo:'hp-amarillo', lectura:'hp-verde', carta:'hp-lila' };
 const HORARIO = [
   { dia:'Lunes', items:[
-    { c:'ganchillo', n:'Ganchillo', p:'Niños', h:'17:00–18:30' },
-    { c:'lectura', n:'Lectura juvenil', p:'Jóvenes', h:'18:00–19:00' },
-    { c:'ganchillo', n:'Ganchillo', nota:'Iniciación', p:'Adultos', h:'18:30–20:00' },
-    { c:'lectura', n:'Lectura', nota:'Cada dos semanas', p:'Adultos', h:'19:00–20:00' }
+    { c:'ganchillo', n:'Ganchillo', p:'niños', h:'17:00–18:30' },
+    { c:'lectura', n:'Lectura', p:'juvenil', h:'18:00–19:00' },
+    { c:'ganchillo', n:'Ganchillo', v:'iniciación', p:'adultos', h:'18:30–20:00' },
+    { c:'lectura', n:'Lectura', nota:'cada dos semanas', p:'adultos', h:'19:00–20:00' }
   ]},
   { dia:'Martes', items:[
-    { c:'creativo', n:'Club creativo', p:'Niños', h:'17:00–18:30' },
-    { c:'ganchillo', n:'Ganchillo', nota:'Avanzado', p:'Adultos', h:'17:00–18:30' }
+    { c:'creativo', n:'Club creativo', p:'niños', h:'17:00–18:30' },
+    { c:'ganchillo', n:'Ganchillo', v:'avanzado', p:'adultos', h:'17:00–18:30' }
   ]},
   { dia:'Miércoles', items:[
-    { c:'costura', n:'Costura', p:'Adultos', h:'10:30–12:00' },
-    { c:'costura', n:'Costura', p:'Niños', h:'17:00–18:30' },
-    { c:'creativo', n:'Club creativo', p:'Adultos', h:'17:00–18:30' },
-    { c:'costura', n:'Costura', p:'Adultos', h:'18:30–20:00' }
+    { c:'costura', n:'Costura', p:'adultos', h:'10:30–12:00' },
+    { c:'costura', n:'Costura', p:'niños', h:'17:00–18:30' },
+    { c:'creativo', n:'Club creativo', p:'adultos', h:'17:00–18:30' },
+    { c:'costura', n:'Costura', p:'adultos', h:'18:30–20:00' }
   ]},
   { dia:'Jueves', items:[
-    { c:'carta', n:'A la carta', nota:'Con reserva', p:'Todos', h:'17:00–20:30' }
+    { c:'carta', n:'A la carta', nota:'reserva tu hueco de 1 h 30', h:'17:00–20:30' }
   ]}
 ];
 function renderHorario() {
@@ -1034,9 +1039,10 @@ function renderHorario() {
   HORARIO.forEach(d => {
     h += '<div class="hz-dia"><h4>' + d.dia + '</h4><div class="hz-lista">';
     d.items.forEach(i => {
-      h += '<div class="hz-card hz-' + i.c + '"><div class="hz-t"><i class="hpunto ' + PUNTOS[i.c] + '"></i>' + i.n + '</div>'
+      h += '<div class="hz-card hz-' + i.c + '"><div class="hz-t"><i class="hpunto ' + PUNTOS[i.c] + '"></i><span>' + i.n
+        + (i.v ? ' <span class="hz-niv">' + i.v + '</span>' : '') + '</span></div>'
         + (i.nota ? '<div class="hz-nota">' + i.nota + '</div>' : '')
-        + '<span class="hz-pill">' + i.p + '</span>'
+        + (i.p ? '<span class="hz-pill">' + i.p + '</span>' : '')
         + '<div class="hz-hora">' + i.h + '</div></div>';
     });
     h += '</div></div>';
@@ -1044,6 +1050,19 @@ function renderHorario() {
   el.innerHTML = h + '</div>';
 }
 renderHorario();
+// Resaltar un club al pasar el ratón (ordenador) o tocar la leyenda (móvil)
+(function () {
+  const tabla = document.querySelector('#horario .hz');
+  const items = document.querySelectorAll('.horario-leyenda span[data-c]');
+  if (!tabla) return;
+  let fijo = null;
+  const poner = c => { if (c) tabla.dataset.sel = c; else delete tabla.dataset.sel; };
+  items.forEach(it => {
+    it.addEventListener('mouseenter', () => { if (!fijo) poner(it.dataset.c); });
+    it.addEventListener('mouseleave', () => { if (!fijo) poner(null); });
+    it.addEventListener('click', () => { fijo = (fijo === it.dataset.c) ? null : it.dataset.c; poner(fijo); });
+  });
+})();
 
 // ===== CALENDAR =====
 // Talleres: añade uno por línea con la fecha 'año-mes-día'.
