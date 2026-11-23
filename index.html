@@ -155,7 +155,8 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cursos .curso-precio, .cursos .curso-chevron { color:#4b5157; }
 .cursos .curso-detalle { border-top-color:rgba(0,0,0,.15); }
 .cursos .curso-detalle-desc, .cursos .curso-detalle-lista li { color:#2b2f33; }
-.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(3, 1fr); grid-template-rows:repeat(2, auto); grid-auto-flow:column; gap:16px; align-items:start; }
+.cursos-lista { max-width:100%; display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; align-items:start; }
+.cursos-col { display:flex; flex-direction:column; gap:16px; min-width:0; }
 .curso-item { border:1.5px solid var(--black); border-radius:12px; overflow:hidden; background:#fff; }
 .curso-row { display:flex; align-items:center; justify-content:space-between; padding:1rem 1.25rem; cursor:pointer; transition:background .15s; }
 .curso-row:hover { background:var(--grey); }
@@ -171,6 +172,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 /* Clubs "Próximamente": se puede ver la información, pero los botones de reserva siguen ocultos. Para abrir inscripciones en enero, quita la línea de .curso-reservar-opciones */
 .cursos .curso-reservar-opciones { display:none; }
 .curso-detalle.open { display:block; }
+.curso-sub { padding-top:1rem; }
+.curso-sub + .curso-sub { margin-top:1.1rem; border-top:1.5px dashed rgba(0,0,0,.25); }
+.curso-sub-titulo { display:inline-block; font-family:'Space Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:#fff; border:1.5px solid var(--black); border-radius:99px; padding:3px 12px; margin:0 0 2px; }
+.curso-sub .curso-detalle-desc:first-of-type { margin-top:.7rem; }
 .curso-detalle-desc { font-size:14px; color:#555; line-height:1.7; margin:1rem 0; }
 .curso-detalle-lista { list-style:none; display:flex; flex-direction:column; gap:6px; margin-bottom:1rem; }
 .curso-detalle-lista li { font-size:13px; color:#555; padding-left:16px; position:relative; }
@@ -483,7 +488,7 @@ a.hz-card:hover { transform:translateY(-2px); }
   .nav-pill { background:var(--pink); color:var(--white)!important; padding:.7rem 1.2rem!important; border-radius:2rem; margin-top:.5rem; text-align:center; border:none!important; }
   #hero { padding-top:0; }
   .hero-left { padding:1.5rem 1.5rem 1.5rem; }
-  .cursos-lista { grid-template-columns:1fr; grid-template-rows:none; grid-auto-flow:row; }
+  .cursos-lista { grid-template-columns:1fr; }
   .hero-left h1 { font-size:2.2rem; }
   .club, .cursos, .talleres, .grupos-section, .contacto, .regala-section { padding:40px 16px; }
   .ev-info, .ev-price { padding:40px 16px; }
@@ -569,13 +574,14 @@ a.hz-card:hover { transform:translateY(-2px); }
   <p class="section-subtitle fade-up">Aprende algo nuevo, a tu ritmo y en buena compañía. Clubs semanales en pequeño grupo, sin experiencia previa: solo ganas de crear y desconectar. Aquí se aprende haciendo. Los clubs van de enero a junio y se pagan mes a mes, sin compromiso de continuar.</p>
 
   <div class="cursos-lista fade-up">
+    <div class="cursos-col">
 
     <div class="curso-item">
       <div class="curso-row" onclick="toggleCurso('costura')">
         <div class="curso-row-left">
           <div class="curso-emoji">🧵</div>
           <div>
-            <div class="curso-nombre">Club de costura · Adultos</div>
+            <div class="curso-nombre">Club de costura</div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -584,6 +590,8 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
       </div>
       <div class="curso-detalle" id="detail-costura">
+        <div class="curso-sub">
+          <h4 class="curso-sub-titulo">Adultos</h4>
         <p class="curso-detalle-desc">Aprende a coser desde cero, a tu ritmo y acompañada por Mari Jose, la profesora del club. Aquí se viene a disfrutar: desde lo más básico hasta proyectos que elegiremos entre todas.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora (1 h 30)</li>
@@ -597,23 +605,9 @@ a.hz-card:hover { transform:translateY(-2px); }
           <a href="https://app.zenamu.com/foco/courses/148216" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 10:30–12:00 →</a>
           <a href="https://app.zenamu.com/foco/courses/148221" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 18:30–20:00 →</a>
         </div>
-      </div>
-    </div>
-
-    <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('costura-ninos')">
-        <div class="curso-row-left">
-          <div class="curso-emoji">🪡</div>
-          <div>
-            <div class="curso-nombre">Club de costura · Niños</div>
-          </div>
         </div>
-        <div class="curso-row-right">
-          <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-costura-ninos">▾</span>
-        </div>
-      </div>
-      <div class="curso-detalle" id="detail-costura-ninos">
+        <div class="curso-sub">
+          <h4 class="curso-sub-titulo">Niños</h4>
         <p class="curso-detalle-desc">Un espacio para que niños y niñas aprendan a coser desde cero. Proyectos sencillos y adaptados a su edad, a su ritmo y en grupo pequeño, acompañados por Mari Jose, la profesora del club.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora (1 h 30)</li>
@@ -624,23 +618,26 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
         <p class="curso-detalle-desc">Si no tenéis máquina, podéis probar una clase con una de las nuestras antes de decidiros a comprar una (bajo disponibilidad).</p>
+        </div>
       </div>
     </div>
 
     <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('adultos')">
+      <div class="curso-row" onclick="toggleCurso('creativo')">
         <div class="curso-row-left">
           <div class="curso-emoji">🎨</div>
           <div>
-            <div class="curso-nombre">Club creativo · Adultos</div>
+            <div class="curso-nombre">Club creativo</div>
           </div>
         </div>
         <div class="curso-row-right">
           <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-adultos">▾</span>
+          <span class="curso-chevron" id="chev-creativo">▾</span>
         </div>
       </div>
-      <div class="curso-detalle" id="detail-adultos">
+      <div class="curso-detalle" id="detail-creativo">
+        <div class="curso-sub">
+          <h4 class="curso-sub-titulo">Adultos</h4>
         <p class="curso-detalle-desc">Es como apuntarte al gimnasio, pero para tu creatividad: un rato fijo cada semana para probar materiales y técnicas distintas. Cada sesión, una propuesta nueva: decoupage, arcilla, abalorios, pintura… Vienes, creas y te llevas a casa lo que has hecho.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora (1 h 30)</li>
@@ -651,23 +648,9 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
         <p class="curso-detalle-desc">Un momento para ti: para crear, desconectar y compartir tiempo con otras personas.</p>
-      </div>
-    </div>
-
-    <div class="curso-item">
-      <div class="curso-row" onclick="toggleCurso('ninos')">
-        <div class="curso-row-left">
-          <div class="curso-emoji">✏️</div>
-          <div>
-            <div class="curso-nombre">Club creativo · Niños</div>
-          </div>
         </div>
-        <div class="curso-row-right">
-          <span class="curso-badge">Próximamente</span>
-          <span class="curso-chevron" id="chev-ninos">▾</span>
-        </div>
-      </div>
-      <div class="curso-detalle" id="detail-ninos">
+        <div class="curso-sub">
+          <h4 class="curso-sub-titulo">Niños</h4>
         <p class="curso-detalle-desc">Un espacio para que niños y niñas prueben cada semana materiales y técnicas distintas: decoupage, arcilla, abalorios, pintura… Aprenden haciendo, a su ritmo, y se llevan a casa lo que crean.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora (1 h 30)</li>
@@ -678,9 +661,11 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
         <p class="curso-detalle-desc">Acompañados por Andrea, maestra de educación primaria y pedagogía terapéutica.</p>
+        </div>
       </div>
     </div>
-
+    </div>
+    <div class="cursos-col">
     <div class="curso-item">
       <div class="curso-row" onclick="toggleCurso('ganchillo')">
         <div class="curso-row-left">
@@ -695,6 +680,19 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
       </div>
       <div class="curso-detalle" id="detail-ganchillo">
+        <div class="curso-sub">
+          <h4 class="curso-sub-titulo">Niños</h4>
+        <p class="curso-detalle-desc">Un espacio para que niños y niñas aprendan ganchillo desde cero, a su ritmo y en grupo pequeño. Cada semana un ratito tranquilo para tejer y crear.</p>
+        <ul class="curso-detalle-lista">
+          <li>1 día a la semana, mismo día y hora (1 h 30)</li>
+          <li>Grupo reducido</li>
+          <li>Sin experiencia previa</li>
+          <li>Se abre grupo a partir de 4 personas</li>
+          <li>De enero a junio, con pago mes a mes</li>
+        </ul>
+        </div>
+        <div class="curso-sub">
+          <h4 class="curso-sub-titulo">Adultos · iniciación y avanzado</h4>
         <p class="curso-detalle-desc">Aprende ganchillo desde cero o sigue avanzando con tus proyectos. Un rato tranquilo cada semana para tejer, charlar y desconectar.</p>
         <ul class="curso-detalle-lista">
           <li>1 día a la semana, mismo día y hora</li>
@@ -704,6 +702,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>Se abre grupo a partir de 4 personas</li>
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
+        </div>
       </div>
     </div>
 
@@ -721,6 +720,18 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
       </div>
       <div class="curso-detalle" id="detail-lectura">
+        <div class="curso-sub">
+          <h4 class="curso-sub-titulo">Juvenil</h4>
+        <p class="curso-detalle-desc">Un espacio para que jóvenes lean, compartan y conversen sobre libros con calma y en buena compañía. Dirigido por una persona del mundo de los libros.</p>
+        <ul class="curso-detalle-lista">
+          <li>Mismo día y hora</li>
+          <li>Grupo pequeño</li>
+          <li>Se abre grupo a partir de 4 personas</li>
+          <li>De enero a junio, con pago mes a mes</li>
+        </ul>
+        </div>
+        <div class="curso-sub">
+          <h4 class="curso-sub-titulo">Adultos</h4>
         <p class="curso-detalle-desc">Un espacio para leer, compartir y conversar sobre libros con calma y en buena compañía. Dirigido por una persona del mundo de los libros.</p>
         <ul class="curso-detalle-lista">
           <li>Mismo día y hora</li>
@@ -729,9 +740,10 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>Se abre grupo a partir de 4 personas</li>
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
+        </div>
       </div>
     </div>
-
+    </div>
   </div>
 
   <!-- Horario semanal -->
