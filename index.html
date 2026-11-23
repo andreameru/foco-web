@@ -314,37 +314,37 @@ a.hz-card:hover { transform:translateY(-2px); }
 /* Pin needle shadow on paper */
 .pushpin-shadow { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:4px; height:12px; background:linear-gradient(to bottom, rgba(0,0,0,.15), transparent); border-radius:0 0 2px 2px; z-index:9; pointer-events:none; }
 
-/* Post-it paper rosa claro */
-.calendar { background:#FFD4DC; border:none; border-radius:1px; overflow:hidden; position:relative; box-shadow:3px 5px 16px rgba(0,0,0,.3), 1px 1px 4px rgba(0,0,0,.12); }
-/* Paper texture */
-.calendar::before { content:''; position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:1; }
-/* Corner curl */
-.calendar::after { content:''; position:absolute; bottom:0; right:0; width:60px; height:60px; background:linear-gradient(135deg, transparent 55%, rgba(0,0,0,.05) 100%); pointer-events:none; z-index:1; }
-
-.cal-header { background:transparent; border-bottom:none; padding:14px 24px 6px; display:flex; justify-content:space-between; align-items:center; position:relative; z-index:2; }
-.cal-header-title { font-family:'Bebas Neue',cursive; font-size:52px; color:#4a2030; line-height:1; letter-spacing:2px; }
-.cal-header-right { display:flex; gap:8px; align-items:center; }
-.cal-header-desc { font-family:'Space Mono',monospace; font-size:11px; color:rgba(74,32,48,.3); text-transform:uppercase; letter-spacing:2px; max-width:200px; text-align:right; line-height:1.5; }
-.cal-nav-btn { width:36px; height:36px; border:2px solid rgba(74,32,48,.18); background:transparent; color:rgba(74,32,48,.45); cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:all .2s; }
-.cal-nav-btn:hover { background:rgba(74,32,48,.08); color:#4a2030; border-color:rgba(74,32,48,.35); }
+/* Hoja de calendario: cuadrícula marcada, mes grande */
+.calendar { background:#fffaf0; border:2px solid var(--black); border-radius:16px; overflow:hidden; position:relative; box-shadow:7px 9px 0 rgba(0,0,0,.85); }
+.cal-header { padding:20px 26px 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:12px; position:relative; z-index:2; }
+.cal-header-title { font-family:Georgia,'Times New Roman',serif; font-weight:700; font-size:clamp(44px,9vw,84px); color:var(--black); line-height:.9; letter-spacing:-.03em; text-transform:lowercase; }
+.cal-header-title small { font-family:'Space Mono',monospace; font-size:.2em; font-weight:700; letter-spacing:.08em; color:var(--pink); margin-left:.5em; vertical-align:top; position:relative; top:.4em; }
+.cal-header-right { display:flex; flex-direction:column; align-items:flex-end; gap:10px; }
+.cal-header-desc { font-family:'Space Mono',monospace; font-size:11px; color:rgba(0,0,0,.55); text-transform:uppercase; letter-spacing:.12em; max-width:210px; text-align:right; line-height:1.5; }
 .cal-nav-wrap { display:flex; gap:8px; }
-.cal-days-header { display:grid; grid-template-columns:repeat(7,1fr); border-bottom:2px solid rgba(74,32,48,.1); border-top:2px solid rgba(74,32,48,.1); margin:0 16px; position:relative; z-index:2; }
-.cal-day-name { font-family:'Space Mono',monospace; font-size:9px; color:rgba(74,32,48,.35); text-transform:uppercase; text-align:center; padding:8px 0; letter-spacing:2px; font-weight:700; }
-.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:0 16px 12px; position:relative; z-index:2; }
-.cal-cell { aspect-ratio:4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; border-bottom:1px solid rgba(74,32,48,.05); border-right:1px solid rgba(74,32,48,.04); position:relative; transition:all .2s; padding:4px 2px; }
-.cal-cell:nth-child(7n) { border-right:none; }
-.cal-cell .cal-num { font-family:'Bebas Neue',cursive; font-size:28px; color:rgba(74,32,48,.75); line-height:1; transition:color .2s; }
-.cal-cell.empty { background:transparent; }
+.cal-nav-btn { width:38px; height:38px; border:2px solid var(--black); background:#fff; color:var(--black); cursor:pointer; font-size:17px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:all .2s; box-shadow:2px 3px 0 var(--black); }
+.cal-nav-btn:hover { background:var(--pink); color:#fff; }
+.cal-days-header { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); background:var(--black); position:relative; z-index:2; }
+.cal-day-name { font-family:'Space Mono',monospace; font-size:11px; color:#fff; text-transform:uppercase; text-align:center; padding:9px 0; letter-spacing:.12em; font-weight:700; }
+.cal-grid { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:1.5px; background:var(--black); position:relative; z-index:2; }
+.cal-cell { min-height:92px; display:flex; flex-direction:column; align-items:flex-start; background:#fffaf0; position:relative; transition:background .2s; padding:7px 8px; min-width:0; }
+.cal-cell .cal-num { font-family:Georgia,'Times New Roman',serif; font-size:20px; font-weight:700; color:var(--black); line-height:1; }
+.cal-cell.empty { background:#f1ebdd; }
 .cal-cell.empty .cal-num { color:transparent; }
-.cal-cell.today { background:rgba(74,32,48,.08); border-radius:8px; }
-.cal-cell.today .cal-num { color:#4a2030; }
-.cal-cell.past { opacity:0.35; }
-.cal-cell.past .cal-num { color:rgba(74,32,48,.4); }
-.cal-cell.has-event { cursor:pointer; }
-.cal-cell.has-event .cal-num { color:rgba(74,32,48,.55); }
-.cal-cell.has-event:hover { background:rgba(232,107,138,.18); border-radius:8px; transform:scale(1.04); z-index:2; }
-.cal-cell.has-event:hover .cal-num { color:#4a2030; }
-.cal-event-label { font-family:'Space Mono',monospace; font-size:9px; font-weight:700; color:var(--rosa); text-align:center; line-height:1.2; margin-top:2px; letter-spacing:.5px; }
+.cal-cell.today .cal-num { background:var(--black); color:#fff; border-radius:99px; padding:3px 7px; margin:-3px 0 0 -4px; }
+.cal-cell.past .cal-num { color:rgba(0,0,0,.35); }
+.cal-cell.has-event { cursor:pointer; background:#ffe0ef; }
+.cal-cell.has-event:hover { background:var(--pink-light); }
+.cal-event-label { font-family:'Space Mono',monospace; font-size:11px; font-weight:700; color:var(--black); text-align:left; line-height:1.25; margin-top:8px; padding:4px 7px; background:var(--pink); color:#fff; border-radius:7px; max-width:100%; overflow-wrap:anywhere; }
+.cal-cell.has-event.past .cal-num { color:rgba(0,0,0,.45); }
+.cal-lista { display:none; padding:14px 16px 16px; border-top:1.5px solid var(--black); background:#fffaf0; position:relative; z-index:2; }
+.cal-lista button { display:flex; width:100%; align-items:center; gap:12px; text-align:left; background:#ffe0ef; border:1.5px solid var(--black); border-radius:12px; padding:9px 12px; margin:0 0 8px; font:inherit; cursor:pointer; color:var(--black); box-shadow:2px 3px 0 var(--black); }
+.cal-lista button:last-child { margin-bottom:0; }
+.cal-lista .cl-dia { font-family:Georgia,serif; font-weight:700; font-size:26px; line-height:1; min-width:34px; text-align:center; }
+.cal-lista .cl-dia small { display:block; font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; }
+.cal-lista .cl-nom { font-family:'Space Mono',monospace; font-weight:700; font-size:13px; line-height:1.3; }
+.cal-lista .cl-nom small { display:block; font-weight:400; font-size:11px; color:rgba(0,0,0,.6); }
+.cal-lista .cl-vacio { font-family:'Space Mono',monospace; font-size:12px; color:rgba(0,0,0,.55); text-align:center; }
 
 /* MODAL */
 .modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.6); z-index:2000; display:none; align-items:center; justify-content:center; }
@@ -502,12 +502,19 @@ a.hz-card:hover { transform:translateY(-2px); }
   .regala-tarjeta { max-width:88%; padding:16px 18px; }
   .section-label { font-size:24px; }
   .footer { flex-direction:column; gap:16px; text-align:center; }
-  .calendar-frame { transform:none; overflow-x:auto; }
-  .calendar { min-width:320px; }
-  .cal-header-title { font-size:36px; }
-  .cal-cell .cal-num { font-size:20px; }
-  .cal-cell { aspect-ratio:1; }
+  .calendar-frame { transform:none; margin-right:6px; }
+  .calendar { box-shadow:4px 6px 0 rgba(0,0,0,.85); border-radius:14px; }
+  .cal-header { padding:16px 14px 12px; align-items:center; }
   .cal-header-desc { display:none; }
+  .cal-nav-btn { width:34px; height:34px; box-shadow:2px 2px 0 var(--black); }
+  .cal-day-name { font-size:0; padding:8px 0; }
+  .cal-day-name::after { content:attr(data-s); font-size:11px; letter-spacing:0; }
+  .cal-cell { min-height:0; aspect-ratio:1; align-items:center; justify-content:center; padding:2px; }
+  .cal-cell .cal-num { font-size:17px; }
+  .cal-cell.today .cal-num { margin:0; padding:3px 6px; }
+  .cal-cell.has-event .cal-num { background:var(--pink); color:#fff; border-radius:99px; min-width:30px; text-align:center; padding:5px 0; border:1.5px solid var(--black); }
+  .cal-event-label { display:none; }
+  .cal-lista { display:block; }
 }
 </style>
 </head>
@@ -762,7 +769,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <div class="cal-header-title" id="calTitle"></div>
         </div>
         <div class="cal-header-right">
-          <div class="cal-header-desc">pincha en un día para ver el taller</div>
+          <div class="cal-header-desc">pincha en un día marcado para ver el taller</div>
           <div class="cal-nav-wrap">
             <button class="cal-nav-btn" id="calPrev">←</button>
             <button class="cal-nav-btn" id="calNext">→</button>
@@ -770,15 +777,16 @@ a.hz-card:hover { transform:translateY(-2px); }
         </div>
       </div>
       <div class="cal-days-header">
-        <div class="cal-day-name">Lunes</div>
-        <div class="cal-day-name">Martes</div>
-        <div class="cal-day-name">Miérc.</div>
-        <div class="cal-day-name">Jueves</div>
-        <div class="cal-day-name">Viernes</div>
-        <div class="cal-day-name">Sábado</div>
-        <div class="cal-day-name">Doming.</div>
+        <div class="cal-day-name" data-s="L">Lunes</div>
+        <div class="cal-day-name" data-s="M">Martes</div>
+        <div class="cal-day-name" data-s="X">Miérc.</div>
+        <div class="cal-day-name" data-s="J">Jueves</div>
+        <div class="cal-day-name" data-s="V">Viernes</div>
+        <div class="cal-day-name" data-s="S">Sábado</div>
+        <div class="cal-day-name" data-s="D">Doming.</div>
       </div>
       <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-lista" id="calLista"></div>
     </div>
   </div>
 </section>
@@ -1097,7 +1105,7 @@ let currentYear = new Date().getFullYear();
 
 function renderCalendar(month, year) {
   const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-  document.getElementById('calTitle').textContent = `${months[month]} ${year}`;
+  document.getElementById('calTitle').innerHTML = `${months[month]}<small>${year}</small>`;
   const grid = document.getElementById('calGrid');
   grid.innerHTML = '';
 
@@ -1127,12 +1135,32 @@ function renderCalendar(month, year) {
       cell.classList.add('has-event');
       const label = document.createElement('div');
       label.className = 'cal-event-label';
-      label.textContent = events[key].short.split(' ').slice(0, 2).join(' ');
+      label.textContent = events[key].short;
       cell.appendChild(label);
       cell.addEventListener('click', () => openModal(events[key]));
     }
     grid.appendChild(cell);
   }
+  for (let i = (offset + daysInMonth) % 7; i !== 0 && i < 7; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-cell empty';
+    cell.innerHTML = '<span class="cal-num"></span>';
+    grid.appendChild(cell);
+  }
+  // Lista de talleres del mes (se ve en el móvil)
+  const lista = document.getElementById('calLista');
+  lista.innerHTML = '';
+  const dias = ['dom','lun','mar','mié','jue','vie','sáb'];
+  const delMes = Object.keys(events).sort().filter(k => k.startsWith(`${year}-${String(month+1).padStart(2,'0')}-`));
+  if (!delMes.length) { lista.innerHTML = '<div class="cl-vacio">Este mes aún no hay talleres publicados.</div>'; }
+  delMes.forEach(k => {
+    const [y, m, d] = k.split('-').map(Number);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.innerHTML = `<span class="cl-dia">${d}<small>${dias[new Date(y, m-1, d).getDay()]}</small></span><span class="cl-nom">${events[k].name}<small>Toca para ver los detalles</small></span>`;
+    btn.addEventListener('click', () => openModal(events[k]));
+    lista.appendChild(btn);
+  });
 }
 
 document.getElementById('calPrev').addEventListener('click', () => {
