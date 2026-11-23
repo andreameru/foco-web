@@ -1034,6 +1034,9 @@ function toggleCurso(id) {
   const detail = document.getElementById('detail-' + id);
   const chev = document.getElementById('chev-' + id);
   const isOpen = detail.classList.contains('open');
+  // Cerrar los demás clubs antes de abrir este
+  document.querySelectorAll('.curso-detalle.open').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.curso-chevron.open').forEach(c => c.classList.remove('open'));
   detail.classList.toggle('open', !isOpen);
   chev.classList.toggle('open', !isOpen);
 }
