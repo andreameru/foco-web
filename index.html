@@ -504,7 +504,11 @@ a.hz-card:hover { transform:translateY(-2px); }
   .footer { flex-direction:column; gap:16px; text-align:center; }
   .calendar-frame { transform:none; margin-right:6px; }
   .calendar { box-shadow:4px 6px 0 rgba(0,0,0,.85); border-radius:14px; }
-  .cal-header { padding:16px 14px 12px; align-items:center; }
+  .cal-header { padding:16px 12px 12px; align-items:center; gap:8px; }
+  .cal-header > div:first-child { min-width:0; flex:1 1 auto; }
+  .cal-header-right { flex:none; }
+  .cal-header-title { font-size:clamp(28px,9vw,40px); letter-spacing:-.04em; }
+  .cal-header-title small { display:block; margin:6px 0 0; top:0; font-size:11px; }
   .cal-header-desc { display:none; }
   .cal-nav-btn { width:34px; height:34px; box-shadow:2px 2px 0 var(--black); }
   .cal-day-name { font-size:0; padding:8px 0; }
