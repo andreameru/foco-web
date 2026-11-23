@@ -343,6 +343,10 @@ a.hz-card:hover { transform:translateY(-2px); }
 .cal-cell.has-event:hover { background:var(--pink-light); }
 .cal-event-label { font-family:'Space Mono',monospace; font-size:11px; font-weight:700; color:var(--black); text-align:left; line-height:1.25; margin-top:8px; padding:4px 7px; background:var(--pink); color:#fff; border-radius:7px; max-width:100%; overflow-wrap:anywhere; }
 .cal-cell.has-event.past .cal-num { color:rgba(0,0,0,.45); }
+.cal-cell.has-event.ev-club { background:#d9f4ef; }
+.cal-cell.has-event.ev-club:hover { background:#b7ebe2; }
+.ev-club .cal-event-label { background:#2ec4b6; color:#0b2b27; }
+.cal-lista button.ev-club { background:#d9f4ef; }
 .cal-lista { display:none; padding:14px 16px 16px; border-top:1.5px solid var(--black); background:#fffaf0; position:relative; z-index:2; }
 .cal-lista button { display:flex; width:100%; align-items:center; gap:12px; text-align:left; background:#ffe0ef; border:1.5px solid var(--black); border-radius:12px; padding:9px 12px; margin:0 0 8px; font:inherit; cursor:pointer; color:var(--black); box-shadow:2px 3px 0 var(--black); }
 .cal-lista button:last-child { margin-bottom:0; }
@@ -529,6 +533,7 @@ a.hz-card:hover { transform:translateY(-2px); }
   .cal-cell.today .cal-num { margin:0; padding:3px 6px; }
   .cal-cell.has-event .cal-num { background:var(--pink); color:#fff; border-radius:99px; min-width:30px; text-align:center; padding:5px 0; border:1.5px solid var(--black); }
   .cal-event-label { display:none; }
+  .cal-cell.has-event.ev-club .cal-num { background:#2ec4b6; color:#0b2b27; }
   .cal-lista { display:block; }
 }
 </style>
@@ -1070,11 +1075,11 @@ const events = {
   '2026-12-11': { name: 'Taller navideño de ganchillo: tu propia bola de Navidad', short: 'Ganchillo navideño', sub: 'Viernes 11 de diciembre · por la tarde', desc: 'Teje con ganchillo tu propia bola navideña y llévatela a casa para decorar el árbol. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
   '2026-12-12': { name: 'Taller navideño de costura: bota de Navidad', short: 'Costura navideña', sub: 'Sábado 12 de diciembre', desc: 'Un taller de costura con aire navideño: cose tu propia bota de Navidad y llévatela a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
   '2026-12-19': { name: 'Taller de velas navideñas con LUMO', short: 'Velas con LUMO', sub: 'Sábado 19 de diciembre', desc: 'Crea tus propias velas navideñas de la mano de LUMO y llévatelas terminadas a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-23': { name: 'Club creativo especial Navidad · niños', short: 'Club creativo Navidad', sub: 'Miércoles 23 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades navideñas para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-24': { name: 'Club creativo especial Navidad · niños', short: 'Club creativo Navidad', sub: 'Jueves 24 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades navideñas para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-28': { name: 'Club creativo especial Navidad · niños', short: 'Club creativo Navidad', sub: 'Lunes 28 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades navideñas para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-29': { name: 'Club creativo especial Navidad · niños', short: 'Club creativo Navidad', sub: 'Martes 29 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades navideñas para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-30': { name: 'Club creativo especial Navidad · niños', short: 'Club creativo Navidad', sub: 'Miércoles 30 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades navideñas para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
+  '2026-12-23': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 23 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
+  '2026-12-24': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Jueves 24 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
+  '2026-12-28': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Lunes 28 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
+  '2026-12-29': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Martes 29 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
+  '2026-12-30': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 30 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
 };
 
 let currentMonth = new Date().getMonth();
@@ -1116,6 +1121,7 @@ function renderCalendar(month, year) {
 
     if (events[key]) {
       cell.classList.add('has-event');
+      if (events[key].tipo === 'club') cell.classList.add('ev-club');
       const label = document.createElement('div');
       label.className = 'cal-event-label';
       label.textContent = events[key].short;
@@ -1140,6 +1146,7 @@ function renderCalendar(month, year) {
     const [y, m, d] = k.split('-').map(Number);
     const btn = document.createElement('button');
     btn.type = 'button';
+    if (events[k].tipo === 'club') btn.classList.add('ev-club');
     btn.innerHTML = `<span class="cl-dia">${d}<small>${dias[new Date(y, m-1, d).getDay()]}</small></span><span class="cl-nom">${events[k].name}<small>Toca para ver los detalles</small></span>`;
     btn.addEventListener('click', () => openModal(events[k]));
     lista.appendChild(btn);
