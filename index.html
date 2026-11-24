@@ -386,6 +386,9 @@ a.hz-card:hover { transform:translateY(-2px); }
 .modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.6); z-index:2000; display:none; align-items:center; justify-content:center; }
 .modal-overlay.open { display:flex; }
 .modal { background:#fff; border:3px solid var(--negro); padding:48px; max-width:520px; width:90%; border-radius:8px; position:relative; }
+.modal { max-height:90vh; overflow-y:auto; }
+.modal-close { z-index:1; width:36px; height:36px; top:12px; right:12px; padding:0; line-height:36px; border-radius:50%; background:rgba(255,255,255,.9); }
+.modal-img { display:block; width:calc(100% + 96px); margin:-48px -48px 24px; max-height:260px; object-fit:cover; border-radius:5px 5px 0 0; border-bottom:3px solid var(--negro); }
 .modal-close { position:absolute; top:16px; right:20px; font-size:24px; cursor:pointer; background:none; border:none; color:#999; transition:color .2s; }
 .modal-close:hover { color:var(--negro); }
 .modal-title { font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; margin-bottom:8px; }
@@ -1005,6 +1008,7 @@ a.hz-card:hover { transform:translateY(-2px); }
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" id="modalClose">✕</button>
+    <img class="modal-img" id="modalImg" alt="" hidden>
     <h3 class="modal-title" id="modalTitle"></h3>
     <div class="modal-sub" id="modalSub"></div>
     <p class="modal-desc" id="modalDesc"></p>
@@ -1103,13 +1107,14 @@ renderHorario();
 // ===== CALENDAR =====
 // Talleres: añade uno por línea con la fecha 'año-mes-día'.
 // url = enlace de reserva de ese taller en Zenamu (cuando esté).
+// img = foto del taller (opcional), p. ej. img: '/images/taller-velas.webp'. Si no hay, la ventana sale sin foto.
 const events = {
   // '2026-12-12': { name: 'Nombre del taller', short: 'Nombre corto', sub: 'Taller · 2 h', desc: 'Descripción del taller.', price: '25€', url: '' },
   '2026-12-10': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 10 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2010%20de%20diciembre' },
   '2026-12-17': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 17 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2017%20de%20diciembre' },
   '2026-12-11': { name: 'Taller navideño de ganchillo: tu propia bola de Navidad', short: 'Ganchillo navideño', sub: 'Viernes 11 de diciembre · por la tarde', desc: 'Teje con ganchillo tu propia bola navideña y llévatela a casa para decorar el árbol. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20navide%C3%B1o%20de%20ganchillo%20%28vie%2011%20de%20diciembre%29' },
   '2026-12-12': { name: 'Taller navideño de costura: bota de Navidad', short: 'Costura navideña', sub: 'Sábado 12 de diciembre', desc: 'Un taller de costura con aire navideño: cose tu propia bota de Navidad y llévatela a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20navide%C3%B1o%20de%20costura%20%28s%C3%A1b%2012%20de%20diciembre%29' },
-  '2026-12-19': { name: 'Taller de velas navideñas con LUMO', short: 'Velas con LUMO', sub: 'Sábado 19 de diciembre', desc: 'Crea tus propias velas navideñas de la mano de LUMO y llévatelas terminadas a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20de%20velas%20con%20LUMO%20%28s%C3%A1b%2019%20de%20diciembre%29' },
+  '2026-12-19': { name: 'Taller de velas navideñas con LUMO', short: 'Velas con LUMO', sub: 'Sábado 19 de diciembre', desc: 'Crea tus propias velas navideñas de la mano de LUMO y llévatelas terminadas a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '30€', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20de%20velas%20con%20LUMO%20%28s%C3%A1b%2019%20de%20diciembre%29' },
   '2026-12-23': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 23 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
   '2026-12-24': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Jueves 24 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
   '2026-12-28': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Lunes 28 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
@@ -1215,6 +1220,8 @@ renderCalendar(currentMonth, currentYear);
 
 // ===== MODAL =====
 function openModal(event) {
+  const img = document.getElementById('modalImg');
+  if (event.img) { img.src = event.img; img.alt = event.imgAlt || event.name; img.hidden = false; } else { img.hidden = true; img.removeAttribute('src'); }
   document.getElementById('modalTitle').textContent = event.name;
   document.getElementById('modalSub').textContent = event.sub;
   document.getElementById('modalDesc').textContent = event.desc;
