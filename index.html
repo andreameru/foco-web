@@ -16,7 +16,8 @@
 <meta property="og:url" content="https://www.espaciofoco.es/">
 <meta name="twitter:card" content="summary_large_image">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 :root {
@@ -637,10 +638,6 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
         <p class="curso-detalle-desc"><b>Niños y niñas:</b> si no tenéis máquina, podéis probar una clase con una de las nuestras antes de decidiros a comprar una (bajo disponibilidad).</p>
-        <div class="curso-reservar-opciones">
-          <a href="https://app.zenamu.com/foco/courses/148216" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 10:30–12:00 →</a>
-          <a href="https://app.zenamu.com/foco/courses/148221" target="_blank" rel="noopener" class="curso-reservar-btn">Apuntarme · miércoles 18:30–20:00 →</a>
-        </div>
       </div>
     </div>
 
@@ -690,14 +687,14 @@ a.hz-card:hover { transform:translateY(-2px); }
       <div class="curso-detalle" id="detail-ganchillo">
         <p class="curso-detalle-desc">Aprende ganchillo desde cero o sigue avanzando con tus proyectos, con Eva, la profesora del club. Un rato tranquilo cada semana para tejer, charlar y desconectar. Hay grupos para adultos (iniciación y avanzado) y para niños y niñas.</p>
         <ul class="curso-detalle-lista">
-          <li>1 día a la semana, mismo día y hora (2 h)</li>
+          <li>1 día a la semana, mismo día y hora</li>
           <li>Grupo reducido: máximo 8 personas</li>
           <li>Se abre grupo a partir de 4 personas</li>
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
         <ul class="curso-detalle-lista">
-          <li><b>Adultos:</b> dos grupos, iniciación (sin experiencia previa) y avanzado. Materiales aparte.</li>
-          <li><b>Niños y niñas:</b> un grupo, sin experiencia previa.</li>
+          <li><b>Adultos:</b> sesiones de 2 h, en dos grupos: iniciación (sin experiencia previa) y avanzado. Materiales aparte.</li>
+          <li><b>Niños y niñas:</b> sesiones de 1 h 30, un grupo, sin experiencia previa.</li>
         </ul>
       </div>
     </div>
@@ -899,7 +896,6 @@ a.hz-card:hover { transform:translateY(-2px); }
         <div class="ep-detalle">
           <p>Un taller creativo de 1 hora y media, con un kit de creación para cada niño. Preparamos talleres adaptados a su edad: dinos cuántos vienen y qué edad tienen y te proponemos uno.</p>
           <p><b>Incluye:</b> todos los materiales, guía paso a paso, una creación (o un recuerdo) para llevarte a casa y el espacio solo para tu grupo. No hace falta experiencia.</p>
-          <p>El precio mínimo de cualquier grupo es de 150&nbsp;€, que equivale a unos 10 niños. Si venís menos, el precio es el mismo.</p>
         </div>
       </details>
 
@@ -914,23 +910,19 @@ a.hz-card:hover { transform:translateY(-2px); }
           <p>Te damos factura. Escríbenos con la fecha, cuántos sois y cuánto tiempo queréis, y te enviamos presupuesto sin compromiso.</p>
         </div>
       </details>
-
-      <div class="ep-row">
-        <div><div class="ep-label">Precio mínimo del grupo</div><div class="ep-sub">Si sois pocos, se paga igual: 5 adultos o unos 10 niños</div></div>
-        <div class="ep-val">150€</div>
-      </div>
       <div class="ep-row">
         <div><div class="ep-label">Grupo máximo</div><div class="ep-sub">Espacio privado para tu grupo</div></div>
         <div class="ep-val">20 pers.</div>
       </div>
-      <p style="font-size:14px;color:#555;line-height:1.6;margin:1.5rem 0 1rem">Precios con IVA incluido. Reservamos tu fecha con una señal del 30&nbsp;%. Cada propuesta es personalizada: cuéntanos qué tienes en mente y te enviamos presupuesto sin compromiso.</p>
+      <p style="font-size:14px;color:#555;line-height:1.6;margin:1.5rem 0 1rem">Precios con IVA incluido. Te confirmamos la fecha según disponibilidad; solemos reservar tardes de viernes, sábados y domingos. Reservamos tu fecha con una señal del 30&nbsp;%. Cada propuesta es personalizada: cuéntanos qué tienes en mente y te enviamos presupuesto sin compromiso.</p>
       <div class="ep-botones">
         <a href="mailto:hola@espaciofoco.es?subject=Presupuesto%20para%20grupo" class="btn-black">Contactar para grupos →</a>
         <button type="button" class="btn-black btn-line" id="faqBtn" aria-expanded="false" aria-controls="faqPanel" onclick="toggleFaq()">Preguntas frecuentes +</button>
       </div>
       <div class="ep-faq" id="faqPanel">
         <details><summary>¿Hace falta tener experiencia?</summary><p>No. Os guiamos paso a paso y cada taller está pensado para quien nunca ha pintado ni creado nada con las manos.</p></details>
-        <details><summary>¿Cuántas personas podemos ser?</summary><p>Hasta 20 personas. No hay un mínimo de personas, pero el precio mínimo de un grupo es de 150&nbsp;€, que es lo que pagarían 5 adultos o unos 10 niños. Si sois menos, el precio es el mismo.</p></details>
+        <details><summary>¿Cuántas personas podemos ser?</summary><p>Hasta 20 personas. Cuéntanos cuántos sois y te preparamos una propuesta a medida.</p></details>
+        <details><summary>¿Qué días podemos reservar?</summary><p>Te confirmamos la fecha según disponibilidad; solemos reservar tardes de viernes, sábados y domingos. Escríbenos con un par de fechas posibles y te decimos cuál nos encaja.</p></details>
         <details><summary>¿Cuánto dura?</summary><p>Los talleres para adultos duran unas 2 horas y los cumpleaños infantiles, 1 hora y media.</p></details>
         <details><summary>¿Se puede personalizar?</summary><p>Sí. Adaptamos la temática, los colores y los detalles a la ocasión. Si quieres un taller que no está en la lista, cuéntanoslo y vemos si es posible.</p></details>
         <details><summary>¿Cómo se reserva y cuánto hay que pagar por adelantado?</summary><p>Escríbenos con la fecha que tienes en mente y cuántos sois, y te enviamos una propuesta. Reservamos tu fecha con una señal del 30&nbsp;% y el resto se paga el día del taller.</p></details>
@@ -1045,13 +1037,13 @@ const HORARIO = [
   { dia:'Lunes', items:[
     { c:'ganchillo', n:'Ganchillo', p:'niños', h:'17:00–18:30' },
     { c:'lectura', n:'Lectura', p:'juvenil', h:'18:00–19:00' },
-    { c:'ganchillo', n:'Ganchillo', v:'iniciación', p:'adultos', h:'18:30–20:00' },
+    { c:'ganchillo', n:'Ganchillo', v:'iniciación', p:'adultos', h:'18:30–20:30' },
     { c:'lectura', n:'Lectura', nota:'cada dos semanas', p:'adultos', h:'19:00–20:00' }
   ]},
   { dia:'Martes', items:[
     { c:'creativo', n:'Club creativo', p:'adultos', h:'10:30–12:00' },
     { c:'creativo', n:'Club creativo', p:'niños', h:'17:00–18:30' },
-    { c:'ganchillo', n:'Ganchillo', v:'avanzado', p:'adultos', h:'17:00–18:30' }
+    { c:'ganchillo', n:'Ganchillo', v:'avanzado', p:'adultos', h:'17:00–19:00' }
   ]},
   { dia:'Miércoles', items:[
     { c:'costura', n:'Costura', p:'adultos', h:'10:30–12:00' },
@@ -1101,19 +1093,19 @@ renderHorario();
 // url = enlace de reserva de ese taller en Zenamu (cuando esté).
 const events = {
   // '2026-12-12': { name: 'Nombre del taller', short: 'Nombre corto', sub: 'Taller · 2 h', desc: 'Descripción del taller.', price: '25€', url: '' },
-  '2026-12-10': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 10 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 €', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2010%20de%20diciembre' },
-  '2026-12-17': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 17 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 €', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2017%20de%20diciembre' },
-  '2026-12-11': { name: 'Taller navideño de ganchillo: tu propia bola de Navidad', short: 'Ganchillo navideño', sub: 'Viernes 11 de diciembre · por la tarde', desc: 'Teje con ganchillo tu propia bola navideña y llévatela a casa para decorar el árbol. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-12': { name: 'Taller navideño de costura: bota de Navidad', short: 'Costura navideña', sub: 'Sábado 12 de diciembre', desc: 'Un taller de costura con aire navideño: cose tu propia bota de Navidad y llévatela a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-19': { name: 'Taller de velas navideñas con LUMO', short: 'Velas con LUMO', sub: 'Sábado 19 de diciembre', desc: 'Crea tus propias velas navideñas de la mano de LUMO y llévatelas terminadas a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-23': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 23 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día; si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
-  '2026-12-24': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Jueves 24 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día; si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
-  '2026-12-28': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Lunes 28 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día; si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
+  '2026-12-10': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 10 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2010%20de%20diciembre' },
+  '2026-12-17': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 17 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2017%20de%20diciembre' },
+  '2026-12-11': { name: 'Taller navideño de ganchillo: tu propia bola de Navidad', short: 'Ganchillo navideño', sub: 'Viernes 11 de diciembre · por la tarde', desc: 'Teje con ganchillo tu propia bola navideña y llévatela a casa para decorar el árbol. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20navide%C3%B1o%20de%20ganchillo%20%28vie%2011%20de%20diciembre%29' },
+  '2026-12-12': { name: 'Taller navideño de costura: bota de Navidad', short: 'Costura navideña', sub: 'Sábado 12 de diciembre', desc: 'Un taller de costura con aire navideño: cose tu propia bota de Navidad y llévatela a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20navide%C3%B1o%20de%20costura%20%28s%C3%A1b%2012%20de%20diciembre%29' },
+  '2026-12-19': { name: 'Taller de velas navideñas con LUMO', short: 'Velas con LUMO', sub: 'Sábado 19 de diciembre', desc: 'Crea tus propias velas navideñas de la mano de LUMO y llévatelas terminadas a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20de%20velas%20con%20LUMO%20%28s%C3%A1b%2019%20de%20diciembre%29' },
+  '2026-12-23': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 23 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
+  '2026-12-24': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Jueves 24 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
+  '2026-12-28': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Lunes 28 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
   '2026-12-29': [
-    { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Martes 29 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día; si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
-    { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Martes 29 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 €', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20martes%2029%20de%20diciembre' }
+    { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Martes 29 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
+    { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Martes 29 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20martes%2029%20de%20diciembre' }
   ],
-  '2026-12-30': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 30 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día; si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
+  '2026-12-30': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 30 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
 };
 
 const evs = k => [].concat(events[k] || []);
