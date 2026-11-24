@@ -187,12 +187,13 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .curso-chevron { font-size:18px; color:var(--grey-mid); transition:transform .2s; display:inline-block; }
 .curso-chevron.open { transform:rotate(180deg); }
 .curso-detalle { display:none; padding:0 1.25rem 1.25rem; border-top:1.5px solid var(--grey); }
-/* Clubs "Próximamente": se puede ver la información, pero los botones de reserva siguen ocultos. Para abrir inscripciones en enero, quita la línea de .curso-reservar-opciones */
+/* Clubs "Desde enero": se puede ver la información, pero los botones de reserva siguen ocultos. Para abrir inscripciones en enero, quita la línea de .curso-reservar-opciones */
 .cursos .curso-reservar-opciones { display:none; }
 .curso-detalle.open { display:block; }
 .curso-detalle > .curso-detalle-desc:first-child { margin-top:1.1rem; }
 .curso-detalle-lista + .curso-detalle-lista { margin-top:-.2rem; padding-top:.9rem; border-top:1.5px dashed rgba(0,0,0,.25); }
 .curso-detalle-lista b { color:#111; }
+.curso-nota { margin-top:.9rem; padding-top:.9rem; border-top:1.5px dashed rgba(0,0,0,.25); }
 .curso-sub { padding-top:1rem; }
 .curso-sub + .curso-sub { margin-top:1.1rem; border-top:1.5px dashed rgba(0,0,0,.25); }
 .curso-sub-titulo { display:inline-block; font-family:'Space Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:#fff; border:1.5px solid var(--black); border-radius:99px; padding:3px 12px; margin:0 0 2px; }
@@ -609,7 +610,7 @@ a.hz-card:hover { transform:translateY(-2px); }
 <!-- CURSOS -->
 <section class="cursos" id="cursos">
   <h2 class="section-label fade-up">Clubs</h2>
-  <p class="section-subtitle fade-up">Aprende algo nuevo, a tu ritmo y en buena compañía. Clubs semanales en pequeño grupo, sin experiencia previa: solo ganas de crear y desconectar. Aquí se aprende haciendo. Los clubs van de enero a junio y se pagan mes a mes, sin compromiso de continuar.</p>
+  <p class="section-subtitle fade-up">Aprende algo nuevo, a tu ritmo y en buena compañía. Clubs semanales en pequeño grupo, sin experiencia previa: solo ganas de crear y desconectar. Aquí se aprende haciendo. Los clubs empiezan en enero, van hasta junio y se pagan mes a mes, sin compromiso de continuar. Las inscripciones abrirán próximamente.</p>
 
   <div class="cursos-lista fade-up">
     <div class="cursos-col">
@@ -623,7 +624,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           </div>
         </div>
         <div class="curso-row-right">
-          <span class="curso-badge">Próximamente</span>
+          <span class="curso-badge">Desde enero</span>
           <span class="curso-chevron" id="chev-costura">▾</span>
         </div>
       </div>
@@ -638,6 +639,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
         <p class="curso-detalle-desc"><b>Niños y niñas:</b> si no tenéis máquina, podéis probar una clase con una de las nuestras antes de decidiros a comprar una (bajo disponibilidad).</p>
+        <p class="curso-detalle-desc curso-nota"><b>Empezamos en enero.</b> Las inscripciones abrirán próximamente.</p>
       </div>
     </div>
 
@@ -650,7 +652,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           </div>
         </div>
         <div class="curso-row-right">
-          <span class="curso-badge">Próximamente</span>
+          <span class="curso-badge">Desde enero</span>
           <span class="curso-chevron" id="chev-creativo">▾</span>
         </div>
       </div>
@@ -667,6 +669,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li><b>Adultos:</b> grupo reducido, máximo 10 personas. Un momento para ti: para crear, desconectar y compartir tiempo con otras personas.</li>
           <li><b>Niños y niñas:</b> grupo reducido, máximo 8. Acompañados por Andrea, maestra de educación primaria y pedagogía terapéutica.</li>
         </ul>
+        <p class="curso-detalle-desc curso-nota"><b>Empezamos en enero.</b> Las inscripciones abrirán próximamente.</p>
       </div>
     </div>
     </div>
@@ -680,7 +683,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           </div>
         </div>
         <div class="curso-row-right">
-          <span class="curso-badge">Próximamente</span>
+          <span class="curso-badge">Desde enero</span>
           <span class="curso-chevron" id="chev-ganchillo">▾</span>
         </div>
       </div>
@@ -696,6 +699,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li><b>Adultos:</b> sesiones de 2 h, en dos grupos: iniciación (sin experiencia previa) y avanzado. Materiales aparte.</li>
           <li><b>Niños y niñas:</b> sesiones de 1 h 30, un grupo, sin experiencia previa.</li>
         </ul>
+        <p class="curso-detalle-desc curso-nota"><b>Empezamos en enero.</b> Las inscripciones abrirán próximamente.</p>
       </div>
     </div>
 
@@ -708,7 +712,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           </div>
         </div>
         <div class="curso-row-right">
-          <span class="curso-badge">Próximamente</span>
+          <span class="curso-badge">Desde enero</span>
           <span class="curso-chevron" id="chev-lectura">▾</span>
         </div>
       </div>
@@ -724,6 +728,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li><b>Adultos:</b> grupo para personas adultas.</li>
           <li><b>Juvenil:</b> grupo para jóvenes a partir de 12 años.</li>
         </ul>
+        <p class="curso-detalle-desc curso-nota"><b>Empezamos en enero.</b> Las inscripciones abrirán próximamente.</p>
       </div>
     </div>
     </div>
