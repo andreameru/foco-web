@@ -1307,7 +1307,8 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     if(k==='frontal'){ pedirWrap.hidden=true; }
     else {
       pedir.textContent='Pedir el vale de '+k+' € →';
-      pedir.href='mailto:hola@espaciofoco.es?subject='+encodeURIComponent('Quiero un vale regalo de '+k+' €');
+      pedir.href='https://wa.me/34614228307?text='+encodeURIComponent('Hola, quiero un vale regalo de '+k+' €');
+      pedir.target='_blank'; pedir.rel='noopener';
       pedirWrap.hidden=false;
     }
   }
