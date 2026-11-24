@@ -115,9 +115,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .price-card-btn.rosa:hover { background:#d45a78; }
 .badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--rosa); color:#fff; font-family:'Space Mono',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; padding:6px 18px; border-radius:50px; white-space:nowrap; }
 
-.carta-pasos-linea { list-style:none; display:flex; flex-wrap:wrap; gap:10px; max-width:1060px; margin:0 auto 24px; position:relative; z-index:2; }
-.carta-pasos-linea li { background:rgba(255,255,255,.6); border:1.5px solid rgba(255,255,255,.9); border-radius:50px; padding:8px 18px; font-size:14px; color:#333; }
-.carta-pasos-linea b { font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--negro); margin-right:4px; }
+.carta-pasos-linea { list-style:none; display:flex; flex-wrap:wrap; gap:14px 26px; max-width:1060px; margin:0 auto 26px; position:relative; z-index:2; }
+.carta-pasos-linea li { display:flex; align-items:center; gap:10px; font-family:'Space Mono',monospace; font-size:14px; color:#1f3442; }
+.carta-pasos-linea i { font-style:normal; flex:none; width:30px; height:30px; border-radius:50%; background:var(--pink); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; }
+.carta-pasos-linea b { font-weight:700; color:var(--negro); }
 .carta-tiles { display:grid; grid-template-columns:repeat(6,1fr); gap:14px; max-width:1060px; margin:0 auto 28px; position:relative; z-index:2; }
 .carta-tile { aspect-ratio:1; border:1.5px solid var(--negro); border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; position:relative; overflow:hidden;
   background-color:var(--c); background-image:radial-gradient(rgba(0,0,0,.14) 1.2px, transparent 1.6px); background-size:9px 9px; box-shadow:3px 4px 0 rgba(0,0,0,.15); }
@@ -827,9 +828,9 @@ a.hz-card:hover { transform:translateY(-2px); }
   <p class="section-subtitle fade-up">¿No sabes qué hacer? Elige una de nuestras manualidades y disfruta de un ratito sin móvil y sin prisa, con una pequeña guía para hacerla a tu ritmo. No hace falta tener experiencia ni traer nada: solo ganas de desconectar y crear algo bonito.</p>
 
   <ol class="carta-pasos-linea fade-up">
-    <li><b>1 · Reserva</b> tu hora</li>
-    <li><b>2 · Elige</b> una manualidad de la carta</li>
-    <li><b>3 · Crea</b> y llévatela terminada</li>
+    <li><i>1</i><span><b>Reserva</b> tu hora</span></li>
+    <li><i>2</i><span><b>Elige</b> una manualidad de la carta</span></li>
+    <li><i>3</i><span><b>Crea</b> y llévatela terminada</span></li>
   </ol>
 
   <div class="carta-tiles carta-3 fade-up">
@@ -885,7 +886,6 @@ a.hz-card:hover { transform:translateY(-2px); }
         <div class="ev-chip">👩‍👩‍👧 Grupos de amigos</div>
         <div class="ev-chip">🏢 Teambuilding para empresas</div>
       </div>
-      <a href="mailto:hola@espaciofoco.es?subject=Presupuesto%20para%20grupo" class="btn-black">Pedir presupuesto</a>
     </div>
     <div class="ev-price">
       <div style="padding-bottom:1.5rem;border-bottom:1.5px solid rgba(0,0,0,.1)">
