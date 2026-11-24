@@ -50,7 +50,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .hero-left h1 .hl { display:inline-block; background:var(--pink); color:var(--white); padding:0 .3em; transform:rotate(-1deg); }
 .hero-left p { font-size:1.1rem; line-height:1.75; color:var(--grey-mid); max-width:400px; }
 .hero-right { background:transparent; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:2rem; position:relative; }
-.hero-collage-img { width:100%; height:auto; max-height:90%; object-fit:contain; display:block; }
+.hero-collage-img { width:100%; height:auto; max-height:90%; object-fit:contain; display:block; transform:rotate(-1.5deg); filter:drop-shadow(7px 9px 0 rgba(0,0,0,.85)); }
 .hero-placeholder { font-family:'Space Mono',monospace; font-size:13px; color:var(--grey-mid); text-transform:uppercase; letter-spacing:2px; }
 .hero-right::before { content:none; font-size:120px; opacity:.08; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
 .hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
@@ -449,7 +449,7 @@ a.hz-card:hover { transform:translateY(-2px); }
 .contact-section::after{content:'';position:absolute;bottom:30px;right:8%;width:280px;height:160px;background:radial-gradient(ellipse,rgba(255,255,255,.6) 0%,transparent 70%);filter:blur(18px);pointer-events:none}
 .contact-cloud{position:absolute;top:20%;left:55%;width:350px;height:150px;background:radial-gradient(ellipse,rgba(255,255,255,.5) 0%,transparent 65%);filter:blur(20px);pointer-events:none}
 .contact-inner{position:relative;z-index:2}
-.contact-photo{width:120px;height:120px;border-radius:50%;border:3px solid var(--pink);display:flex;align-items:center;justify-content:center;font-size:48px;margin:0 auto 20px;background:rgba(255,255,255,.8)}
+.contact-photo{width:150px;height:150px;border-radius:50%;border:3px solid var(--pink);display:block;object-fit:cover;object-position:center;margin:0 auto 20px;background:rgba(255,255,255,.8)}
 .contact-name{font-size:24px;font-weight:700;margin-bottom:4px}
 .contact-role{font-family:'Space Mono',monospace;font-size:11px;color:var(--pink);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
 .contact-bio{font-size:15px;color:#8a5a6a;line-height:1.7;max-width:450px;margin:0 auto 28px}
@@ -564,7 +564,7 @@ a.hz-card:hover { transform:translateY(-2px); }
     <p>Un lugar para venir a crear, desconectar y compartir tiempo con otras personas.</p>
   </div>
   <div class="hero-right">
-    <img class="hero-collage-img" src="/images/espacio-foco.jpg" alt="Interior de FOCO: mesas de madera con sillas rosas y grises, estantería de cartulinas de colores, taquillas azul y rosa y techo rosa" width="1600" height="900">
+    <img class="hero-collage-img" src="/images/espacio-cuadro.webp" alt="Interior de FOCO enmarcado como un cuadro: mesas de madera con sillas rosas y grises, estantería de cartulinas de colores, taquillas azul y rosa y techo rosa" width="1612" height="1252">
   </div>
 </section>
 
@@ -944,7 +944,7 @@ a.hz-card:hover { transform:translateY(-2px); }
 <section class="contact-section" id="contacto">
   <div class="contact-cloud"></div>
   <div class="contact-inner">
-    <div class="contact-photo">🎨</div>
+    <img class="contact-photo" src="/images/andrea.jpg" alt="Andrea, la fundadora de FOCO, sonriendo con una estrella de papel gigante en el espacio" width="640" height="640" loading="lazy">
     <div class="contact-name">Andrea la de FOCO</div>
     <div class="contact-role">Fundadora & Creativa</div>
     <p class="contact-bio">Un día descubrí que <em>mi hobby era tener hobbies</em>. Así que monté un espacio donde todo el mundo pueda venir a probar, crear y pasárselo bien.</p>
