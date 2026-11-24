@@ -364,6 +364,13 @@ a.hz-card:hover { transform:translateY(-2px); }
 .cal-cell.has-event.ev-club:hover { background:#b7ebe2; }
 .ev-club .cal-event-label { background:#2ec4b6; color:#0b2b27; }
 .cal-lista button.ev-club { background:#d9f4ef; }
+.cal-cell.has-event.ev-carta { background:#ece3fd; }
+.cal-cell.has-event.ev-carta:hover { background:#dccdfa; }
+.ev-carta .cal-event-label, .cal-event-label.ev-carta { background:#A582F5; color:#fff; }
+.cal-event-label.ev-club { background:#2ec4b6; color:#0b2b27; }
+.cal-cell.has-event.ev-multi { background:#fffaf0; cursor:default; }
+.cal-event-label { cursor:pointer; }
+.cal-lista button.ev-carta { background:#ece3fd; }
 .cal-lista { display:none; padding:14px 16px 16px; border-top:1.5px solid var(--black); background:#fffaf0; position:relative; z-index:2; }
 .cal-lista button { display:flex; width:100%; align-items:center; gap:12px; text-align:left; background:#ffe0ef; border:1.5px solid var(--black); border-radius:12px; padding:9px 12px; margin:0 0 8px; font:inherit; cursor:pointer; color:var(--black); box-shadow:2px 3px 0 var(--black); }
 .cal-lista button:last-child { margin-bottom:0; }
@@ -551,6 +558,8 @@ a.hz-card:hover { transform:translateY(-2px); }
   .cal-cell.has-event .cal-num { background:var(--pink); color:#fff; border-radius:99px; min-width:30px; text-align:center; padding:5px 0; border:1.5px solid var(--black); }
   .cal-event-label { display:none; }
   .cal-cell.has-event.ev-club .cal-num { background:#2ec4b6; color:#0b2b27; }
+  .cal-cell.has-event.ev-carta .cal-num { background:#A582F5; color:#fff; }
+  .cal-cell.has-event.ev-multi .cal-num { background:linear-gradient(90deg,#2ec4b6 50%,#A582F5 50%); color:#0b2b27; }
   .cal-lista { display:block; }
 }
 </style>
@@ -1092,18 +1101,22 @@ renderHorario();
 // url = enlace de reserva de ese taller en Zenamu (cuando esté).
 const events = {
   // '2026-12-12': { name: 'Nombre del taller', short: 'Nombre corto', sub: 'Taller · 2 h', desc: 'Descripción del taller.', price: '25€', url: '' },
-  '2026-12-10': { name: 'A la carta', short: 'A la carta', sub: 'Jueves 10 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 €', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2010%20de%20diciembre' },
-  '2026-12-17': { name: 'A la carta', short: 'A la carta', sub: 'Jueves 17 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 €', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2017%20de%20diciembre' },
+  '2026-12-10': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 10 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 €', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2010%20de%20diciembre' },
+  '2026-12-17': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 17 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 €', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2017%20de%20diciembre' },
   '2026-12-11': { name: 'Taller navideño de ganchillo: tu propia bola de Navidad', short: 'Ganchillo navideño', sub: 'Viernes 11 de diciembre · por la tarde', desc: 'Teje con ganchillo tu propia bola navideña y llévatela a casa para decorar el árbol. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
   '2026-12-12': { name: 'Taller navideño de costura: bota de Navidad', short: 'Costura navideña', sub: 'Sábado 12 de diciembre', desc: 'Un taller de costura con aire navideño: cose tu propia bota de Navidad y llévatela a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
   '2026-12-19': { name: 'Taller de velas navideñas con LUMO', short: 'Velas con LUMO', sub: 'Sábado 19 de diciembre', desc: 'Crea tus propias velas navideñas de la mano de LUMO y llévatelas terminadas a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
   '2026-12-23': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 23 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
   '2026-12-24': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Jueves 24 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
   '2026-12-28': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Lunes 28 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
-  '2026-12-29': { name: 'Club creativo niños y A la carta', short: 'Mañana y tarde', sub: 'Martes 29 de diciembre · mañana y tarde', desc: 'Por la mañana, club creativo para niños y niñas (días sin cole). De 17:00 a 20:30, A la carta: elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min a 18 € por persona. Escríbenos para reservar.', price: '', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20el%20martes%2029%20de%20diciembre' },
+  '2026-12-29': [
+    { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Martes 29 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
+    { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Martes 29 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 €', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20martes%2029%20de%20diciembre' }
+  ],
   '2026-12-30': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 30 de diciembre · por la mañana', desc: 'Para los días sin cole: una mañana de manualidades para niños y niñas, con materiales y propuesta distinta cada día. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '', url: '' },
 };
 
+const evs = k => [].concat(events[k] || []);
 let currentMonth = new Date().getMonth();
 let currentYear = new Date().getFullYear();
 // Que el calendario se abra en el mes del próximo taller
@@ -1142,13 +1155,18 @@ function renderCalendar(month, year) {
     cell.innerHTML = `<span class="cal-num">${d}</span>`;
 
     if (events[key]) {
+      const lista = evs(key);
       cell.classList.add('has-event');
-      if (events[key].tipo === 'club') cell.classList.add('ev-club');
-      const label = document.createElement('div');
-      label.className = 'cal-event-label';
-      label.textContent = events[key].short;
-      cell.appendChild(label);
-      cell.addEventListener('click', () => openModal(events[key]));
+      if (lista.length > 1) cell.classList.add('ev-multi');
+      else if (lista[0].tipo) cell.classList.add('ev-' + lista[0].tipo);
+      lista.forEach(ev => {
+        const label = document.createElement('div');
+        label.className = 'cal-event-label' + (ev.tipo ? ' ev-' + ev.tipo : '');
+        label.textContent = ev.short;
+        label.addEventListener('click', (e) => { e.stopPropagation(); openModal(ev); });
+        cell.appendChild(label);
+      });
+      if (lista.length === 1) cell.addEventListener('click', () => openModal(lista[0]));
     }
     grid.appendChild(cell);
   }
@@ -1166,12 +1184,15 @@ function renderCalendar(month, year) {
   if (!delMes.length) { lista.innerHTML = '<div class="cl-vacio">Este mes aún no hay talleres publicados.</div>'; }
   delMes.forEach(k => {
     const [y, m, d] = k.split('-').map(Number);
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    if (events[k].tipo === 'club') btn.classList.add('ev-club');
-    btn.innerHTML = `<span class="cl-dia">${d}<small>${dias[new Date(y, m-1, d).getDay()]}</small></span><span class="cl-nom">${events[k].name}<small>Toca para ver los detalles</small></span>`;
-    btn.addEventListener('click', () => openModal(events[k]));
-    lista.appendChild(btn);
+    evs(k).forEach((ev, idx) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      if (ev.tipo) btn.classList.add('ev-' + ev.tipo);
+      const dia = idx === 0 ? `<span class="cl-dia">${d}<small>${dias[new Date(y, m-1, d).getDay()]}</small></span>` : `<span class="cl-dia"></span>`;
+      btn.innerHTML = `${dia}<span class="cl-nom">${ev.name}<small>Toca para ver los detalles</small></span>`;
+      btn.addEventListener('click', () => openModal(ev));
+      lista.appendChild(btn);
+    });
   });
 }
 
