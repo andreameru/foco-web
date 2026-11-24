@@ -458,15 +458,20 @@ a.hz-card:hover { transform:translateY(-2px); }
 .regala-section .curso-detalle-lista li::before { color:var(--lime); }
 .regala-section .btn-black { background:#fff; color:var(--black); }
 .regala-section .btn-black:hover { background:var(--pink); color:#fff; }
-.regala-tarjeta-wrap { display:flex; justify-content:center; }
-.regala-tarjeta { width:100%; max-width:440px; aspect-ratio:85/55; background-color:var(--pink); background-image:radial-gradient(rgba(0,0,0,.16) 1.3px, transparent 1.8px); background-size:10px 10px; border:2px solid var(--black); border-radius:16px; box-shadow:6px 8px 0 var(--black); transform:rotate(-3deg); padding:22px 24px; display:flex; flex-direction:column; justify-content:space-between; color:var(--black); position:relative; }
-.rt-top { display:flex; justify-content:space-between; align-items:flex-start; }
-.rt-logo { font-family:'Space Mono',monospace; font-weight:700; font-size:22px; letter-spacing:.2em; background:#fff; padding:2px 8px; border:1.5px solid var(--black); }
-.rt-logo span { color:var(--pink); }
-.rt-tag { font-family:'Space Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:2px; background:var(--black); color:#fff; padding:4px 10px; border-radius:50px; }
-.rt-titulo { font-family:'Bebas Neue',cursive; font-size:clamp(34px,5vw,52px); line-height:.95; color:#fff; text-shadow:2px 2px 0 var(--black); }
-.rt-campos { background:#fff; border:1.5px solid var(--black); padding:8px 12px; font-family:'Space Mono',monospace; font-size:11px; line-height:1.9; }
-.rt-campos i { font-style:normal; display:inline-block; min-width:60px; color:var(--grey-mid); }
+.regala-tarjeta-wrap { display:flex; flex-direction:column; align-items:center; gap:22px; }
+.vale-stage { width:100%; max-width:440px; perspective:1200px; transform:rotate(-3deg); }
+.vale-card { display:block; width:100%; aspect-ratio:840/596; padding:0; background:#fbe4ee; border:2px solid var(--black); border-radius:16px; box-shadow:6px 8px 0 var(--black); overflow:hidden; cursor:pointer; transition:transform .26s ease-in; }
+.vale-card img { display:block; width:100%; height:100%; object-fit:cover; }
+.vale-card.sale { transform:rotateY(90deg); }
+.vale-card.entra { transform:rotateY(-90deg); transition:none; }
+.vale-card:focus-visible { outline:3px solid var(--lime); outline-offset:4px; }
+.vale-hint { font-family:'Space Mono',monospace; font-size:12px; color:rgba(255,255,255,.85); text-align:center; margin:0; }
+.regala-section .vale-btn { font-family:inherit; }
+.regala-section .vale-btn[aria-pressed="true"] { background:var(--pink); color:#fff; }
+.vale-pedir { margin:1.2rem 0 0; }
+.vale-pedir a { color:#fff; font-weight:600; letter-spacing:.04em; text-underline-offset:4px; }
+.vale-pedir a:hover { color:var(--lime); }
+@media (prefers-reduced-motion:reduce){ .vale-card { transition:none; } }
 .regala-inner { max-width:640px; }
 
 /* CONTACTO — Rosa pálido con nubes */
@@ -540,7 +545,7 @@ a.hz-card:hover { transform:translateY(-2px); }
   .carta-tile-emoji { font-size:28px; }
   .carta-tile-name { font-size:17px; }
   .regala-section { grid-template-columns:1fr; }
-  .regala-tarjeta { max-width:88%; padding:16px 18px; }
+  .vale-stage { max-width:88%; }
   .section-label { font-size:24px; }
   .footer { flex-direction:column; gap:16px; text-align:center; }
   .calendar-frame { transform:none; margin-right:6px; }
@@ -950,19 +955,21 @@ a.hz-card:hover { transform:translateY(-2px); }
       <li>En el local: lo pagas y te lo llevas en el momento.</li>
       <li>Online: lo recoges en FOCO o te lo mandamos en PDF para imprimir o regalar por WhatsApp.</li>
     </ul>
-    <!-- Cuando los vales estén en Zenamu, cambia cada href por el enlace de compra de ese vale. -->
+    <!-- Cuando los vales estén en Zenamu, cambia cada href de #valePedir por el enlace de compra de ese vale. -->
     <div class="hero-btns">
-      <a href="mailto:hola@espaciofoco.es?subject=Quiero%20un%20vale%20regalo%20de%2030%20%E2%82%AC" class="btn-black">Vale de 30 €</a>
-      <a href="mailto:hola@espaciofoco.es?subject=Quiero%20un%20vale%20regalo%20de%2050%20%E2%82%AC" class="btn-black">Vale de 50 €</a>
+      <button type="button" class="btn-black vale-btn" data-vale="30" aria-pressed="false">Vale de 30 €</button>
+      <button type="button" class="btn-black vale-btn" data-vale="50" aria-pressed="false">Vale de 50 €</button>
     </div>
+    <p class="vale-pedir" id="valePedirWrap" hidden><a id="valePedir" href="#">Pedir este vale →</a></p>
   </div>
-  <!-- Tarjeta regalo de ejemplo: sustituir por imagen real cuando esté (images/tarjeta-regalo.jpg) -->
-  <div class="regala-tarjeta-wrap fade-up" aria-hidden="true">
-    <div class="regala-tarjeta">
-      <div class="rt-top"><span class="rt-logo">F<span>★</span>CO</span><span class="rt-tag">Vale regalo</span></div>
-      <div class="rt-titulo">Un rato<br>para crear</div>
-      <div class="rt-campos"><i>Para:</i> ________________<br><i>De:</i> ________________<br><i>Vale por:</i> 30 € o 50 €</div>
+  <!-- Tarjeta regalo: frontal y traseras en images/vale-*.webp. Los vales de 30 € y 50 € giran la tarjeta. -->
+  <div class="regala-tarjeta-wrap fade-up">
+    <div class="vale-stage">
+      <button type="button" class="vale-card" id="valeCard" aria-label="Tarjeta regalo de FOCO. Púlsala para volver al frontal.">
+        <img id="valeImg" src="/images/vale-frontal.webp" alt="Vale regalo de FOCO, para crear algo con tus manos" width="840" height="596">
+      </button>
     </div>
+    <p class="vale-hint" id="valeHint">Pulsa un vale para ver la tarjeta por detrás</p>
   </div>
 </section>
 
@@ -1235,6 +1242,47 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ===== VALE REGALO: frontal y traseras =====
+(function(){
+  var card=document.getElementById('valeCard'), img=document.getElementById('valeImg');
+  if(!card||!img) return;
+  var hint=document.getElementById('valeHint'), pedirWrap=document.getElementById('valePedirWrap'), pedir=document.getElementById('valePedir');
+  var btns=document.querySelectorAll('.vale-btn');
+  var caras={
+    frontal:{src:'/images/vale-frontal.webp',alt:'Vale regalo de FOCO, para crear algo con tus manos'},
+    '30':{src:'/images/vale-30-trasera.webp',alt:'Vale regalo de 30 euros de FOCO Espacio Creativo. Cómo canjearlo: escríbenos por WhatsApp al 614 22 83 07 con tu código, elige día y taller, y ven a FOCO. Válido 12 meses desde la compra.'},
+    '50':{src:'/images/vale-50-trasera.webp',alt:'Vale regalo de 50 euros de FOCO Espacio Creativo. Cómo canjearlo: escríbenos por WhatsApp al 614 22 83 07 con tu código, elige día y taller, y ven a FOCO. Válido 12 meses desde la compra.'}
+  };
+  Object.keys(caras).forEach(function(k){ var i=new Image(); i.src=caras[k].src; });
+  var actual='frontal', ocupado=false, reducir=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function pintar(k){
+    img.src=caras[k].src; img.alt=caras[k].alt;
+    btns.forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.vale===k ? 'true':'false'); });
+    hint.textContent = k==='frontal' ? 'Pulsa un vale para ver la tarjeta por detrás' : 'Pulsa la tarjeta para volver al frontal';
+    if(k==='frontal'){ pedirWrap.hidden=true; }
+    else {
+      pedir.textContent='Pedir el vale de '+k+' € →';
+      pedir.href='mailto:hola@espaciofoco.es?subject='+encodeURIComponent('Quiero un vale regalo de '+k+' €');
+      pedirWrap.hidden=false;
+    }
+  }
+  function mostrar(k){
+    if(k===actual||ocupado) return;
+    actual=k;
+    if(reducir){ pintar(k); return; }
+    ocupado=true; card.classList.add('sale');
+    setTimeout(function(){
+      pintar(k);
+      card.classList.remove('sale'); card.classList.add('entra');
+      void card.offsetWidth;
+      card.classList.remove('entra');
+      setTimeout(function(){ ocupado=false; },270);
+    },260);
+  }
+  btns.forEach(function(b){ b.addEventListener('click',function(){ mostrar(actual===b.dataset.vale?'frontal':b.dataset.vale); }); });
+  card.addEventListener('click',function(){ mostrar('frontal'); });
+})();
 
 // MENÚ HAMBURGUESA
 document.getElementById('navToggle').addEventListener('click', () => {
