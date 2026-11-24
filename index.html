@@ -439,6 +439,10 @@ a.hz-card:hover { transform:translateY(-2px); }
 .ep-detalle { padding:0 0 22px; font-family:'Space Grotesk',sans-serif; font-size:14px; color:#555; line-height:1.65; }
 .ep-detalle p { margin-bottom:12px; }
 .ep-detalle b { color:var(--black); }
+/* Desplegables de precios de Grupos cerrados por ahora. Para volver a abrirlos: quita la clase ep-bloqueado del div .ev-price y borra estas reglas y el bloque JS 'GRUPOS BLOQUEADOS'. */
+.ep-bloqueado .ep-chev, .ep-bloqueado .ep-pista { display:none; }
+.ep-bloqueado .ep-item > summary.ep-row { cursor:default; pointer-events:none; }
+.ep-bloqueado .ep-item > summary.ep-row:hover .ep-label { color:inherit; }
 .ep-detalle ul { list-style:none; display:flex; flex-direction:column; gap:6px; margin:0 0 14px; }
 .ep-detalle li { padding-left:18px; position:relative; }
 .ep-detalle li::before { content:'✦'; position:absolute; left:0; color:var(--pink); font-size:10px; top:3px; }
@@ -894,7 +898,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         <div class="ev-chip">🏢 Teambuilding para empresas</div>
       </div>
     </div>
-    <div class="ev-price">
+    <div class="ev-price ep-bloqueado">
       <div style="padding-bottom:1.5rem;border-bottom:1.5px solid rgba(0,0,0,.1)">
         <span class="seccion-tag">Precios orientativos</span>
         <h3 style="font-family:'Space Mono',monospace;font-size:1.2rem;margin-top:.5rem;color:var(--negro)">Todo incluido para tu grupo</h3>
@@ -1050,6 +1054,12 @@ function toggleFaq() {
   btn.setAttribute('aria-expanded', abierto);
   btn.textContent = abierto ? 'Preguntas frecuentes –' : 'Preguntas frecuentes +';
 }
+
+// ===== GRUPOS BLOQUEADOS (desplegables de precios cerrados por ahora) =====
+document.querySelectorAll('.ep-bloqueado .ep-item > summary').forEach(function(sm){
+  sm.addEventListener('click', function(e){ e.preventDefault(); });
+  sm.setAttribute('tabindex','-1');
+});
 
 // ===== PREGUNTAS FRECUENTES (A LA CARTA) =====
 function toggleCartaFaq() {
