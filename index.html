@@ -126,25 +126,26 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .carta-tile-emoji { font-size:38px; line-height:1; }
 .carta-tile-name { font-family:'Bebas Neue',cursive; font-size:22px; letter-spacing:1px; background:#fff; color:var(--negro); padding:2px 10px; border:1.5px solid var(--negro); }
 
-.carta-tiles.carta-3 { grid-template-columns:repeat(4,1fr); max-width:1060px; gap:18px; }
+.carta-tiles.carta-3 { grid-template-columns:repeat(4,1fr); max-width:1060px; gap:14px; }
 .carta-tile.info { aspect-ratio:auto; align-items:flex-start; justify-content:flex-start; text-align:left; padding:26px 22px; gap:12px; }
 .carta-tile-desc { font-family:'Space Grotesk',sans-serif; font-size:14px; line-height:1.55; color:#222; background:rgba(255,255,255,.88); padding:10px 12px; border-radius:8px; }
 .carta-tile-meta { font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--negro); font-weight:700; margin-top:auto; }
 .carta-info { max-width:940px; margin:0 auto 26px; position:relative; z-index:2; display:flex; flex-wrap:wrap; align-items:center; gap:14px 22px; }
 .carta-info p { font-family:'Space Grotesk',sans-serif; font-size:15px; color:#1f3442; line-height:1.55; }
 
-.carta-faq { max-width:1060px; margin:22px auto 0; padding:0 0; position:relative; z-index:2; display:flex; flex-direction:column; gap:10px; }
+.carta-faq { max-width:1060px; margin:0 auto 26px; padding:0 0; position:relative; z-index:2; display:none; flex-direction:column; gap:10px; }
+.carta-faq.open { display:flex; }
 .carta-faq details { background:#fff; border:1.5px solid var(--black); border-radius:12px; padding:0 18px; }
 .carta-faq summary { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px; padding:14px 0; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:12px; color:var(--negro); }
 .carta-faq summary::-webkit-details-marker { display:none; }
 .carta-faq summary::after { content:'+'; color:var(--pink); font-size:20px; line-height:1; }
 .carta-faq details[open] summary::after { content:'–'; }
 .carta-faq details p { font-family:'Space Grotesk',sans-serif; font-size:14px; color:#555; line-height:1.65; padding-bottom:16px; }
-.cc { background:var(--c); border:1.5px solid var(--negro); border-radius:18px; padding:16px 14px 14px; text-align:center; box-shadow:3px 4px 0 rgba(0,0,0,.15); display:flex; flex-direction:column; align-items:center; gap:8px; }
+.cc { background:var(--c); border:1.5px solid var(--negro); border-radius:16px; padding:12px 12px 10px; text-align:center; box-shadow:3px 4px 0 rgba(0,0,0,.15); display:flex; flex-direction:column; align-items:center; gap:5px; }
 .cc:nth-child(odd) { transform:rotate(-1deg); } .cc:nth-child(even) { transform:rotate(1deg); }
-.cc-img svg { height:135px; width:auto; max-width:100%; display:block; }
-.cc-name { font-family:'Bebas Neue',cursive; font-size:24px; letter-spacing:.5px; line-height:1.05; color:var(--negro); }
-.cc-desc { font-family:'Space Grotesk',sans-serif; font-size:13.5px; line-height:1.5; color:#333; }
+.cc-img svg { height:96px; width:auto; max-width:100%; display:block; }
+.cc-name { font-family:'Bebas Neue',cursive; font-size:22px; letter-spacing:.5px; line-height:1.05; color:var(--negro); }
+.cc-desc { font-family:'Space Grotesk',sans-serif; font-size:13px; line-height:1.4; color:#333; }
 .cc-meta { font-family:'Space Mono',monospace; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--negro); margin-top:auto; padding-top:6px; }
 /* MATERIALS — OPTION I (text with thick divider) */
 .mat-i { display:flex; gap:48px; align-items:stretch; position:relative; z-index:2; max-width:1060px; margin:0 auto; }
@@ -545,8 +546,8 @@ a.hz-card:hover { transform:translateY(-2px); }
   .mat-i { flex-direction:column; gap:12px; }
   .carta-tiles { gap:10px; }
   .carta-tiles.carta-3 { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:520px; gap:12px; }
-  .cc { padding:10px 8px 10px; gap:5px; border-radius:14px; }
-  .cc-img svg { height:84px; }
+  .cc { padding:8px 7px 8px; gap:3px; border-radius:13px; }
+  .cc-img svg { height:62px; }
   .cc-name { font-size:19px; }
   .cc-desc { font-size:12px; line-height:1.4; }
   .cc-meta { font-size:10px; letter-spacing:.5px; padding-top:2px; }
@@ -846,7 +847,19 @@ a.hz-card:hover { transform:translateY(-2px); }
   <div class="carta-info fade-up">
     <p><b>18 € por persona</b>, IVA incluido. Todos los jueves por la tarde, de 17:00 a 20:30. Elige tu hora y reserva tu hueco de 1 h 30 min.</p>
     <p style="flex-basis:100%">Reserva por WhatsApp con unas horas de antelación. Aquí vienes a tu aire, sin taller guiado de principio a fin. ¿Prefieres que te guiemos o celebrar algo? Mira los <a href="#talleres" style="color:inherit;text-decoration:underline">talleres</a> y <a href="#grupos" style="color:inherit;text-decoration:underline">grupos</a>.</p>
-    <a href="https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22" target="_blank" rel="noopener" class="btn-black">Reservar mi hueco →</a>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22" target="_blank" rel="noopener" class="btn-black">Reservar mi hueco →</a>
+      <button type="button" class="btn-black btn-line" id="cartaFaqBtn" aria-expanded="false" aria-controls="cartaFaqPanel" onclick="toggleCartaFaq()">Preguntas frecuentes +</button>
+    </div>
+  </div>
+
+  <div class="carta-faq" id="cartaFaqPanel">
+    <details><summary>¿Qué significa que sea semiguiada?</summary><p>Que no es un taller paso a paso con todo el grupo a la vez. Tienes una pequeña guía para hacer la manualidad a tu ritmo, y si necesitas ayuda, te la damos.</p></details>
+    <details><summary>¿Puedo elegir la manualidad el mismo día?</summary><p>Sí. Las cuatro manualidades están disponibles en cada sesión y la eliges cuando llegas.</p></details>
+    <details><summary>¿Hace falta saber bordar?</summary><p>No es necesario. Es una actividad sencilla que no necesita experiencia.</p></details>
+    <details><summary>¿Hay plantillas para pintar el tote bag?</summary><p>Sí, tienes plantillas para elegir si no te atreves a dibujar desde cero. También puedes hacer tu propio diseño.</p></details>
+    <details><summary>¿Me la llevo terminada ese mismo día?</summary><p>Sí, todo te lo llevas el mismo día.</p></details>
+    <details><summary>¿Puedo venir solo/a?</summary><p>Claro. Es un plan perfecto para venir solo/a, con una amiga, en familia o con quien quieras.</p></details>
   </div>
 
   <div class="mat-i fade-up">
@@ -854,13 +867,6 @@ a.hz-card:hover { transform:translateY(-2px); }
       <div class="mat-i-title">✓ Qué incluye</div>
       <div class="mat-i-text">Todo el material y las herramientas · Instrucciones paso a paso · Ayuda cuando la necesites · Tu creación terminada para llevar a casa. Hasta 4 plazas por reserva: si venís más, mira <a href="#grupos" style="color:inherit;text-decoration:underline">Grupos y celebraciones</a>.</div>
     </div>
-  </div>
-  <div class="carta-faq fade-up">
-    <details><summary>¿Qué significa que sea semiguiada?</summary><p>Que no es un taller paso a paso con todo el grupo a la vez. Tienes una pequeña guía para hacer la manualidad a tu ritmo, y si necesitas ayuda, te la damos.</p></details>
-    <details><summary>¿Puedo elegir la manualidad el mismo día?</summary><p>Sí, tenemos las cuatro manualidades disponibles en cada sesión. Si vienes con una idea de lo que quieres hacer, aprovecharás mejor el tiempo.</p></details>
-    <details><summary>¿Hay plantillas para pintar el tote bag?</summary><p>Sí, tienes plantillas para elegir si no te atreves a dibujar desde cero. También puedes hacer tu propio diseño.</p></details>
-    <details><summary>¿Me la llevo terminada ese mismo día?</summary><p>El tote bag, el estuche y la pantalla de lámpara, sí. La bandeja de decoupage necesita unos días para que el barniz seque, y te avisamos para recogerla.</p></details>
-    <details><summary>¿Puedo venir solo/a?</summary><p>Claro. Es un plan perfecto para venir solo/a, con una amiga, con tu madre o con quien quieras.</p></details>
   </div>
 </section>
 
@@ -1033,6 +1039,15 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
 function toggleFaq() {
   const panel = document.getElementById('faqPanel');
   const btn = document.getElementById('faqBtn');
+  const abierto = panel.classList.toggle('open');
+  btn.setAttribute('aria-expanded', abierto);
+  btn.textContent = abierto ? 'Preguntas frecuentes –' : 'Preguntas frecuentes +';
+}
+
+// ===== PREGUNTAS FRECUENTES (A LA CARTA) =====
+function toggleCartaFaq() {
+  const panel = document.getElementById('cartaFaqPanel');
+  const btn = document.getElementById('cartaFaqBtn');
   const abierto = panel.classList.toggle('open');
   btn.setAttribute('aria-expanded', abierto);
   btn.textContent = abierto ? 'Preguntas frecuentes –' : 'Preguntas frecuentes +';
