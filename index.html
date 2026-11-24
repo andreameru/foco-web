@@ -1234,7 +1234,7 @@ function renderCalendar(month, year) {
       const btn = document.createElement('button');
       btn.type = 'button';
       if (ev.tipo) btn.classList.add('ev-' + ev.tipo);
-      const dia = idx === 0 ? `<span class="cl-dia">${d}<small>${dias[new Date(y, m-1, d).getDay()]}</small></span>` : `<span class="cl-dia"></span>`;
+      const dia = `<span class="cl-dia">${d}<small>${dias[new Date(y, m-1, d).getDay()]}</small></span>`;
       btn.innerHTML = `${dia}<span class="cl-nom">${ev.name}<small>Toca para ver los detalles</small></span>`;
       btn.addEventListener('click', () => openModal(ev));
       lista.appendChild(btn);
