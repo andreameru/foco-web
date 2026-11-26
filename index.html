@@ -196,6 +196,19 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .curso-emoji svg { width:48px; height:48px; display:block; overflow:visible; }
 .curso-nombre { font-size:15px; font-weight:600; color:var(--black); }
 .curso-precio { font-size:13px; color:var(--grey-mid); margin-top:2px; }
+.cursos .curso-precio b { color:#111; font-size:14px; }
+.curso-precio span { display:inline-block; font-size:12px; }
+.curso-precio span::before { content:'· '; }
+.curso-badge { white-space:nowrap; }
+@media (max-width:560px) {
+  .curso-row { padding:.9rem .8rem; }
+  .curso-row-left { gap:9px; }
+  .curso-row-right { gap:6px; }
+  .curso-emoji, .curso-emoji svg { width:40px; height:40px; }
+  .curso-badge { font-size:10px; padding:3px 7px; }
+  .curso-precio span { display:block; }
+  .curso-precio span::before { content:none; }
+}
 .curso-row-right { display:flex; align-items:center; gap:10px; }
 .curso-badge { font-size:11px; padding:3px 10px; border-radius:99px; background:var(--pink-pale); color:var(--pink); font-family:'Space Mono',monospace; }
 .curso-chevron { font-size:18px; color:var(--grey-mid); transition:transform .2s; display:inline-block; }
@@ -222,10 +235,15 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 /* HORARIO SEMANAL */
 .horario-wrap { margin-top:48px; }
-.clubs-pago { max-width:760px; margin:1.5rem auto 2.5rem; padding:1.1rem 1.4rem; background:rgba(255,255,255,.7); border:1.5px dashed var(--black); border-radius:12px; text-align:center; position:relative; z-index:1; }
-.clubs-pago h3 { font-family:'Space Mono',monospace; font-size:15px; text-transform:uppercase; letter-spacing:1px; margin-bottom:.5rem; color:var(--black); }
-.clubs-pago p { font-family:'Space Grotesk',sans-serif; font-size:14px; line-height:1.65; color:#222; }
-.clubs-pago p + p { margin-top:.4rem; }
+.clubs-pago { margin:16px 0 2.5rem; padding:.8rem 1.4rem .9rem; display:grid; grid-template-columns:1.7fr 1fr 1fr; column-gap:28px; background:rgba(255,255,255,.7); border:1.5px dashed var(--black); border-radius:12px; text-align:center; position:relative; z-index:1; }
+.clubs-pago h3 { font-family:'Space Mono',monospace; font-size:15px; text-transform:uppercase; letter-spacing:1px; margin-bottom:.45rem; color:var(--black); grid-column:1 / -1; }
+.clubs-pago p { font-family:'Space Grotesk',sans-serif; font-size:13.5px; line-height:1.5; color:#222; }
+.clubs-pago p + p { border-left:1px dashed rgba(0,0,0,.35); padding-left:28px; }
+@media (max-width:820px) {
+  .clubs-pago { grid-template-columns:1fr; padding:.8rem 1rem; }
+  .clubs-pago p { font-size:13px; line-height:1.45; }
+  .clubs-pago p + p { border-left:0; padding-left:0; margin-top:.35rem; }
+}
 .horario-titulo { font-family:Georgia,'Times New Roman',serif; font-weight:700; font-size:clamp(20px,3.6vw,32px); line-height:1.05; letter-spacing:-.02em; color:var(--black); text-align:center; margin-bottom:20px; }
 .horario-titulo em { font-style:normal; color:var(--pink); }
 .horario-caja { max-width:1000px; margin:0 auto; }
@@ -702,6 +720,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <div class="curso-emoji"><svg viewBox="-3 -3 54 54" aria-hidden="true" focusable="false"><g filter="url(#corte)"><g style="--fa:#fff;--fb:#fff;--fc:#fff;--fd:#fff;--fe:#fff;--sa:#fff;--sk:none;--sw:5;--st:#fff;--swt:5;--sh:#fff;--swh:6.4"><use href="#ic-costura" width="48" height="48"/></g><g style="--fa:#78a9ec;--fb:#f0a64a;--fc:none;--sk:rgba(0,0,0,.3);--st:#78a9ec;--swt:2.4;--sh:none;--swh:0;--sa:none;--sw:0"><use href="#ic-costura" width="48" height="48"/></g></g></svg></div>
           <div>
             <div class="curso-nombre">Club de costura</div>
+            <div class="curso-precio"><b>55 € al mes</b> <span>IVA incluido</span></div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -712,12 +731,11 @@ a.hz-card:hover { transform:translateY(-2px); }
       <div class="curso-detalle" id="detail-costura">
         <p class="curso-detalle-desc">Aprende a coser desde cero, a tu ritmo y acompañada por Mari Jose, la profesora del club. Aquí se viene a disfrutar: desde lo más básico hasta proyectos que elegiremos entre todas. Hay grupos para adultos y para niños y niñas, con proyectos adaptados a cada edad.</p>
         <ul class="curso-detalle-lista">
-          <li><b>55 € al mes</b> · IVA incluido</li>
           <li>1 día a la semana, mismo día y hora (1 h 30)</li>
           <li>Grupo reducido: máximo 6 personas</li>
           <li>Sin experiencia previa</li>
           <li>Cada persona trae su máquina de coser</li>
-          <li>Niños y niñas: material básico incluido. Adultos: materiales aparte</li>
+          <li>Adultos: materiales aparte</li>
           <li>Se abre grupo a partir de 4 personas</li>
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
@@ -732,6 +750,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <div class="curso-emoji"><svg viewBox="-3 -3 54 54" aria-hidden="true" focusable="false"><g filter="url(#corte)"><g style="--fa:#fff;--fb:#fff;--fc:#fff;--fd:#fff;--fe:#fff;--sa:#fff;--sk:none;--sw:5;--st:#fff;--swt:5;--sh:#fff;--swh:6.4"><use href="#ic-paleta" width="48" height="48"/></g><g style="--fa:#f0c58a;--fb:#ff6fb8;--fc:#5b8fd6;--fd:#ffd34d;--fe:#8fe070;--sk:none;--st:none;--swt:0;--sh:none;--swh:0;--sa:none;--sw:0"><use href="#ic-paleta" width="48" height="48"/></g></g></svg></div>
           <div>
             <div class="curso-nombre">Club creativo</div>
+            <div class="curso-precio"><b>60 € al mes</b> <span>IVA incluido</span></div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -742,7 +761,6 @@ a.hz-card:hover { transform:translateY(-2px); }
       <div class="curso-detalle" id="detail-creativo">
         <p class="curso-detalle-desc">Es como apuntarte al gimnasio, pero para tu creatividad: un rato fijo cada semana para probar materiales y técnicas distintas. Cada sesión, una propuesta nueva: decoupage, arcilla, abalorios, pintura… Vienes, creas y te llevas a casa lo que has hecho. Hay grupos para adultos y para niños y niñas.</p>
         <ul class="curso-detalle-lista">
-          <li><b>60 € al mes</b> · IVA incluido</li>
           <li>1 día a la semana, mismo día y hora (1 h 30)</li>
           <li>Sin experiencia previa</li>
           <li>Materiales incluidos</li>
@@ -764,6 +782,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <div class="curso-emoji"><svg viewBox="-3 -3 54 54" aria-hidden="true" focusable="false"><g filter="url(#corte)"><g style="--fa:#fff;--fb:#fff;--fc:#fff;--fd:#fff;--fe:#fff;--sa:#fff;--sk:none;--sw:5;--st:#fff;--swt:5;--sh:#fff;--swh:6.4"><use href="#ic-ganchillo" width="48" height="48"/></g><g style="--fa:#ffd34d;--fb:none;--sk:rgba(0,0,0,.3);--st:none;--swt:0;--sh:#ff6fb8;--swh:2.6;--sa:none;--sw:0"><use href="#ic-ganchillo" width="48" height="48"/></g></g></svg></div>
           <div>
             <div class="curso-nombre">Club de ganchillo</div>
+            <div class="curso-precio"><b>50 € al mes</b> <span>IVA incluido</span></div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -780,8 +799,8 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
         <ul class="curso-detalle-lista">
-          <li><b>Adultos:</b> 50 € al mes (IVA incluido). Sesiones de 2 h, en dos grupos: iniciación (sin experiencia previa) y avanzado. Materiales aparte.</li>
-          <li><b>Niños y niñas:</b> 50 € al mes (IVA incluido). Sesiones de 1 h 30, un grupo, sin experiencia previa. Material básico incluido.</li>
+          <li><b>Adultos:</b> sesiones de 2 h, en dos grupos: iniciación (sin experiencia previa) y avanzado. Materiales aparte.</li>
+          <li><b>Niños y niñas:</b> sesiones de 1 h 30, un grupo, sin experiencia previa.</li>
         </ul>
         <p class="curso-detalle-desc curso-nota"><b>Empezamos en enero.</b> Las inscripciones abrirán próximamente.</p>
       </div>
@@ -793,6 +812,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <div class="curso-emoji"><svg viewBox="-3 -3 54 54" aria-hidden="true" focusable="false"><g filter="url(#corte)"><g style="--fa:#fff;--fb:#fff;--fc:#fff;--fd:#fff;--fe:#fff;--sa:#fff;--sk:none;--sw:5;--st:#fff;--swt:5;--sh:#fff;--swh:6.4"><use href="#ic-libros" width="48" height="48"/></g><g style="--fa:#8fe070;--fb:#78a9ec;--fc:#ff8cc8;--sk:rgba(0,0,0,.3);--st:none;--swt:0;--sh:none;--swh:0;--sa:none;--sw:0"><use href="#ic-libros" width="48" height="48"/></g></g></svg></div>
           <div>
             <div class="curso-nombre">Club de lectura</div>
+            <div class="curso-precio"><b>20 € al mes</b> <span>IVA incluido</span></div>
           </div>
         </div>
         <div class="curso-row-right">
@@ -803,7 +823,6 @@ a.hz-card:hover { transform:translateY(-2px); }
       <div class="curso-detalle" id="detail-lectura">
         <p class="curso-detalle-desc">Un espacio para leer, compartir y conversar sobre libros con calma y en buena compañía. Dirigido por Raquel Villar, escritora y presidenta de la asociación de escritores. Hay dos grupos: uno para adultos y otro para jóvenes a partir de 12 años.</p>
         <ul class="curso-detalle-lista">
-          <li><b>20 € al mes</b> · IVA incluido</li>
           <li>Quincenal: 1 hora cada 15 días, mismo día y hora</li>
           <li>Se abre grupo a partir de 6 personas</li>
           <li>Grupo máximo: 15 personas</li>
@@ -822,7 +841,7 @@ a.hz-card:hover { transform:translateY(-2px); }
   <!-- Cómo se paga -->
   <div class="clubs-pago fade-up">
     <h3>¿Cómo se paga?</h3>
-    <p>El precio mensual de cada club semanal equivale a <b>4 sesiones</b>. Si algún mes hay menos, se paga la parte proporcional. Es lo que pasa en enero: empezamos después de las fiestas de Navidad, así que se pagan <b>3 sesiones</b>.</p>
+    <p>El precio mensual de cada club semanal equivale a <b>4 sesiones</b>. Si algún mes hay menos, se paga la parte proporcional. Es lo que pasa en enero: empezamos después de las fiestas de Navidad, así que se pagan <b>3&nbsp;sesiones</b>.</p>
     <p>En los meses que tienen 5 semanas, habrá <b>una semana sin club</b>.</p>
     <p>El club de lectura es quincenal: su precio equivale a <b>2 sesiones</b> al mes.</p>
   </div>
