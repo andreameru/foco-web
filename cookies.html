@@ -35,6 +35,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .legal-section p { font-size:15px; color:#444; line-height:1.8; margin-bottom:12px; }
 .legal-section p:last-child { margin-bottom:0; }
 .legal-section strong { color:var(--black); font-weight:600; }
+.legal-section a { color:var(--black); text-decoration-color:var(--pink); text-underline-offset:3px; overflow-wrap:anywhere; }
 .legal-section ul { margin:12px 0 12px 20px; }
 .legal-section ul li { font-size:15px; color:#444; line-height:1.8; margin-bottom:6px; }
 .legal-highlight { background:var(--kraft-light); border-left:4px solid var(--pink); padding:16px 20px; border-radius:0 8px 8px 0; margin:16px 0; font-size:14px; color:#555; line-height:1.7; }
@@ -56,7 +57,9 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .footer { flex-direction:column; padding:32px 24px; text-align:center; }
   .footer-links { justify-content:center; }
   .cookie-table { font-size:12px; }
-  .cookie-table th, .cookie-table td { padding:8px 10px; }
+  .cookie-table { table-layout:fixed; }
+  .cookie-table th, .cookie-table td { padding:8px 6px; overflow-wrap:anywhere; vertical-align:top; }
+  .cookie-table th { font-size:9px; letter-spacing:0; }
 }
 </style>
 </head>
@@ -76,60 +79,48 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
   <div class="legal-section">
     <h2>1. Qué son las cookies</h2>
-    <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Sirven para que el sitio recuerde tus preferencias, mejore tu experiencia de navegación y, en algunos casos, para recopilar información estadística.</p>
+    <p>Las cookies y otras tecnologías parecidas (como el almacenamiento local del navegador) guardan información en tu dispositivo cuando visitas una web.</p>
   </div>
 
   <div class="legal-section">
-    <h2>2. Qué cookies usamos</h2>
-    <p>Este sitio web utiliza exclusivamente cookies técnicas necesarias para su funcionamiento. No utilizamos cookies de seguimiento, publicidad ni analytics de terceros. Las tipografías se cargan desde la propia web, sin recurrir a servicios externos como Google Fonts.</p>
-
+    <h2>2. Qué usa esta web</h2>
+    <p><strong>Al visitar esta web no instalamos cookies</strong> ni guardamos información en tu navegador. No usamos cookies de analítica, publicidad ni seguimiento, y por eso no verás un aviso para aceptarlas. Las tipografías se cargan desde la propia web.</p>
+    <p>La web carga un componente de Netlify que permite el acceso a un panel privado de administración. Solo cuando la administradora inicia sesión se guardan estos datos en su navegador:</p>
     <table class="cookie-table">
       <tr>
-        <th>Cookie</th>
-        <th>Origen</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
         <th>Finalidad</th>
         <th>Duración</th>
       </tr>
       <tr>
-        <td><strong>netlify-identity</strong></td>
-        <td>Netlify</td>
-        <td>Gestión de acceso al panel de administración (solo visible para la administradora)</td>
+        <td><strong>nf_jwt</strong></td>
+        <td>Cookie técnica</td>
+        <td>Mantener la sesión iniciada</td>
         <td>Sesión</td>
       </tr>
       <tr>
-        <td><strong>Cookies de Zenamu</strong></td>
-        <td>Zenamu</td>
-        <td>Funcionamiento del sistema de reservas cuando usas el formulario de reserva</td>
-        <td>Variable</td>
-      </tr>
-      <tr>
-        <td><strong>Cookies de Stripe</strong></td>
-        <td>Stripe</td>
-        <td>Funcionamiento seguro del sistema de pago cuando realizas una compra</td>
-        <td>Variable</td>
+        <td><strong>gotrue.user</strong></td>
+        <td>Almacenamiento local</td>
+        <td>Recordar la sesión</td>
+        <td>Hasta cerrar sesión</td>
       </tr>
     </table>
-
-    <div class="legal-highlight">
-      Las cookies de Zenamu y Stripe solo se activan cuando interactúas con sus respectivos servicios (reservar o pagar), cuando estén disponibles en la web. No se cargan de forma automática al visitar la web.
-    </div>
   </div>
 
   <div class="legal-section">
-    <h2>3. Cómo gestionar las cookies</h2>
-    <p>Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento. Ten en cuenta que deshabilitar las cookies técnicas puede afectar al funcionamiento del sitio web.</p>
-    <ul>
-      <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies</li>
-      <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies</li>
-      <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies</li>
-      <li><strong>Edge:</strong> Configuración → Privacidad, búsqueda y servicios → Cookies</li>
-    </ul>
+    <h2>3. Enlaces a otros servicios</h2>
+    <p>Si pulsas un enlace a WhatsApp, Instagram o Google Maps sales de esta web, y ese servicio puede usar sus propias cookies según sus políticas.</p>
   </div>
 
   <div class="legal-section">
-    <h2>4. Actualizaciones de esta política</h2>
-    <p>Podemos actualizar esta Política de Cookies cuando sea necesario, por ejemplo si añadimos nuevos servicios que utilicen cookies. Te recomendamos revisarla periódicamente. La fecha de última actualización aparece al inicio de esta página.</p>
-    <p>Para cualquier duda sobre el uso de cookies, puedes contactar con nosotros en hola@espaciofoco.es.</p>
+    <h2>4. Cómo gestionar las cookies</h2>
+    <p>Puedes bloquear o borrar las cookies y los datos guardados desde los ajustes de privacidad de tu navegador (Chrome, Firefox, Safari, Edge u otros).</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>5. Cambios</h2>
+    <p>Si añadimos servicios que usen cookies (por ejemplo, reservas o pagos en línea), actualizaremos esta política antes y, cuando sea necesario, te pediremos permiso. Para cualquier duda, escríbenos a <a href="mailto:hola@espaciofoco.es">hola@espaciofoco.es</a>.</p>
   </div>
 
 </div>
