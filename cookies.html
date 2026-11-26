@@ -2,10 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow"><!-- QUITAR el día que se publique la web -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Política de Cookies — FOCO Espacio Creativo</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/images/estrella-foco.svg">
+<link rel="preload" href="/fonts/space-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
@@ -22,7 +23,7 @@ html { scroll-behavior: smooth; }
 body { font-family:'Space Grotesk',sans-serif; background:var(--white); color:var(--black); overflow-x:hidden; }
 nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1rem 3rem; background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); border-bottom:1.5px solid var(--black); transition:transform .3s ease; }
 .nav-logo { font-family:'Space Mono',monospace; font-size:1.6rem; font-weight:700; letter-spacing:.25em; color:var(--black); text-decoration:none; }
-.nav-logo span { color:var(--pink); font-size:1.8em; line-height:0; vertical-align:-.1em; }
+.logo-estrella { height:1.3em; width:auto; margin-left:.15em; vertical-align:-.28em; display:inline-block; }
 .legal-hero { margin-top:70px; background:var(--black); padding:60px; border-bottom:4px solid var(--pink); }
 .legal-hero-tag { font-family:'Space Mono',monospace; font-size:11px; color:var(--pink); text-transform:uppercase; letter-spacing:3px; margin-bottom:16px; }
 .legal-hero h1 { font-family:'Bebas Neue',cursive; font-size:clamp(3rem,6vw,5rem); color:var(--white); line-height:1; }
@@ -34,6 +35,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .legal-section p { font-size:15px; color:#444; line-height:1.8; margin-bottom:12px; }
 .legal-section p:last-child { margin-bottom:0; }
 .legal-section strong { color:var(--black); font-weight:600; }
+.legal-section a { color:var(--black); text-decoration-color:var(--pink); text-underline-offset:3px; overflow-wrap:anywhere; }
 .legal-section ul { margin:12px 0 12px 20px; }
 .legal-section ul li { font-size:15px; color:#444; line-height:1.8; margin-bottom:6px; }
 .legal-highlight { background:var(--kraft-light); border-left:4px solid var(--pink); padding:16px 20px; border-radius:0 8px 8px 0; margin:16px 0; font-size:14px; color:#555; line-height:1.7; }
@@ -42,8 +44,7 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 .cookie-table td { padding:10px 14px; border-bottom:1px solid var(--grey); color:#444; line-height:1.6; }
 .cookie-table tr:last-child td { border-bottom:none; }
 .footer { background:var(--black); border-top:4px solid var(--pink); padding:40px 60px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-.footer-logo { font-family:'Bebas Neue',cursive; font-size:32px; color:#fff; }
-.footer-logo span { color:var(--pink); }
+.footer-logo { font-family:'Space Mono',monospace; font-size:1.6rem; font-weight:700; letter-spacing:.25em; color:#fff; }
 .footer-links { display:flex; gap:24px; flex-wrap:wrap; }
 .footer-links a { font-family:'Space Mono',monospace; font-size:11px; color:#666; text-decoration:none; transition:color .2s; }
 .footer-links a:hover { color:var(--pink); }
@@ -55,86 +56,76 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
   .footer { flex-direction:column; padding:32px 24px; text-align:center; }
   .footer-links { justify-content:center; }
   .cookie-table { font-size:12px; }
-  .cookie-table th, .cookie-table td { padding:8px 10px; }
+  .cookie-table { table-layout:fixed; }
+  .cookie-table th, .cookie-table td { padding:8px 6px; overflow-wrap:anywhere; vertical-align:top; }
+  .cookie-table th { font-size:9px; letter-spacing:0; }
 }
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <a href="/" class="nav-logo">F<span>★</span>CO</a>
+  <a href="/" class="nav-logo" aria-label="FOCO">FOCO<img class="logo-estrella" src="/images/estrella-foco.svg" alt="" width="40" height="37"></a>
 </nav>
 
 <div class="legal-hero">
   <div class="legal-hero-tag">Información legal</div>
   <h1>Política de Cookies</h1>
-  <p class="legal-hero-sub">Última actualización: julio de 2026</p>
+  <p class="legal-hero-sub">Última actualización: noviembre de 2026</p>
 </div>
 
 <div class="legal-body">
 
   <div class="legal-section">
     <h2>1. Qué son las cookies</h2>
-    <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Sirven para que el sitio recuerde tus preferencias, mejore tu experiencia de navegación y, en algunos casos, para recopilar información estadística.</p>
+    <p>Las cookies y otras tecnologías parecidas (como el almacenamiento local del navegador) guardan información en tu dispositivo cuando visitas una web.</p>
   </div>
 
   <div class="legal-section">
-    <h2>2. Qué cookies usamos</h2>
-    <p>Este sitio web utiliza exclusivamente cookies técnicas necesarias para su funcionamiento. No utilizamos cookies de seguimiento, publicidad ni analytics de terceros.</p>
-
+    <h2>2. Qué usa esta web</h2>
+    <p><strong>Al visitar esta web no instalamos cookies</strong> ni guardamos información en tu navegador. No usamos cookies de analítica, publicidad ni seguimiento, y por eso no verás un aviso para aceptarlas. Las tipografías se cargan desde la propia web.</p>
+    <p>La web carga un componente de Netlify que permite el acceso a un panel privado de administración. Solo cuando la administradora inicia sesión se guardan estos datos en su navegador:</p>
     <table class="cookie-table">
       <tr>
-        <th>Cookie</th>
-        <th>Origen</th>
+        <th>Nombre</th>
+        <th>Tipo</th>
         <th>Finalidad</th>
         <th>Duración</th>
       </tr>
       <tr>
-        <td><strong>netlify-identity</strong></td>
-        <td>Netlify</td>
-        <td>Gestión de acceso al panel de administración (solo visible para la administradora)</td>
+        <td><strong>nf_jwt</strong></td>
+        <td>Cookie técnica</td>
+        <td>Mantener la sesión iniciada</td>
         <td>Sesión</td>
       </tr>
       <tr>
-        <td><strong>Cookies de Zenamu</strong></td>
-        <td>Zenamu</td>
-        <td>Funcionamiento del sistema de reservas cuando usas el formulario de reserva</td>
-        <td>Variable</td>
-      </tr>
-      <tr>
-        <td><strong>Cookies de Stripe</strong></td>
-        <td>Stripe</td>
-        <td>Funcionamiento seguro del sistema de pago cuando realizas una compra</td>
-        <td>Variable</td>
+        <td><strong>gotrue.user</strong></td>
+        <td>Almacenamiento local</td>
+        <td>Recordar la sesión</td>
+        <td>Hasta cerrar sesión</td>
       </tr>
     </table>
-
-    <div class="legal-highlight">
-      Las cookies de Zenamu y Stripe solo se activan cuando interactúas con sus respectivos servicios (reservar o pagar). No se cargan de forma automática al visitar la web.
-    </div>
   </div>
 
   <div class="legal-section">
-    <h2>3. Cómo gestionar las cookies</h2>
-    <p>Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento. Ten en cuenta que deshabilitar las cookies técnicas puede afectar al funcionamiento del sitio web.</p>
-    <ul>
-      <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies</li>
-      <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies</li>
-      <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies</li>
-      <li><strong>Edge:</strong> Configuración → Privacidad, búsqueda y servicios → Cookies</li>
-    </ul>
+    <h2>3. Enlaces a otros servicios</h2>
+    <p>Si pulsas un enlace a WhatsApp, Instagram o Google Maps sales de esta web, y ese servicio puede usar sus propias cookies según sus políticas.</p>
   </div>
 
   <div class="legal-section">
-    <h2>4. Actualizaciones de esta política</h2>
-    <p>Podemos actualizar esta Política de Cookies cuando sea necesario, por ejemplo si añadimos nuevos servicios que utilicen cookies. Te recomendamos revisarla periódicamente. La fecha de última actualización aparece al inicio de esta página.</p>
-    <p>Para cualquier duda sobre el uso de cookies, puedes contactar con nosotros en hola@espaciofoco.es.</p>
+    <h2>4. Cómo gestionar las cookies</h2>
+    <p>Puedes bloquear o borrar las cookies y los datos guardados desde los ajustes de privacidad de tu navegador (Chrome, Firefox, Safari, Edge u otros).</p>
+  </div>
+
+  <div class="legal-section">
+    <h2>5. Cambios</h2>
+    <p>Si añadimos servicios que usen cookies (por ejemplo, reservas o pagos en línea), actualizaremos esta política antes y, cuando sea necesario, te pediremos permiso. Para cualquier duda, escríbenos a <a href="mailto:hola@espaciofoco.es">hola@espaciofoco.es</a>.</p>
   </div>
 
 </div>
 
 <footer class="footer">
-  <div class="footer-logo">F<span>★</span>CO</div>
+  <div class="footer-logo" aria-label="FOCO">FOCO<img class="logo-estrella" src="/images/estrella-foco.svg" alt="" width="40" height="37"></div>
   <div class="footer-links">
     <a href="/aviso-legal.html">Aviso legal</a>
     <a href="/privacidad.html">Privacidad</a>
