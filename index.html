@@ -420,6 +420,9 @@ a.hz-card:hover { transform:translateY(-2px); }
 .modal-desc { font-size:15px; color:#555; line-height:1.7; margin-bottom:24px; }
 .modal-price { font-family:'Bebas Neue',cursive; font-size:40px; color:var(--rosa); margin-bottom:24px; }
 .modal-btn { display:inline-block; padding:14px 32px; background:var(--rosa); color:#fff; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:1.5px; border:none; border-radius:50px; cursor:pointer; text-decoration:none; transition:background .2s; }
+.modal p.aviso-cancel, .carta-info p.aviso-cancel { font-size:13px; line-height:1.5; margin-top:16px; }
+.carta-info p.aviso-cancel { margin-top:0; }
+.aviso-cancel a { color:inherit; text-decoration:underline; }
 .modal-btn:hover { background:#d45a78; }
 
 /* GRUPOS */
@@ -923,6 +926,7 @@ a.hz-card:hover { transform:translateY(-2px); }
   <div class="carta-info fade-up">
     <p><b>18 € por persona</b>, IVA incluido. En diciembre, días especiales: jueves 10 y 17 y martes 29. A partir de enero, todos los jueves. Siempre de 17:00 a 20:30. Elige tu hora y reserva tu hueco de 1 h 30 min.</p>
     <p style="flex-basis:100%">Reserva por WhatsApp con unas horas de antelación. Aquí vienes a tu aire, sin taller guiado de principio a fin. ¿Prefieres que te guiemos o celebrar algo? Mira los <a href="#talleres" style="color:inherit;text-decoration:underline">talleres</a> y <a href="#grupos" style="color:inherit;text-decoration:underline">grupos</a>.</p>
+    <p class="aviso-cancel" style="flex-basis:100%">Cancelación con 48 h: devolución o cambio de fecha. <a href="/aviso-legal.html#cancelaciones" target="_blank">Ver condiciones</a></p>
     <div style="display:flex;flex-wrap:wrap;gap:12px">
       <a href="https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22" target="_blank" rel="noopener" class="btn-black">Reservar mi hueco →</a>
       <button type="button" class="btn-black btn-line" id="cartaFaqBtn" aria-expanded="false" aria-controls="cartaFaqPanel" onclick="toggleCartaFaq()">Preguntas frecuentes +</button>
@@ -1100,6 +1104,7 @@ a.hz-card:hover { transform:translateY(-2px); }
     <p class="modal-desc" id="modalDesc"></p>
     <div class="modal-price" id="modalPrice"></div>
     <a href="#" class="modal-btn" id="modalBtn">Reservar plaza →</a>
+    <p class="aviso-cancel">Cancelación con 48 h: devolución o cambio de fecha. <a href="/aviso-legal.html#cancelaciones" target="_blank">Ver condiciones</a></p>
   </div>
 </div>
 
