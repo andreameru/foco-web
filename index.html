@@ -714,7 +714,7 @@ a.hz-card:hover { transform:translateY(-2px); }
           <li>Grupo reducido: máximo 6 personas</li>
           <li>Sin experiencia previa</li>
           <li>Cada persona trae su máquina de coser</li>
-          <li>Materiales: incluidos en niños y niñas; aparte en adultos</li>
+          <li>Niños y niñas: material básico incluido. Adultos: materiales aparte</li>
           <li>Se abre grupo a partir de 4 personas</li>
           <li>De enero a junio, con pago mes a mes</li>
         </ul>
@@ -778,7 +778,7 @@ a.hz-card:hover { transform:translateY(-2px); }
         </ul>
         <ul class="curso-detalle-lista">
           <li><b>Adultos:</b> 50 € al mes (IVA incluido). Sesiones de 2 h, en dos grupos: iniciación (sin experiencia previa) y avanzado. Materiales aparte.</li>
-          <li><b>Niños y niñas:</b> sesiones de 1 h 30, un grupo, sin experiencia previa.</li>
+          <li><b>Niños y niñas:</b> 50 € al mes (IVA incluido). Sesiones de 1 h 30, un grupo, sin experiencia previa. Material básico incluido.</li>
         </ul>
         <p class="curso-detalle-desc curso-nota"><b>Empezamos en enero.</b> Las inscripciones abrirán próximamente.</p>
       </div>
@@ -1015,7 +1015,7 @@ a.hz-card:hover { transform:translateY(-2px); }
       </div>
       <p style="font-size:14px;color:#555;line-height:1.6;margin:1.5rem 0 1rem">Precios con IVA incluido. Te confirmamos la fecha según disponibilidad; solemos reservar tardes de viernes, sábados y domingos. Reservamos tu fecha con una señal del 30&nbsp;%. Cada propuesta es personalizada: cuéntanos qué tienes en mente y te enviamos presupuesto sin compromiso.</p>
       <div class="ep-botones">
-        <a href="mailto:hola@espaciofoco.es?subject=Presupuesto%20para%20grupo" class="btn-black">Contactar para grupos →</a>
+        <a href="https://wa.me/34614228307?text=Hola%2C%20quiero%20un%20presupuesto%20para%20un%20grupo" target="_blank" rel="noopener" class="btn-black">Contactar para grupos →</a>
         <button type="button" class="btn-black btn-line" id="faqBtn" aria-expanded="false" aria-controls="faqPanel" onclick="toggleFaq()">Preguntas frecuentes +</button>
       </div>
       <div class="ep-faq" id="faqPanel">
@@ -1329,7 +1329,7 @@ function openModal(event) {
   const precio = document.getElementById('modalPrice'); precio.textContent = event.price || ''; precio.style.display = event.price ? '' : 'none';
   const btn = document.getElementById('modalBtn');
   if (event.url) { btn.href = event.url; btn.target = '_blank'; btn.textContent = 'Reservar plaza →'; }
-  else { btn.href = 'mailto:hola@espaciofoco.es?subject=' + encodeURIComponent('Reserva: ' + event.name); btn.removeAttribute('target'); btn.textContent = 'Quiero una plaza →'; }
+  else { btn.href = 'https://wa.me/34614228307?text=' + encodeURIComponent('Hola, quiero una plaza en: ' + event.name); btn.target = '_blank'; btn.textContent = 'Quiero una plaza →'; }
   document.getElementById('modalOverlay').classList.add('open');
 }
 
