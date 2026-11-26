@@ -54,6 +54,11 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 /* HERO */
 #hero { min-height:65vh; padding-top:5rem; display:grid; grid-template-columns:1fr 1fr; border-bottom:1.5px solid var(--black); }
+.puertas { margin-top:71px; display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline; gap:4px 18px; padding:14px 16px; text-align:center; background:var(--pink); color:var(--black); border-bottom:1.5px solid var(--black); }
+.puertas strong { font-family:'Space Mono',monospace; font-size:15px; text-transform:uppercase; letter-spacing:1px; }
+.puertas span { font-family:'Space Grotesk',sans-serif; font-size:15px; font-weight:500; }
+.puertas[hidden] { display:none; }
+.puertas:not([hidden]) ~ #hero { padding-top:0; }
 .hero-left { display:flex; flex-direction:column; justify-content:center; padding:5rem 4rem 4rem; }
 .hero-eyebrow { display:inline-flex; align-items:center; gap:.6rem; font-size:.78rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--grey-mid); margin-bottom:2rem; }
 .hero-eyebrow::before { content:''; width:2rem; height:1.5px; background:var(--pink); display:block; }
@@ -547,6 +552,10 @@ a.hz-card:hover { transform:translateY(-2px); }
   .nav-links a { font-size:.9rem; padding:.9rem 0; border-bottom:1px solid var(--grey); letter-spacing:.04em; }
   .nav-pill { background:var(--pink); color:var(--white)!important; padding:.7rem 1.2rem!important; border-radius:2rem; margin-top:.5rem; text-align:center; border:none!important; }
   #hero { padding-top:4.2rem; }
+  .puertas { margin-top:65px; padding:12px; }
+  .puertas strong { font-size:12.5px; }
+  .puertas span { font-size:13.5px; }
+  .puertas:not([hidden]) ~ #hero { padding-top:0; }
   .hero-left { padding:1.5rem 1.5rem 1.5rem; }
   .cursos-lista { grid-template-columns:1fr; }
   .hero-left h1 { font-size:2.2rem; }
@@ -641,6 +650,13 @@ a.hz-card:hover { transform:translateY(-2px); }
     <a href="#contacto" class="nav-pill" onclick="cerrarMenu()">Contacto</a>
   </div>
 </nav>
+
+<!-- PUERTAS ABIERTAS (28 nov 2026). Se oculta sola ese día a las 20:00; después se puede borrar este bloque. -->
+<div class="puertas" id="puertas">
+  <strong>Puertas abiertas · sábado 28 de noviembre</strong>
+  <span>De 11:00 a 14:00 y de 17:00 a 20:00 · C/ Huesca 30</span>
+</div>
+<script>if (Date.now() >= Date.parse('2026-11-28T20:00:00+01:00')) document.getElementById('puertas').hidden = true;</script>
 
 <!-- HERO -->
 <section id="hero">
@@ -1182,7 +1198,7 @@ const events = {
   '2026-12-10': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 10 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2010%20de%20diciembre' },
   '2026-12-17': { tipo: 'carta', name: 'A la carta', short: 'A la carta', sub: 'Jueves 17 de diciembre · 17:00–20:30', desc: 'Elige tu manualidad (pintar totebag, bordar estuche, pantalla de lámpara o bandeja de decoupage) y reserva tu hueco de 1 h 30 min. Material, instrucciones paso a paso y ayuda incluidos; te llevas tu creación terminada.', price: '18 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20reservar%20un%20hueco%20en%20%22A%20la%20carta%22%20el%20jueves%2017%20de%20diciembre' },
   '2026-12-11': { name: 'Taller navideño de ganchillo: tu propia bola de Navidad', short: 'Ganchillo navideño', sub: 'Viernes 11 de diciembre · 18:00–20:00', desc: 'Teje con ganchillo tu propia bola navideña y llévatela a casa para decorar el árbol. Material incluido: ovillos y agujas de ganchillo. Máximo 8 plazas. Escríbenos para reservar la tuya.', price: '30 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20navide%C3%B1o%20de%20ganchillo%20%28vie%2011%20de%20diciembre%29' },
-  '2026-12-12': { name: 'Taller navideño de costura: bota de Navidad', short: 'Costura navideña', sub: 'Sábado 12 de diciembre · 3 horas', desc: 'Un taller de costura con aire navideño: cose tu propia bota de Navidad y llévatela a casa. Incluye telas, guata, alfileres, hilo blanco y plancha. Tienes que traer tu máquina de coser (con su cable, pedal y canillas) y tijeras. Máximo 8 plazas. Escríbenos para reservar la tuya.', price: '40 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20navide%C3%B1o%20de%20costura%20%28s%C3%A1b%2012%20de%20diciembre%29' },
+  '2026-12-12': { name: 'Taller navideño de costura: bota de Navidad', short: 'Costura navideña', sub: 'Sábado 12 de diciembre · 10:00–13:00', desc: 'Un taller de costura con aire navideño: cose tu propia bota de Navidad y llévatela a casa. Incluye telas, guata, alfileres, hilo blanco y plancha. Tienes que traer tu máquina de coser (con su cable, pedal y canillas) y tijeras. Máximo 8 plazas. Escríbenos para reservar la tuya.', price: '40 € · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20navide%C3%B1o%20de%20costura%20%28s%C3%A1b%2012%20de%20diciembre%29' },
   '2026-12-19': { name: 'Taller de velas navideñas con LUMO', short: 'Velas con LUMO', sub: 'Sábado 19 de diciembre', desc: 'Crea tus propias velas navideñas de la mano de LUMO y llévatelas terminadas a casa. Escríbenos para reservar tu plaza y contarte todos los detalles.', price: '30€', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20y%20reservar%20plaza%20en%20el%20taller%20de%20velas%20con%20LUMO%20%28s%C3%A1b%2019%20de%20diciembre%29' },
   '2026-12-23': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Miércoles 23 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
   '2026-12-24': { tipo: 'club', name: 'Club creativo · niños', short: 'Club creativo niños', sub: 'Jueves 24 de diciembre · 10:00–13:00', desc: 'Mañanas para los días sin cole, de 10:00 a 13:00: un primer taller, un rato de almuerzo (lo traen de casa) y un mini taller. Máximo 8 niños y niñas. 28 € el día (IVA incluido); si vienen los 5 días, 112 € (el quinto gratis), y descuento para hermanos. Escríbenos por WhatsApp con los días que os vienen bien y te confirmamos precio y plaza.', price: '28 € al día · IVA incluido', url: 'https://wa.me/34614228307?text=Hola%2C%20quiero%20informaci%C3%B3n%20del%20club%20creativo%20de%20ni%C3%B1os%20en%20Navidad.%20D%C3%ADas%3A%20' },
