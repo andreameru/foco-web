@@ -222,6 +222,10 @@ nav.nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; ali
 
 /* HORARIO SEMANAL */
 .horario-wrap { margin-top:48px; }
+.clubs-pago { max-width:760px; margin:1.5rem auto 2.5rem; padding:1.1rem 1.4rem; background:rgba(255,255,255,.7); border:1.5px dashed var(--black); border-radius:12px; text-align:center; position:relative; z-index:1; }
+.clubs-pago h3 { font-family:'Space Mono',monospace; font-size:15px; text-transform:uppercase; letter-spacing:1px; margin-bottom:.5rem; color:var(--black); }
+.clubs-pago p { font-family:'Space Grotesk',sans-serif; font-size:14px; line-height:1.65; color:#222; }
+.clubs-pago p + p { margin-top:.4rem; }
 .horario-titulo { font-family:Georgia,'Times New Roman',serif; font-weight:700; font-size:clamp(20px,3.6vw,32px); line-height:1.05; letter-spacing:-.02em; color:var(--black); text-align:center; margin-bottom:20px; }
 .horario-titulo em { font-style:normal; color:var(--pink); }
 .horario-caja { max-width:1000px; margin:0 auto; }
@@ -810,6 +814,13 @@ a.hz-card:hover { transform:translateY(-2px); }
       </div>
     </div>
     </div>
+  </div>
+
+  <!-- Cómo se paga -->
+  <div class="clubs-pago fade-up">
+    <h3>¿Cómo se paga?</h3>
+    <p>El precio mensual de cada club semanal equivale a <b>4 sesiones</b>. Si algún mes hay menos, se paga la parte proporcional. Es lo que pasa en enero: empezamos después de las fiestas de Navidad, así que se pagan <b>3 sesiones</b>.</p>
+    <p>El club de lectura es quincenal: su precio equivale a <b>2 sesiones</b> al mes.</p>
   </div>
 
   <!-- Horario semanal -->
